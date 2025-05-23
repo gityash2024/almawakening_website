@@ -1,46 +1,103 @@
-# Getting Started with Create React App
+# Almawakening Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the official website for Almawakening, a non-profit organization focused on bringing positive change through awareness and community action.
+
+## Tech Stack
+
+- React 19
+- TypeScript
+- React Router for navigation
+- SCSS for styling
+- React Helmet Async for SEO optimization
+- Framer Motion for animations (to be implemented)
+
+## Project Structure
+
+```
+alma_website/
+├── public/            # Static files
+├── src/
+│   ├── assets/        # Images, icons, and other assets
+│   ├── components/    # Reusable components
+│   │   ├── common/    # Shared components
+│   │   ├── layout/    # Layout components (Navbar, Footer)
+│   │   ├── home/      # Home page components
+│   │   ├── about/     # About page components
+│   │   └── ...        # Other page-specific components
+│   ├── context/       # React context providers
+│   ├── hooks/         # Custom React hooks
+│   ├── pages/         # Page components
+│   ├── services/      # API services and utilities
+│   ├── styles/        # Global styles and variables
+│   ├── types/         # TypeScript type definitions
+│   ├── utils/         # Utility functions
+│   ├── App.tsx        # Main App component
+│   └── index.tsx      # Application entry point
+└── package.json       # Dependencies and scripts
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18.x or later recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/alma_website.git
+cd alma_website
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Start the development server:
+```bash
+npm start
+# or
+yarn start
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start`: Run the app in development mode
+- `npm test`: Launch the test runner
+- `npm run build`: Build the app for production
+- `npm run eject`: Eject from Create React App (one-way operation)
 
-### `npm start`
+## SEO Optimization
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The website is optimized for search engines with:
+- React Helmet for managing document head
+- Semantic HTML5 markup
+- Responsive design for all device sizes
+- Meta tags for social sharing
+- Canonical URLs
+- Sitemap (to be generated during build)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Deployment
 
-### `npm test`
+Build the production version:
+```bash
+npm run build
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The build output will be in the `build` folder, ready to be deployed to any static hosting service.
 
-### `npm run build`
+## License
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project is proprietary and not open for redistribution or use without explicit permission.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contact
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+For any inquiries, please contact [contact@almawakening.org](mailto:contact@almawakening.org).
+# almawakening_website

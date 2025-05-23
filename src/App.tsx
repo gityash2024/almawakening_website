@@ -1,25 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import EventsPage from './pages/EventsPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+import './styles/global.scss';
+import DonatePage from './pages/DonatePage';
+import ResourcesPage from './pages/ResourcesPage';
+import GalleryPage from './pages/GalleryPage';
+import GetInvolvedPage from './pages/GetInvolvedPage';
+import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
+import CookiesPage from './pages/CookiesPage';
+import ProjectsPage from './pages/ProjectsPage';
+import ScrollToTop from './components/common/ScrollToTop';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/donate" element={<DonatePage />} />
+          <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/get-involved" element={<GetInvolvedPage />} />
+          <Route path="/contact" element={<ContactPage/>} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/cookies" element={<CookiesPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </HelmetProvider>
   );
 }
 

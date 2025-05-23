@@ -1,0 +1,221 @@
+@import '../_scss-variables.scss';
+@import '../mixins.scss';
+
+.donate-page {
+  .donate-hero {
+    background: linear-gradient(to right, $secondary-color-pink, #ffd3d9);
+    padding: 80px 0;
+    text-align: center;
+    
+    h1 {
+      @include heading-1;
+      margin-bottom: 20px;
+      color: $heading-color;
+    }
+    
+    .subtitle {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: $text-color;
+      
+      @include respond-to('mobile') {
+        font-size: 1rem;
+      }
+    }
+    
+    .donation-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+      
+      @include respond-to('tablet') {
+        grid-template-columns: 1fr;
+      }
+      
+      .monthly-donation, 
+      .one-time-donation {
+        background-color: white;
+        padding: 30px;
+        border-radius: var(--radius-m);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        
+        h2 {
+          font-size: 1.5rem;
+          margin-bottom: 10px;
+          color: var(--color-heading);
+        }
+        
+        p {
+          margin-bottom: 20px;
+          color: var(--color-text-light);
+        }
+        
+        .donation-amounts {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-bottom: 20px;
+          
+          .amount-button {
+            flex: 1;
+            min-width: 60px;
+            padding: 10px;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-s);
+            background: transparent;
+            font-weight: 500;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+            
+            &:hover {
+              border-color: var(--color-primary);
+              color: var(--color-primary);
+            }
+            
+            &.active {
+              border-color: var(--color-primary);
+              background-color: var(--color-primary);
+              color: white;
+            }
+            
+            &.custom {
+              background-color: var(--color-background-light);
+            }
+          }
+        }
+        
+        .primary-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+  
+  .impact-section {
+    padding: 80px 0;
+    background-color: white;
+    
+    .impact-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+      
+      @include respond-to('tablet') {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @include respond-to('mobile') {
+        grid-template-columns: 1fr;
+      }
+      
+      .impact-card {
+        padding: 30px;
+        background-color: var(--color-background-light);
+        border-radius: var(--radius-m);
+        text-align: center;
+        @include card-shadow;
+        
+        .impact-icon {
+          width: 80px;
+          height: 80px;
+          margin: 0 auto 20px;
+          border-radius: 50%;
+          background-color: var(--color-primary-light);
+          
+          &.education {
+            background-color: var(--color-secondary-yellow);
+          }
+          
+          &.health {
+            background-color: var(--color-secondary-teal);
+          }
+          
+          &.community {
+            background-color: var(--color-secondary-pink);
+          }
+        }
+        
+        h3 {
+          font-size: 1.25rem;
+          margin-bottom: 15px;
+        }
+        
+        p {
+          font-size: 0.95rem;
+          color: var(--color-text-light);
+        }
+      }
+    }
+  }
+  
+  .other-ways-section {
+    padding: 80px 0;
+    background-color: var(--color-background-light);
+    
+    .ways-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+      
+      @include respond-to('tablet') {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @include respond-to('mobile') {
+        grid-template-columns: 1fr;
+      }
+      
+      .way-card {
+        padding: 30px;
+        background-color: white;
+        border-radius: var(--radius-m);
+        text-align: center;
+        @include card-shadow;
+        
+        h3 {
+          font-size: 1.25rem;
+          margin-bottom: 15px;
+        }
+        
+        p {
+          font-size: 0.95rem;
+          color: var(--color-text-light);
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+  
+  .faq-section {
+    padding: 80px 0;
+    background-color: white;
+    
+    .faq-container {
+      max-width: 800px;
+      margin: 40px auto 0;
+      
+      .faq-item {
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: var(--radius-s);
+        background-color: var(--color-background-light);
+        
+        h3 {
+          font-size: 1.1rem;
+          margin-bottom: 10px;
+          color: var(--color-primary);
+        }
+        
+        p {
+          font-size: 0.95rem;
+          color: var(--color-text);
+        }
+      }
+    }
+  }
+} 
