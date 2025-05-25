@@ -1,9 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import SEO from '../components/common/SEO';
 import '../styles/pages/GalleryPage.scss';
+import OurMonthbyMonth from '../assets/images/OurMonthbyMonth.png';
+import OurMonthbyMonth_1 from '../assets/images/OurMonthbyMonth_1.png';
+import OurMonthbyMonth_2 from '../assets/images/OurMonthbyMonth_2.png';
+import OurMonthbyMonth_3 from '../assets/images/OurMonthbyMonth_3.png';
+import OurMonthbyMonth_4 from '../assets/images/OurMonthbyMonth_4.png';
+import OurMonthbyMonth_5 from '../assets/images/OurMonthbyMonth_5.png';
+import OurMonthbyMonth_6 from '../assets/images/OurMonthbyMonth_6.png';
+import Contactus from '../assets/images/Contactus.svg';
+import contactlogo from '../assets/images/contactlogo.png';
 
 const GalleryPage: React.FC = () => {
+  const [expandedAlbums, setExpandedAlbums] = useState<number[]>([]);
+
+  // All photos array for dynamic expansion
+  const allPhotos = [
+    OurMonthbyMonth_1, OurMonthbyMonth_2, OurMonthbyMonth_3, 
+    OurMonthbyMonth_4, OurMonthbyMonth_5, OurMonthbyMonth_6,
+    OurMonthbyMonth_1, OurMonthbyMonth_2, OurMonthbyMonth_3, // Additional photos
+    OurMonthbyMonth_4, OurMonthbyMonth_5, OurMonthbyMonth_6,
+  ];
+
+  const albumData = [
+    {
+      id: 1,
+      month: "April 2025",
+      photoCount: "34 photos",
+      previewImages: [OurMonthbyMonth_1, OurMonthbyMonth_2, OurMonthbyMonth_3]
+    },
+    {
+      id: 2,
+      month: "April 2025", 
+      photoCount: "34 photos",
+      previewImages: [OurMonthbyMonth_4, OurMonthbyMonth_5, OurMonthbyMonth_6]
+    },
+    {
+      id: 3,
+      month: "April 2025",
+      photoCount: "34 photos", 
+      previewImages: [OurMonthbyMonth_1, OurMonthbyMonth_3, OurMonthbyMonth_5]
+    },
+    {
+      id: 4,
+      month: "April 2025",
+      photoCount: "34 photos",
+      previewImages: [OurMonthbyMonth_2, OurMonthbyMonth_4, OurMonthbyMonth_6]
+    }
+  ];
+
+  const handleViewAlbum = (albumId: number) => {
+    setExpandedAlbums(prev => 
+      prev.includes(albumId) 
+        ? prev.filter(id => id !== albumId)
+        : [...prev, albumId]
+    );
+  };
+
   return (
     <>
       <SEO
@@ -15,178 +69,88 @@ const GalleryPage: React.FC = () => {
       />
       <Layout>
         <div className="gallery-page">
-          <section className="gallery-hero">
-            <div className="container">
-              <h1>Our Month-by-Month Journey In Change</h1>
-              <p className="subtitle">Join hands, share knowledge, and help communities grow through impactful events</p>
-            </div>
-            
-            <div className="gallery-timeline">
-              <div className="timeline-navigation">
-                <button className="nav-button active">2025</button>
-                <button className="nav-button">2024</button>
-                <button className="nav-button">2023</button>
-                <button className="nav-button">2022</button>
-                <button className="nav-button">All</button>
+          <div className="gallery-container">
+            {/* Header Section */}
+            <section className="gallery-header" style={{ backgroundImage: `url(${OurMonthbyMonth})` }}>
+            </section>
+
+            {/* Gallery Albums Section */}
+            <section className="gallery-albums">
+              <div className="albums-grid">
+                {albumData.map((album) => (
+                  <div key={album.id} className="album-card">
+                    <div className="album-images">
+                      <div className="main-image">
+                        <img src={album.previewImages[0]} alt={`${album.month} main`} />
+                      </div>
+                      <div className="side-images">
+                        <div className="small-image">
+                          <img src={album.previewImages[1]} alt={`${album.month} 2`} />
+                        </div>
+                        <div className="small-image">
+                          <img src={album.previewImages[2]} alt={`${album.month} 3`} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="album-info">
+                      <h3>{album.month}</h3>
+                      <p>{album.photoCount}</p>
+                      <button 
+                        className="view-album-btn" 
+                        onClick={() => handleViewAlbum(album.id)}
+                      >
+                        {expandedAlbums.includes(album.id) ? 'Hide Album' : 'View Album'}
+                      </button>
+                    </div>
+                    
+                    {/* Expanded Photos */}
+                    {expandedAlbums.includes(album.id) && (
+                      <div className="expanded-photos">
+                        <div className="photos-grid">
+                          {allPhotos.map((photo, index) => (
+                            <div key={index} className="photo-item">
+                              <img src={photo} alt={`Photo ${index + 1}`} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
+            </section>
 
-              <div className="month-grid">
-                <div className="month-section">
-                  <h2>April 2025</h2>
-                  <div className="month-gallery">
-                    <div className="gallery-item">
-                      <img src="/images/gallery/april2025-1.jpg" alt="April 2025 Event" />
-                      <div className="gallery-overlay">
-                        <h3>Women's Empowerment Summit</h3>
-                        <p>New York City</p>
-                      </div>
-                    </div>
-                    <div className="gallery-item">
-                      <img src="/images/gallery/april2025-2.jpg" alt="April 2025 Event" />
-                      <div className="gallery-overlay">
-                        <h3>Community Leadership Workshop</h3>
-                        <p>Chicago</p>
-                      </div>
-                    </div>
-                    <div className="gallery-item">
-                      <img src="/images/gallery/april2025-3.jpg" alt="April 2025 Event" />
-                      <div className="gallery-overlay">
-                        <h3>Youth Mentorship Program</h3>
-                        <p>Los Angeles</p>
-                      </div>
-                    </div>
-                    <div className="gallery-item">
-                      <img src="/images/gallery/april2025-4.jpg" alt="April 2025 Event" />
-                      <div className="gallery-overlay">
-                        <h3>Environmental Cleanup Drive</h3>
-                        <p>Seattle</p>
-                      </div>
-                    </div>
-                  </div>
-                  <button className="view-all-button">View All</button>
+            {/* Contact Section */}
+            <section className="gallery-contact" style={{ backgroundImage: `url(${contactlogo})` }}>
+              <div className="contact-card">
+                <div className="contact-icon">
+                  <img src={Contactus} alt="Contact Us" />
                 </div>
-
-                <div className="month-section">
-                  <h2>March 2025</h2>
-                  <div className="month-gallery">
-                    <div className="gallery-item">
-                      <img src="/images/gallery/march2025-1.jpg" alt="March 2025 Event" />
-                      <div className="gallery-overlay">
-                        <h3>Tech for Change Conference</h3>
-                        <p>San Francisco</p>
-                      </div>
+                <div className="contact-content">
+                  <h2>Contact Us</h2>
+                  <p>Got questions about the Landing Page UI Kit? Our team is here to help. Contact us for quick and friendly support.</p>
+                  <div className="contact-details">
+                    <div className="contact-item">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M2 3C2 2.44772 2.44772 2 3 2H5.15287C5.64171 2 6.0589 2.35341 6.13927 2.8356L6.87858 7.27147C6.95075 7.70451 6.73206 8.13397 6.3394 8.3616L4.79126 9.13616C5.90756 11.8616 8.13844 14.0924 10.8638 15.2087L11.6384 13.6606C11.866 13.2679 12.2955 13.0493 12.7285 13.1214L17.1644 13.8607C17.6466 13.9411 18 14.3583 18 14.8471V17C18 17.5523 17.5523 18 17 18H15C7.8203 18 2 12.1797 2 5V3Z" fill="currentColor"/>
+                      </svg>
+                      <span>+012 345 6789</span>
                     </div>
-                    <div className="gallery-item">
-                      <img src="/images/gallery/march2025-2.jpg" alt="March 2025 Event" />
-                      <div className="gallery-overlay">
-                        <h3>Healthcare Access Initiative</h3>
-                        <p>Boston</p>
-                      </div>
+                    <div className="contact-item">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M2.5 6.5L9.5 11.5C9.77614 11.6913 10.2239 11.6913 10.5 11.5L17.5 6.5M4 4H16C17.1046 4 18 4.89543 18 6V14C18 15.1046 17.1046 16 16 16H4C2.89543 16 2 15.1046 2 14V6C2 4.89543 2.89543 4 4 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span>Hello@animaapp.com</span>
                     </div>
-                    <div className="gallery-item">
-                      <img src="/images/gallery/march2025-3.jpg" alt="March 2025 Event" />
-                      <div className="gallery-overlay">
-                        <h3>Education Equity Symposium</h3>
-                        <p>Atlanta</p>
-                      </div>
-                    </div>
-                    <div className="gallery-item">
-                      <img src="/images/gallery/march2025-4.jpg" alt="March 2025 Event" />
-                      <div className="gallery-overlay">
-                        <h3>Community Garden Project</h3>
-                        <p>Portland</p>
-                      </div>
-                    </div>
-                  </div>
-                  <button className="view-all-button">View All</button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="featured-gallery">
-            <div className="container">
-              <h2 className="section-title">Featured Collections</h2>
-
-              <div className="collections-grid">
-                <div className="collection-card">
-                  <img src="/images/gallery/collection1.jpg" alt="Women Empowerment Collection" />
-                  <div className="collection-info">
-                    <h3>Women Empowerment</h3>
-                    <p>Celebrating women's leadership and achievements</p>
-                    <button className="secondary-button">View Collection</button>
-                  </div>
-                </div>
-
-                <div className="collection-card">
-                  <img src="/images/gallery/collection2.jpg" alt="Youth Initiatives Collection" />
-                  <div className="collection-info">
-                    <h3>Youth Initiatives</h3>
-                    <p>Building the next generation of change-makers</p>
-                    <button className="secondary-button">View Collection</button>
-                  </div>
-                </div>
-
-                <div className="collection-card">
-                  <img src="/images/gallery/collection3.jpg" alt="Community Projects Collection" />
-                  <div className="collection-info">
-                    <h3>Community Projects</h3>
-                    <p>Local actions creating global impact</p>
-                    <button className="secondary-button">View Collection</button>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section className="video-gallery">
-            <div className="container">
-              <h2 className="section-title">Video Stories</h2>
-
-              <div className="videos-grid">
-                <div className="video-item">
-                  <div className="video-thumbnail">
-                    <img src="/images/gallery/video1.jpg" alt="Video 1" />
-                    <div className="play-button"></div>
-                  </div>
-                  <h3>The Story of Hope</h3>
-                  <p>How a small community transformed their neighborhood</p>
-                </div>
-
-                <div className="video-item">
-                  <div className="video-thumbnail">
-                    <img src="/images/gallery/video2.jpg" alt="Video 2" />
-                    <div className="play-button"></div>
-                  </div>
-                  <h3>Voices of Change</h3>
-                  <p>Interviews with community leaders</p>
-                </div>
-
-                <div className="video-item">
-                  <div className="video-thumbnail">
-                    <img src="/images/gallery/video3.jpg" alt="Video 3" />
-                    <div className="play-button"></div>
-                  </div>
-                  <h3>Youth in Action</h3>
-                  <p>Young activists making a difference</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="submit-section">
-            <div className="container">
-              <div className="submit-content">
-                <h2>Share Your Story With Us</h2>
-                <p>Have you been part of our events? Share your photos and stories with our community.</p>
-                <button className="primary-button">Submit Your Content</button>
-              </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </Layout>
     </>
   );
 };
 
-export default GalleryPage; 
+export default GalleryPage;

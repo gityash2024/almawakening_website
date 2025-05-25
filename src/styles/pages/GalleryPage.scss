@@ -2,379 +2,341 @@
 @import '../mixins.scss';
 
 .gallery-page {
-  .gallery-hero {
-    background: linear-gradient(135deg, $primary-color-light 0%, $primary-color 100%);
-    padding: 4rem 0;
-    color: $white;
+  min-height: 100vh;
+  
+  .gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    @media (max-width: 768px) {
+      padding: 0 16px;
+    }
+  }
+  
+  // Header Section
+  .gallery-header {
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-
-    .container {
+    position: relative;
+    margin: 0 -20px;
+    
+    @media (max-width: 768px) {
+      margin: 0 -16px;
+      height: 50vh;
+    }
+    
+    .header-content {
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 1rem;
-      margin-bottom: 3rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-
-      @include respond-to('medium') {
-        font-size: 3rem;
-      }
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
-
-    .gallery-timeline {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      background-color: rgba($white, 0.95);
-      border-radius: $border-radius;
-      box-shadow: $box-shadow;
-      padding: 2rem;
-      color: $text-color;
-    }
-
-    .timeline-navigation {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-
-      .nav-button {
-        padding: 0.5rem 1.5rem;
-        background: $light-bg;
-        border: none;
-        border-radius: $border-radius;
-        color: $text-color;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background: darken($light-bg, 5%);
+      padding: 0 20px;
+      z-index: 2;
+      position: relative;
+      
+      h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 24px;
+        font-family: system-ui, -apple-system, sans-serif;
+        letter-spacing: -0.025em;
+        line-height: 1.2;
+        
+        @media (max-width: 768px) {
+          font-size: 2.5rem;
         }
-
-        &.active {
-          background: $primary-color;
-          color: $white;
+        
+        @media (max-width: 480px) {
+          font-size: 2rem;
+        }
+      }
+      
+      p {
+        font-size: 1.25rem;
+        color: #4a5568;
+        font-weight: 400;
+        line-height: 1.6;
+        margin: 0;
+        
+        @media (max-width: 768px) {
+          font-size: 1.125rem;
         }
       }
     }
   }
-
-  .month-grid {
-    .month-section {
-      margin-bottom: 3rem;
-
-      h2 {
-        margin-bottom: 1.5rem;
-        font-size: 1.8rem;
-        color: $primary-color;
-        border-left: 4px solid $primary-color;
-        padding-left: 1rem;
-      }
-
-      .month-gallery {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 1.5rem;
-
-        @include respond-to('small') {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        @include respond-to('medium') {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: $border-radius;
-        height: 200px;
-        box-shadow: $box-shadow;
-        transition: transform 0.3s ease;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: all 0.3s ease;
-        }
-
-        .gallery-overlay {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          padding: 1rem;
-          background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-          color: $white;
-          transition: all 0.3s ease;
-
-          h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-          }
-
-          p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-          }
-        }
-
-        &:hover {
-          transform: translateY(-5px);
-
-          img {
-            transform: scale(1.05);
-          }
-        }
-      }
-
-      .view-all-button {
-        display: block;
-        margin: 1.5rem auto 0;
-        padding: 0.5rem 1.5rem;
-        background: transparent;
-        border: 1px solid $primary-color;
-        border-radius: $border-radius;
-        color: $primary-color;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background: $primary-color;
-          color: $white;
-        }
-      }
-    }
-  }
-
-  .featured-gallery {
-    padding: 4rem 0;
-    background-color: $light-bg;
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 2.5rem;
-      color: $primary-color;
-    }
-
-    .collections-grid {
+  
+  // Gallery Albums Section
+  .gallery-albums {
+    padding: 80px 0;
+    background: #ffffff;
+    
+    .albums-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-
-      @include respond-to('medium') {
-        grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 30px;
       }
     }
-
-    .collection-card {
-      background: $white;
-      border-radius: $border-radius;
-      overflow: hidden;
-      box-shadow: $box-shadow;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: translateY(-10px);
+    
+    .album-card {
+      background: #ffffff;
+      border-radius: 0;
+      overflow: visible;
+      
+      .album-images {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+        
+        .main-image {
+          img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+          }
+        }
+        
+        .side-images {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          
+          .small-image {
+            img {
+              width: 100%;
+              height: 134px;
+              object-fit: cover;
+              border-radius: 16px;
+            }
+          }
+        }
       }
-
-      img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-
-      .collection-info {
-        padding: 1.5rem;
-
+      
+      .album-info {
+        padding: 0;
+        
         h3 {
-          font-size: 1.4rem;
-          margin-bottom: 0.5rem;
-          color: $text-color;
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: #2d3748;
+          margin-bottom: 8px;
+          font-family: system-ui, -apple-system, sans-serif;
         }
-
+        
         p {
-          color: $text-color-light;
-          margin-bottom: 1.5rem;
+          font-size: 1rem;
+          color: #718096;
+          margin-bottom: 20px;
+          font-weight: 400;
         }
-
-        .secondary-button {
-          padding: 0.5rem 1.5rem;
-          background: $secondary-color;
-          color: $white;
+        
+        .view-album-btn {
+          background: #2d3748;
+          color: #ffffff;
           border: none;
-          border-radius: $border-radius;
-          font-weight: 500;
+          padding: 12px 32px;
+          border-radius: 30px;
+          font-size: 1rem;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
-
+          font-family: system-ui, -apple-system, sans-serif;
+          
           &:hover {
-            background: darken($secondary-color, 10%);
+            background: #1a202c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45, 55, 72, 0.3);
+          }
+          
+          &:active {
+            transform: translateY(0);
+          }
+        }
+      }
+      
+      // Expanded Photos
+      .expanded-photos {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 2px solid #e2e8f0;
+        
+        .photos-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 16px;
+          
+          .photo-item {
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            
+            &:hover {
+              transform: scale(1.05);
+            }
+            
+            img {
+              width: 100%;
+              height: 150px;
+              object-fit: cover;
+              display: block;
+            }
           }
         }
       }
     }
   }
-
-  .video-gallery {
-    padding: 4rem 0;
-
-    .container {
+  
+  // Contact Section  
+  .gallery-contact {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 0;
+    margin: 0 -20px;
+    position: relative;
+    border-radius: 60px;
+    
+    @media (max-width: 768px) {
+      margin: 0 -16px;
+      padding: 40px 0;
+    }
+    
+    .contact-card {
+      // background: rgba(249, 221, 99, 0.95);
+      border-radius: 32px;
+      padding: 50px 60px;
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 2.5rem;
-      color: $primary-color;
-    }
-
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 2rem;
-
-      @include respond-to('small') {
-        grid-template-columns: repeat(2, 1fr);
+      position: relative;
+      overflow: hidden;
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+        padding: 40px 30px;
+        margin: 0 20px;
       }
-
-      @include respond-to('medium') {
-        grid-template-columns: repeat(3, 1fr);
+      
+      @media (max-width: 480px) {
+        margin: 0 16px;
+        padding: 30px 20px;
       }
-    }
-
-    .video-item {
-      .video-thumbnail {
-        position: relative;
-        overflow: hidden;
-        border-radius: $border-radius;
+      
+      // Decorative circles
+      &::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        z-index: 1;
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -80px;
+        right: 80px;
+        width: 200px;
         height: 200px;
-        margin-bottom: 1rem;
-        box-shadow: $box-shadow;
-        cursor: pointer;
-
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        z-index: 1;
+      }
+      
+      .contact-icon {
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        z-index: 2;
+        position: relative;
+        
         img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
+          width: 50px;
+          height: 50px;
         }
-
-        .play-button {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 60px;
-          height: 60px;
-          background-color: rgba($primary-color, 0.8);
-          border-radius: 50%;
+      }
+      
+      .contact-content {
+        flex: 1;
+        z-index: 2;
+        position: relative;
+        
+        h2 {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #2d3748;
+          margin-bottom: 16px;
+          font-family: system-ui, -apple-system, sans-serif;
+          letter-spacing: -0.025em;
+          
+          @media (max-width: 768px) {
+            font-size: 2rem;
+          }
+        }
+        
+        p {
+          font-size: 1.125rem;
+          color: #4a5568;
+          line-height: 1.6;
+          margin-bottom: 32px;
+          max-width: 600px;
+          font-weight: 400;
+        }
+        
+        .contact-details {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-
-          &:before {
-            content: '';
-            width: 0;
-            height: 0;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            border-left: 20px solid $white;
-            margin-left: 5px;
+          flex-direction: column;
+          gap: 20px;
+          
+          .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 1.125rem;
+            
+            @media (max-width: 768px) {
+              justify-content: center;
+            }
+            
+            svg {
+              width: 24px;
+              height: 24px;
+              flex-shrink: 0;
+            }
+            
+            span {
+              font-family: system-ui, -apple-system, sans-serif;
+            }
           }
-        }
-
-        &:hover {
-          img {
-            transform: scale(1.05);
-          }
-
-          .play-button {
-            background-color: $primary-color;
-          }
-        }
-      }
-
-      h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-        color: $text-color;
-      }
-
-      p {
-        font-size: 0.9rem;
-        color: $text-color-light;
-      }
-    }
-  }
-
-  .submit-section {
-    padding: 4rem 0;
-    background: linear-gradient(135deg, $primary-color-light 0%, $primary-color 100%);
-    color: $white;
-    text-align: center;
-    margin-top: 2rem;
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .submit-content {
-      h2 {
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-      }
-
-      p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-      }
-
-      .primary-button {
-        padding: 0.8rem 2rem;
-        background: $white;
-        color: $primary-color;
-        border: none;
-        border-radius: $border-radius;
-        font-weight: 600;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background: rgba($white, 0.9);
-          transform: translateY(-3px);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
       }
     }
   }
-} 
+}
