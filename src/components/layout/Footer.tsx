@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-logo">
-          <img src="/logo.png" alt="Almawakening Logo" />
+          <img src="/ALMAWAKENINGLOGO.svg" alt="Almawakening Logo" />
           <p>Almawakening is a non-profit organization focusing on awareness on social and political issues in society.</p>
         </div>
         
