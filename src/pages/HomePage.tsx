@@ -7,9 +7,8 @@ import '../styles/pages/HomePage.scss';
 import Donate_1 from '../assets/images/Donate_1.png';
 import Donate_2 from '../assets/images/Donate_2.png';
 import ourmission from '../assets/images/ourmission.png';
-import nothing_changes from '../assets/images/nothing_changes.png';
-import stories_1 from '../assets/images/stories_1.png';
-import stories_2 from '../assets/images/stories_2.png';
+
+
 import discover_1 from '../assets/images/discover_1.png';
 import image_1 from '../assets/images/image_1.png';
 import image_2 from '../assets/images/image_2.png';
@@ -177,53 +176,6 @@ const HomePage: React.FC = () => {
                   <span>→</span>
                 </button>
               </div>
-            </div>
-          </section>
-
-          {/* Impact Section */}
-          <section className="impact-section">
-            <h2 className="section-title">Nothing Changes If Nothing Changes</h2>
-            <div className="impact-grid">
-              {/* Impact blocks will go here */}
-            </div>
-          </section>
-
-          {/* Stories Section */}
-          <section className="stories-section">
-            <div className="stories-container">
-              <div className="story-card">
-                <img src={stories_1} alt="Success Story 1" />
-                <div className="story-content">
-                  <h3>Transforming Lives Through Education</h3>
-                  <p>Discover how education programs have changed communities.</p>
-                </div>
-              </div>
-              <div className="story-card">
-                <img src={stories_2} alt="Success Story 2" />
-                <div className="story-content">
-                  <h3>Healthcare Initiatives Making a Difference</h3>
-                  <p>See the impact of healthcare support in rural areas.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Trusted Partners Section */}
-          <section className="partners-section">
-            <h2>Our Trusted Partners</h2>
-            <div className="partners-grid">
-              <img src={TrustedPartners_1} alt="Partner 1" />
-              <img src={TrustedPartners_2} alt="Partner 2" />
-              <img src={TrustedPartners_3} alt="Partner 3" />
-              <img src={TrustedPartners_4} alt="Partner 4" />
-              <img src={TrustedPartners_5} alt="Partner 5" />
-              <img src={TrustedPartners_6} alt="Partner 6" />
-              <img src={TrustedPartners_7} alt="Partner 7" />
-              <img src={TrustedPartners_8} alt="Partner 8" />
-              <img src={TrustedPartners_9} alt="Partner 9" />
-              <img src={TrustedPartners_10} alt="Partner 10" />
-              <img src={TrustedPartners_11} alt="Partner 11" />
-              <img src={TrustedPartners_12} alt="Partner 12" />
             </div>
           </section>
         </div>
