@@ -1,32 +1,13 @@
 import React, { useState, useRef } from 'react';
 import Layout from '../components/layout/Layout';
-import HeroBanner from '../components/home/HeroBanner';
 import SEO from '../components/common/SEO';
 import { getOrganizationSchema } from '../utils/seo';
 import '../styles/pages/HomePage.scss';
 import Donate_1 from '../assets/images/Donate_1.png';
 import Donate_2 from '../assets/images/Donate_2.png';
-import ourmission from '../assets/images/ourmission.png';
+import HomePageTwo from './HomePageTwo';
+import HomePageThree from './HomePageThree';
 
-
-import discover_1 from '../assets/images/discover_1.png';
-import image_1 from '../assets/images/image_1.png';
-import image_2 from '../assets/images/image_2.png';
-import image_3 from '../assets/images/image_3.png';
-import TrustedPartners_1 from '../assets/images/TrustedPartners_1.svg';
-import TrustedPartners_2 from '../assets/images/TrustedPartners_2.svg';
-import TrustedPartners_3 from '../assets/images/TrustedPartners_3.svg';
-import TrustedPartners_4 from '../assets/images/TrustedPartners_4.svg';
-import TrustedPartners_5 from '../assets/images/TrustedPartners_5.svg';
-import TrustedPartners_6 from '../assets/images/TrustedPartners_6.svg';
-import TrustedPartners_7 from '../assets/images/TrustedPartners_7.svg';
-import TrustedPartners_8 from '../assets/images/TrustedPartners_8.svg';
-import TrustedPartners_9 from '../assets/images/TrustedPartners_9.svg';
-import TrustedPartners_10 from '../assets/images/TrustedPartners_10.svg';
-import TrustedPartners_11 from '../assets/images/TrustedPartners_11.svg';
-import TrustedPartners_12 from '../assets/images/TrustedPartners_12.svg';
-import albert_flores from '../assets/images/albert_flores.svg';
-import questionMark from '../assets/images/questionMark.svg';
 
 const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -177,8 +158,12 @@ const HomePage: React.FC = () => {
                 </button>
               </div>
             </div>
+             <HomePageTwo />
+        <HomePageThree />
           </section>
+
         </div>
+       
       </Layout>
     </>
   );
