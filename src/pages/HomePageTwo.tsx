@@ -168,8 +168,8 @@ const useInView = (): [React.RefObject<HTMLDivElement | null>, boolean] => {
                 {/* Fourth Section - Scrolling Text */}
                 <section className="scrolling-text-section">
                     <div className="scrolling-text">
-                        <span style={{ color: 'black', animationDelay: '0s' }}>Help Each Other * Let's Help Each Other * Let's Help Each Other * Let's Help Each Other * </span>
-                        <span style={{ color: 'black', animationDelay: '10s' }}>Help Each Other * Let's Help Each Other * Let's Help Each Other * Let's Help Each Other * </span>
+                        <span style={{ color: 'black', animationDelay: '0s', fontSize: '24px' }}>Help Each Other * Let's Help Each Other * Let's Help Each Other * Let's Help Each Other * </span>
+                        <span style={{ color: 'black', animationDelay: '10s', fontSize: '24px' }}>Help Each Other * Let's Help Each Other * Let's Help Each Other * Let's Help Each Other * </span>
                     </div>
                 </section>
 
