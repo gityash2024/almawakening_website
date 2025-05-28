@@ -17,14 +17,18 @@ const Navbar: React.FC = () => {
             <Link to="/about" className="nav-link">About</Link>
           </li>
           <li className="nav-item">
-            <Link to="/resources" className="nav-link">Resources</Link>
+            <Link to="/events" className="nav-link">Events</Link>
           </li>
-          <li className="nav-item">
-            <Link to="/projects" className="nav-link">Projects</Link>
-          </li>
-          <li className="nav-item">
+            <li className="nav-item">
             <Link to="/donate" className="nav-link">Donate</Link>
           </li>
+          <li className="nav-item">
+            <Link to="/resources" className="nav-link">Resources</Link>
+          </li>
+          {/* <li className="nav-item">
+            <Link to="/projects" className="nav-link">Projects</Link>
+          </li> */}
+        
           <li className="nav-item">
             <Link to="/gallery" className="nav-link">Gallery</Link>
           </li>
