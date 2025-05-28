@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import SEO from '../components/common/SEO';
 import '../styles/pages/DonatePage.scss';
+import donateBackground from '../assets/images/donateBackground.png';
+import donatelogo from '../assets/images/donatelogo.png';
+import IgniteImpact from '../assets/images/IgniteImpact.png';
+import DriveChange from '../assets/images/DriveChange.png';
+import EveryRupeeCounts from '../assets/images/EveryRupeeCounts.png';
+import albert_flores from '../assets/images/albert_flores.svg';
+import Contactus from '../assets/images/Contactus.svg'; 
+import contactlogo from '../assets/images/contactlogo.png';
+import questionMark from '../assets/images/questionMark.svg';
 
 const DonatePage: React.FC = () => {
+  const [donationAmount, setDonationAmount] = useState(100);
+
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDonationAmount(parseInt(event.target.value));
+  };
+
   return (
     <>
       <SEO
@@ -13,109 +28,137 @@ const DonatePage: React.FC = () => {
         path="/donate"
         ogImage="https://www.almawakening.org/og-image-donate.jpg"
       />
+      
       <Layout>
         <div className="donate-page">
-          <section className="donate-hero">
-            <div className="container">
-              <h1>Be an Ally</h1>
-              <p className="subtitle">Your support drives our mission to create lasting positive change</p>
+          {/* Hero Section */}
+          <section className="hero-section">
+            <div className="hero-background">
+              <div className="hero-content">
+                <h1 className="hero-title">Be An Ally</h1>
+                <p className="hero-subtitle">
+                  Join hands and help communities grow<br />
+                  through impactful donations.
+                </p>
+                <div className="hero-image-container">
+                  <img src={donatelogo} alt="Community support" className="hero-image" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Cards Section */}
+          <section className="cards-section">
+            <div className="cards-container">
+              <div className="card card-purple">
+                <div className="card-icon">♥</div>
+                <h3 className="card-title">Ignite Impact</h3>
+                <p className="card-description">
+                  Spark joy by sharing your cause and positive impact it brings. 
+                  Clearly express how contribution will make meaningful difference.
+                </p>
+              </div>
               
-              <div className="donation-options">
-                <div className="monthly-donation">
-                  <h2>Monthly Donation</h2>
-                  <p>Join our community of monthly donors</p>
-                  <div className="donation-amounts">
-                    <button className="amount-button">$10</button>
-                    <button className="amount-button active">$25</button>
-                    <button className="amount-button">$50</button>
-                    <button className="amount-button">$100</button>
-                    <button className="amount-button custom">Custom</button>
-                  </div>
-                  <button className="primary-button">Donate Monthly</button>
+              <div className="card card-coral">
+                <div className="card-icon">✦</div>
+                <h3 className="card-title">Drive Change</h3>
+                <p className="card-description">
+                  Every contribution helps uplift real people and communities 
+                  through sustainable, grassroots initiatives.
+                </p>
+              </div>
+              
+              <div className="card card-yellow">
+                <div className="card-icon">⚡</div>
+                <h3 className="card-title">Every Rupee Counts</h3>
+                <p className="card-description">
+                  No matter the amount, your support brings hope, healing, 
+                  and opportunity to someone who truly needs it.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Interactive Donation Section */}
+          <section className="donation-section">
+            <div className="donation-container">
+              <h2 className="donation-title">Learn How Your Gift Helps</h2>
+              <p className="donation-subtitle">Even the smallest contribution can make a difference.</p>
+              
+              <div className="slider-container">
+                <div className="slider-labels">
+                  <span className="slider-min">₹1</span>
+                  <span className="slider-max">₹1000</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="1000"
+                  value={donationAmount}
+                  onChange={handleSliderChange}
+                  className="donation-slider"
+                />
+              </div>
+              
+              <div className="amount-display">
+                <span className="amount-label">Total Rupees</span>
+                <div className="amount-value">₹ {donationAmount}</div>
+              </div>
+              
+              <div className="donation-cards">
+                <div className="donation-card">
+                  <h4>Ignite Impact</h4>
+                  <p>Spark joy by sharing your cause and positive impact it brings. 
+                     Clearly express how contribution will make meaningful difference.</p>
                 </div>
                 
-                <div className="one-time-donation">
-                  <h2>One-time Donation</h2>
-                  <p>Make a one-time contribution</p>
-                  <div className="donation-amounts">
-                    <button className="amount-button">$50</button>
-                    <button className="amount-button active">$100</button>
-                    <button className="amount-button">$250</button>
-                    <button className="amount-button">$500</button>
-                    <button className="amount-button custom">Custom</button>
-                  </div>
-                  <button className="primary-button">Donate Now</button>
+                <div className="donation-card">
+                  <h4>Drive Change</h4>
+                  <p>Every contribution helps uplift real people and communities 
+                     through sustainable, grassroots initiatives.</p>
+                </div>
+                
+                <div className="donation-card">
+                  <h4>Every Rupee Counts</h4>
+                  <p>No matter the amount, your support brings hope, healing, 
+                     and opportunity to someone who truly needs it.</p>
                 </div>
               </div>
+              
+              <button className="support-button">Be a Support</button>
             </div>
           </section>
-          
-          <section className="impact-section">
-            <div className="container">
-              <h2 className="section-title">Your Impact</h2>
-              <div className="impact-cards">
-                <div className="impact-card">
-                  <div className="impact-icon education"></div>
-                  <h3>Education</h3>
-                  <p>$25 provides educational materials for a child for one month</p>
+
+          {/* Testimonial Section */}
+          <section className="testimonial-section">
+            <div className="testimonial-container">
+              <blockquote className="testimonial-quote">
+                "When you give to Almawakening, you're investing in real stories, 
+                real change, and real futures"
+              </blockquote>
+              
+              <button className="circle-button">Join our Circle of Hope!</button>
+              
+              <p className="consistent-support">Consistent support means consistent impact!</p>
+              
+              <div className="testimonial-content">
+                <div className="testimonial-text">
+                  <h3>"People now recognise that having a good performance conversation 
+                      means that something happens as a result."</h3>
+                  
+                  <p>"With Landingfolio, the design team can now build design which 
+                     identifies employees' career aspirations and goals and from which 
+                     we approach managers and check to see what is happening."</p>
                 </div>
-                <div className="impact-card">
-                  <div className="impact-icon health"></div>
-                  <h3>Healthcare</h3>
-                  <p>$50 provides basic medical services for a family in need</p>
-                </div>
-                <div className="impact-card">
-                  <div className="impact-icon community"></div>
-                  <h3>Community</h3>
-                  <p>$100 supports community development projects for a week</p>
+                
+                <div className="testimonial-image">
+                  <img src={albert_flores} alt="Albert Flores" />
                 </div>
               </div>
-            </div>
-          </section>
-          
-          <section className="other-ways-section">
-            <div className="container">
-              <h2 className="section-title">Other Ways to Give</h2>
-              <div className="ways-grid">
-                <div className="way-card">
-                  <h3>Corporate Partnerships</h3>
-                  <p>Partner with us to create meaningful social impact</p>
-                  <button className="secondary-button">Learn More</button>
-                </div>
-                <div className="way-card">
-                  <h3>Legacy Giving</h3>
-                  <p>Leave a lasting legacy through planned giving</p>
-                  <button className="secondary-button">Learn More</button>
-                </div>
-                <div className="way-card">
-                  <h3>Fundraise</h3>
-                  <p>Start your own fundraising campaign</p>
-                  <button className="secondary-button">Learn More</button>
-                </div>
-              </div>
-            </div>
-          </section>
-          
-          <section className="faq-section">
-            <div className="container">
-              <h2 className="section-title">Frequently Asked Questions</h2>
-              <div className="faq-container">
-                <div className="faq-item">
-                  <h3>Is my donation tax-deductible?</h3>
-                  <p>Yes, Almawakening is a registered 501(c)(3) nonprofit organization. Your donations are tax-deductible to the extent allowed by law.</p>
-                </div>
-                <div className="faq-item">
-                  <h3>How is my donation used?</h3>
-                  <p>Your donation directly supports our programs in education, community development, and advocacy. Approximately 85% of all donations go directly to our programs.</p>
-                </div>
-                <div className="faq-item">
-                  <h3>Can I make a recurring donation?</h3>
-                  <p>Yes, you can set up monthly, quarterly, or annual recurring donations through our secure payment system.</p>
-                </div>
-                <div className="faq-item">
-                  <h3>How do I get a receipt for my donation?</h3>
-                  <p>A receipt will be automatically emailed to you after your donation is processed. If you need another copy, please contact our donor support team.</p>
-                </div>
+              
+              <div className="testimonial-navigation">
+                <button className="nav-button nav-prev">←</button>
+                <button className="nav-button nav-next">→</button>
               </div>
             </div>
           </section>
@@ -125,4 +168,4 @@ const DonatePage: React.FC = () => {
   );
 };
 
-export default DonatePage; 
+export default DonatePage;
