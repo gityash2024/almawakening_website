@@ -14,9 +14,46 @@ import questionMark from '../assets/images/questionMark.svg';
 
 const EventsPage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentGallerySlide, setCurrentGallerySlide] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
 
   const galleryImages = [image_1, image_2, image_3];
+
+  // Gallery data sets for dynamic navigation
+  const galleryData = [
+    {
+      main: image_1,
+      side: [image_2, image_3],
+      alts: {
+        main: "Main community gathering",
+        side: ["Community activity 1", "Community activity 2"]
+      }
+    },
+    {
+      main: image_2,
+      side: [image_3, image_1],
+      alts: {
+        main: "Community engagement",
+        side: ["Community work", "Group celebration"]
+      }
+    },
+    {
+      main: image_3,
+      side: [image_1, image_2],
+      alts: {
+        main: "Community impact",
+        side: ["Community gathering", "Happy moment"]
+      }
+    },
+    {
+      main: image_3,
+      side: [image_1, image_2],
+      alts: {
+        main: "Women empowerment session",
+        side: ["Medical camp", "Cleanup drive"]
+      }
+    }
+  ];
 
   const events = [
     {
@@ -67,6 +104,7 @@ const EventsPage: React.FC = () => {
     }
   ];
 
+  // Hero section navigation
   const handlePrevImage = () => {
     setCurrentImageIndex(prev => prev === 0 ? galleryImages.length - 1 : prev - 1);
   };
@@ -75,9 +113,21 @@ const EventsPage: React.FC = () => {
     setCurrentImageIndex(prev => prev === galleryImages.length - 1 ? 0 : prev + 1);
   };
 
+  // Gallery section navigation
+  const handlePrevGallery = () => {
+    setCurrentGallerySlide(prev => prev === 0 ? galleryData.length - 1 : prev - 1);
+  };
+
+  const handleNextGallery = () => {
+    setCurrentGallerySlide(prev => prev === galleryData.length - 1 ? 0 : prev + 1);
+  };
+
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? -1 : index);
   };
+
+  // Get current gallery data
+  const currentGallery = galleryData[currentGallerySlide];
 
   return (
     <>
@@ -130,30 +180,50 @@ const EventsPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Gallery Section - Image 3 */}
+          {/* Dynamic Gallery Section - Image 3 */}
           <section className="gallery-section">
             <div className="container">
+              <div className="gallery-header">
+                <h2>Event Gallery</h2>
+                <div className="gallery-indicators">
+                  {galleryData.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`indicator ${index === currentGallerySlide ? 'active' : ''}`}
+                      onClick={() => setCurrentGallerySlide(index)}
+                    >
+                      {index + 1}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="gallery-grid">
                 <div className="gallery-main">
-                  <img src={galleryImages[0]} alt="Main gallery" />
+                  <img 
+                    src={currentGallery.main} 
+                    alt={currentGallery.alts.main} 
+                  />
                 </div>
                 <div className="gallery-side">
-                  <div className="gallery-item">
-                    <img src={galleryImages[1]} alt="Gallery 1" />
-                  </div>
-                  <div className="gallery-item">
-                    <img src={galleryImages[2]} alt="Gallery 2" />
-                  </div>
+                  {currentGallery.side.map((image, index) => (
+                    <div key={index} className="gallery-item">
+                      <img 
+                        src={image} 
+                        alt={currentGallery.alts.side[index]} 
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
               
               <div className="gallery-navigation">
-                <button className="nav-btn prev-btn" onClick={handlePrevImage}>
+                <button className="nav-btn prev-btn" onClick={handlePrevGallery}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
-                <button className="nav-btn next-btn" onClick={handleNextImage}>
+                <button className="nav-btn next-btn" onClick={handleNextGallery}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>

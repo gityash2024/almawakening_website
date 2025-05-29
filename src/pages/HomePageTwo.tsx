@@ -14,6 +14,58 @@ import image_2 from '../assets/images/image_2.png';
 import image_3 from '../assets/images/image_3.png';
 
 const HomePageTwo: React.FC = () => {
+    // Gallery state for navigation
+    const [currentGallerySlide, setCurrentGallerySlide] = useState(0);
+
+    // Image gallery data sets
+    const galleryData = [
+        {
+            large: image_1,
+            small: [image_2, image_3],
+            alts: {
+                large: "Community group",
+                small: ["Happy children", "Community work"]
+            }
+        },
+        {
+            large: image_2,
+            small: [image_3, image_1],
+            alts: {
+                large: "Happy children celebrating",
+                small: ["Community work session", "Group activity"]
+            }
+        },
+        {
+            large: image_3,
+            small: [image_1, image_2],
+            alts: {
+                large: "Community work in progress",
+                small: ["Community gathering", "Children learning"]
+            }
+        },
+        {
+            large: stories_1,
+            small: [stories_2, nothing_changes],
+            alts: {
+                large: "Person writing their story",
+                small: ["People coming together", "Community transformation"]
+            }
+        }
+    ];
+
+    // Gallery navigation functions
+    const handlePrevGallery = () => {
+        setCurrentGallerySlide((prev) => 
+            prev === 0 ? galleryData.length - 1 : prev - 1
+        );
+    };
+
+    const handleNextGallery = () => {
+        setCurrentGallerySlide((prev) => 
+            prev === galleryData.length - 1 ? 0 : prev + 1
+        );
+    };
+
     // Counter animation hook with proper types
     const useCounter = (end: number, duration: number = 2000, trigger: boolean = true): number => {
         const [count, setCount] = useState<number>(0);
@@ -72,7 +124,6 @@ const useInView = (): [React.RefObject<HTMLDivElement | null>, boolean] => {
     return [ref, inView];
 };
 
-
     // Counter refs and states with proper types
     const [livesRef, livesInView] = useInView();
     const [transformingRef, transformingInView] = useInView();
@@ -82,6 +133,9 @@ const useInView = (): [React.RefObject<HTMLDivElement | null>, boolean] => {
     const medicalCount: number = useCounter(10000, 2500, livesInView);
     const projectsCount: number = useCounter(100, 1500, livesInView);
     const membersCount: number = useCounter(800, 2000, transformingInView);
+
+    // Get current gallery data
+    const currentGallery = galleryData[currentGallerySlide];
 
     return (
         <>
@@ -293,41 +347,50 @@ const useInView = (): [React.RefObject<HTMLDivElement | null>, boolean] => {
                     </div>
                 </section>
 
-                {/* Seventh Section - Image Gallery */}
+                {/* Seventh Section - Dynamic Image Gallery */}
                 <section className="image-gallery-section">
                     <div className="container">
+                        <div className="gallery-header">
+                            <h2>Our Gallery</h2>
+                            <div className="gallery-indicators">
+                                {galleryData.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        className={`indicator ${index === currentGallerySlide ? 'active' : ''}`}
+                                        onClick={() => setCurrentGallerySlide(index)}
+                                    >
+                                        {index + 1}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
                         <div className="gallery-grid">
                             <div className="gallery-large">
-                                <img src={image_1} alt="Community group" />
+                                <img 
+                                    src={currentGallery.large} 
+                                    alt={currentGallery.alts.large}
+                                />
                             </div>
                             <div className="gallery-small-grid">
-                                <div className="gallery-small">
-                                    <img src={image_2} alt="Happy children" />
-                                </div>
-                                <div className="gallery-small">
-                                    <img src={image_3} alt="Community work" />
-                                </div>
-                            </div>
-                            <div className="gallery-large">
-                                <img src={image_1} alt="Community group" />
-                            </div>
-                            <div className="gallery-small-grid">
-                                <div className="gallery-small">
-                                    <img src={image_2} alt="Happy children" />
-                                </div>
-                                <div className="gallery-small">
-                                    <img src={image_3} alt="Community work" />
-                                </div>
+                                {currentGallery.small.map((image, index) => (
+                                    <div key={index} className="gallery-small">
+                                        <img 
+                                            src={image} 
+                                            alt={currentGallery.alts.small[index]}
+                                        />
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         
                         <div className="gallery-navigation">
-                            <button className="nav-btn prev-btn">
+                            <button className="nav-btn prev-btn" onClick={handlePrevGallery}>
                                 <svg viewBox="0 0 24 24" width="24" height="24">
                                     <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none"/>
                                 </svg>
                             </button>
-                            <button className="nav-btn next-btn">
+                            <button className="nav-btn next-btn" onClick={handleNextGallery}>
                                 <svg viewBox="0 0 24 24" width="24" height="24">
                                     <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" fill="none"/>
                                 </svg>
