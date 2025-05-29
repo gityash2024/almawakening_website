@@ -275,18 +275,21 @@ const EventsPage: React.FC = () => {
           </section>
 
           {/* CTA Section - Image 5 */}
-          <section className="cta-section">
-            <div className="container">
-              <div className="cta-content">
-                <h2>Want to Host or Join an Event?</h2>
-                <p>Whether you're an expert or a helping hand, your participation creates real change.</p>
-                <div className="cta-buttons">
-                  <button className="host-btn">Host An Event!</button>
-                  <button className="volunteer-btn">Join As Volunteer</button>
-                </div>
-              </div>
-            </div>
-          </section>
+         <section className="cta-section">
+  <div className="container">
+    <div className="cta-card">
+      <div className="cta-content">
+        <h2>Want to Host or Join an Event?</h2>
+        <p>Whether you're an expert or a helping hand, your participation creates real change.</p>
+        <div className="cta-buttons">
+          <button className="host-btn">Host An Event!</button>
+          <button className="volunteer-btn">Join As Volunteer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
         </div>
       </Layout>
     </>
