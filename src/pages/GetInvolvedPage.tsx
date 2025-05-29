@@ -1,216 +1,273 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import SEO from '../components/common/SEO';
 import '../styles/pages/GetInvolvedPage.scss';
 
 const GetInvolvedPage: React.FC = () => {
   return (
-    <>
-      <SEO
-        title="Get Involved"
-        description="Join Almawakening and make a difference. Discover ways to volunteer, partner with us, or support our initiatives to create positive change."
-        keywords="volunteer, get involved, community service, social impact, donate, partner"
-        path="/get-involved"
-        ogImage="https://www.almawakening.org/og-image-get-involved.jpg"
-      />
-      <Layout>
-        <div className="get-involved-page">
-          <section className="hero-section">
-            <div className="container">
-              <h1>Join Our Mission</h1>
-              <p className="subtitle">Together, we can create lasting change in communities around the world</p>
+    <Layout>
+      <SEO title="Get Involved" />
+      <div className="get-involved-page">
+        
+        {/* Hero Section */}
+        <section className="hero-section">
+          <div className="hero-background">
+            <div className="hero-content">
+              <h1 className="hero-title">Be The Change - Contribute Now</h1>
+              <p className="hero-subtitle">
+                Whether you want to volunteer, intern, or partner with us -<br />
+                There's a place for you at Almawakening
+              </p>
             </div>
-          </section>
+          </div>
+          
+          {/* Feature Cards */}
+          <div className="feature-cards">
+            <div className="feature-card card-pink">
+              <div className="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                </svg>
+              </div>
+              <h3 className="card-title">Make a Real Difference</h3>
+              <p className="card-description">
+                Your time and effort directly uplift communities—helping children learn, supporting families in need, and spreading hope where it's needed most.
+              </p>
+            </div>
+            
+            <div className="feature-card card-coral">
+              <div className="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+                </svg>
+              </div>
+              <h3 className="card-title">Grow Personally & Professionally</h3>
+              <p className="card-description">
+                Volunteering builds empathy, confidence, and new skills—while connecting you with like-minded people who care about creating change.
+              </p>
+            </div>
+            
+            <div className="feature-card card-yellow">
+              <div className="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13 2.05v2.02c4.39.54 7.5 4.53 6.96 8.92-.46 3.64-3.32 6.5-6.96 6.96v2.02c5.5-.55 9.5-5.43 8.95-10.93C21.45 6.37 17.63 2.55 13 2.05zm-2 0C6.5 2.6 2.5 7.48 3.05 12.98c.5 4.67 4.37 8.47 9.04 8.97v-2.02c-3.64-.46-6.5-3.32-6.96-6.96C4.59 8.58 7.7 4.59 11 4.05V2.05z" fill="currentColor"/>
+                </svg>
+              </div>
+              <h3 className="card-title">Be Part of Something Bigger</h3>
+              <p className="card-description">
+                Join a purpose-driven community that believes in kindness, action, and impact. Together, we're building a better world—one step at a time.
+              </p>
+            </div>
+          </div>
+        </section>
 
-          <section className="involvement-options">
-            <div className="container">
-              <div className="options-grid">
-                <div className="option-card volunteer">
-                  <div className="option-content">
-                    <h2>Volunteer</h2>
-                    <p>Share your time and skills to support our programs and make a direct impact in communities.</p>
-                    <ul className="benefits-list">
-                      <li>Flexible time commitments</li>
-                      <li>Remote and in-person opportunities</li>
-                      <li>Skills-based volunteering</li>
-                      <li>Group volunteering for teams</li>
-                    </ul>
-                    <button className="primary-button">Become a Volunteer</button>
+        {/* Events Section */}
+        <section className="events-section">
+          <div className="events-container">
+            <div className="events-sidebar">
+              <h2 className="events-title">
+                Explore Events to <br />
+                <span className="title-highlight">Volunteer</span>
+              </h2>
+              <p className="events-description">
+                Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+              </p>
+              <button className="view-all-btn">View All</button>
+            </div>
+            
+            <div className="events-cards">
+              <div className="event-card event-card-purple">
+                <div className="event-content">
+                  <h3 className="event-title">Women Empowerment Training</h3>
+                  <p className="event-description">
+                    Forem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate.
+                  </p>
+                  <div className="event-details">
+                    <p className="event-date">Date: 15 March 2025</p>
+                    <p className="event-location">Location: Jaipur</p>
+                  </div>
+                  <div className="event-actions">
+                    <button className="volunteer-btn">Volunteer Now</button>
+                    <button className="participate-btn">
+                      Participate 
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
                   </div>
                 </div>
-
-                <div className="option-card partner">
-                  <div className="option-content">
-                    <h2>Partner With Us</h2>
-                    <p>Organizations and businesses can collaborate with us to amplify social impact.</p>
-                    <ul className="benefits-list">
-                      <li>Corporate social responsibility programs</li>
-                      <li>Joint initiatives and campaigns</li>
-                      <li>Resource sharing and capacity building</li>
-                      <li>Long-term partnership opportunities</li>
-                    </ul>
-                    <button className="primary-button">Explore Partnerships</button>
+              </div>
+              
+              <div className="event-card event-card-gradient">
+                <div className="event-content">
+                  <h3 className="event-title">Free Medical Camp</h3>
+                  <p className="event-description">
+                    Providing consultations and medicines to 800+ villagers
+                  </p>
+                  <div className="event-details">
+                    <p className="event-date">Date: 5 February 2025</p>
+                    <p className="event-location">Location: Nashik</p>
                   </div>
-                </div>
-
-                <div className="option-card fundraise">
-                  <div className="option-content">
-                    <h2>Fundraise</h2>
-                    <p>Start your own fundraising campaign to support our initiatives and mobilize your network.</p>
-                    <ul className="benefits-list">
-                      <li>Personalized fundraising pages</li>
-                      <li>Event-based fundraising support</li>
-                      <li>Peer-to-peer fundraising tools</li>
-                      <li>Campaign materials and resources</li>
-                    </ul>
-                    <button className="primary-button">Start Fundraising</button>
-                  </div>
-                </div>
-
-                <div className="option-card advocate">
-                  <div className="option-content">
-                    <h2>Advocate</h2>
-                    <p>Raise awareness about important causes and help amplify our message to create change.</p>
-                    <ul className="benefits-list">
-                      <li>Social media advocacy toolkits</li>
-                      <li>Community awareness campaigns</li>
-                      <li>Policy advocacy opportunities</li>
-                      <li>Spokesperson training</li>
-                    </ul>
-                    <button className="primary-button">Become an Advocate</button>
+                  <div className="event-actions">
+                    <button className="volunteer-btn">Volunteer Now</button>
+                    <button className="participate-btn">
+                      Participate 
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="current-opportunities">
-            <div className="container">
-              <h2 className="section-title">Current Opportunities</h2>
-              <div className="opportunities-list">
-                <div className="opportunity-item">
-                  <div className="opportunity-content">
-                    <span className="badge">Remote</span>
-                    <h3>Digital Marketing Assistant</h3>
-                    <p>Help manage our social media presence and digital campaigns to raise awareness about our causes.</p>
-                    <div className="opportunity-meta">
-                      <span className="time">5-10 hours/week</span>
-                      <span className="location">Remote</span>
-                    </div>
-                    <button className="secondary-button">Learn More</button>
-                  </div>
+        {/* Volunteer Form Section */}
+        <section className="volunteer-form-section">
+          <div className="form-container">
+            <div className="form-header">
+              <h2 className="form-title">
+                Join Hands With <br />
+                <span className="alma-purple">Alma</span><span className="alma-yellow">wakening</span>
+              </h2>
+              <p className="form-subtitle">Make a difference in lives.</p>
+            </div>
+            
+            <form className="volunteer-form">
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="firstName">First Name</label>
+                  <input 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName" 
+                    placeholder="e.g. Jane"
+                  />
                 </div>
-
-                <div className="opportunity-item">
-                  <div className="opportunity-content">
-                    <span className="badge">In-Person</span>
-                    <h3>Community Workshop Facilitator</h3>
-                    <p>Lead educational workshops in underserved communities to share knowledge and skills.</p>
-                    <div className="opportunity-meta">
-                      <span className="time">Weekend events</span>
-                      <span className="location">New York City</span>
-                    </div>
-                    <button className="secondary-button">Learn More</button>
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="lastName">Last Name</label>
+                  <input 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName" 
+                    placeholder="e.g. Doe"
+                  />
                 </div>
-
-                <div className="opportunity-item">
-                  <div className="opportunity-content">
-                    <span className="badge">Partnership</span>
-                    <h3>Corporate Giving Program</h3>
-                    <p>Join our network of business partners who contribute to community development initiatives.</p>
-                    <div className="opportunity-meta">
-                      <span className="time">Ongoing</span>
-                      <span className="location">Nationwide</span>
-                    </div>
-                    <button className="secondary-button">Learn More</button>
-                  </div>
+              </div>
+              
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="email">Email Id</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="e.g. janedoe@gmail.com"
+                  />
                 </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Phone number</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    placeholder="e.g. 63566XXXXX"
+                  />
+                </div>
+              </div>
+              
+              <div className="form-group">
+                <label className="checkbox-label">Select Preferred Volunteer Role</label>
+                <div className="checkbox-group">
+                  <label className="checkbox-item">
+                    <input type="checkbox" name="role" value="event-helper" />
+                    <span className="checkmark"></span>
+                    Event Helper
+                  </label>
+                  <label className="checkbox-item">
+                    <input type="checkbox" name="role" value="awareness-campaigner" defaultChecked />
+                    <span className="checkmark checked"></span>
+                    Awareness Campaigner
+                  </label>
+                  <label className="checkbox-item">
+                    <input type="checkbox" name="role" value="mentor" defaultChecked />
+                    <span className="checkmark checked"></span>
+                    Mentor for Beneficiaries
+                  </label>
+                  <label className="checkbox-item">
+                    <input type="checkbox" name="role" value="admin-assistant" defaultChecked />
+                    <span className="checkmark checked"></span>
+                    Administrative Assistant
+                  </label>
+                </div>
+              </div>
+              
+              <div className="form-actions">
+                <button type="submit" className="submit-btn">Submit</button>
+                <button type="button" className="cancel-btn">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </section>
 
-                <div className="opportunity-item">
-                  <div className="opportunity-content">
-                    <span className="badge">Advocacy</span>
-                    <h3>Youth Education Campaign</h3>
-                    <p>Help promote equal access to educational opportunities for underprivileged youth.</p>
-                    <div className="opportunity-meta">
-                      <span className="time">3-month campaign</span>
-                      <span className="location">Virtual</span>
-                    </div>
-                    <button className="secondary-button">Learn More</button>
-                  </div>
+        {/* Scrolling Banner Section */}
+        <section className="scrolling-banner-section">
+          <div className="scrolling-text">
+            <span>Be The Voice * Be The Voice * Be The Voice * Be The Voice * Be The Voice * Be The Voice * Be The Voice * Be The Voice * Be The Voice * Be The Voice * </span>
+          </div>
+        </section>
+
+        {/* Partnership Section */}
+        <section className="partnership-section">
+          <div className="partnership-container">
+            <div className="partnership-content">
+              <p className="partnership-description">
+                Collaborate with us to create lasting change. We welcome partnerships with NGOs, corporates, academic institutions, and local communities.
+              </p>
+              <button className="partner-btn">Partner With Us</button>
+            </div>
+            
+            <div className="partnership-card">
+              <div className="partnership-item">
+                <div className="check-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div className="partnership-text">
+                  <h4>Corporate Social Responsibility (CSR) collaborations</h4>
+                </div>
+              </div>
+              
+              <div className="partnership-item">
+                <div className="check-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div className="partnership-text">
+                  <h4>Educational institutions for skill training & research</h4>
+                </div>
+              </div>
+              
+              <div className="partnership-item">
+                <div className="check-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div className="partnership-text">
+                  <h4>NGOs and grassroots organizations for joint initiatives</h4>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="impact-stories">
-            <div className="container">
-              <h2 className="section-title">Impact Stories</h2>
-              <div className="stories-grid">
-                <div className="story-card">
-                  <img src="/images/get-involved/volunteer-story.jpg" alt="Volunteer Story" />
-                  <div className="story-content">
-                    <h3>Sarah's Volunteer Journey</h3>
-                    <p>"Volunteering with Almawakening has been life-changing. I've developed new skills and connected with amazing people while making a real difference."</p>
-                    <button className="text-button">Read Full Story</button>
-                  </div>
-                </div>
-
-                <div className="story-card">
-                  <img src="/images/get-involved/partner-story.jpg" alt="Partner Story" />
-                  <div className="story-content">
-                    <h3>Tech Company Partnership</h3>
-                    <p>"Our partnership allowed us to leverage technology to improve educational access for over 500 students in underserved communities."</p>
-                    <button className="text-button">Read Full Story</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="faq-section">
-            <div className="container">
-              <h2 className="section-title">Frequently Asked Questions</h2>
-              <div className="faq-grid">
-                <div className="faq-item">
-                  <h3>What skills do I need to volunteer?</h3>
-                  <p>We welcome volunteers with diverse skills and backgrounds. Whether you have expertise in marketing, education, technology, or simply a passion to help, we have opportunities for everyone.</p>
-                </div>
-
-                <div className="faq-item">
-                  <h3>How much time do I need to commit?</h3>
-                  <p>We offer flexible volunteering opportunities ranging from one-time events to ongoing weekly commitments. You can choose what works best for your schedule.</p>
-                </div>
-
-                <div className="faq-item">
-                  <h3>Can I volunteer remotely?</h3>
-                  <p>Yes! Many of our volunteer opportunities can be done remotely, allowing you to contribute from anywhere in the world.</p>
-                </div>
-
-                <div className="faq-item">
-                  <h3>How do partnerships work?</h3>
-                  <p>We collaborate with organizations that share our values and mission. Partnerships can include financial support, joint programs, skill-sharing, or resource donation.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="cta-section">
-            <div className="container">
-              <div className="cta-content">
-                <h2>Ready to Make a Difference?</h2>
-                <p>Join our community of changemakers today and help create lasting impact.</p>
-                <div className="cta-buttons">
-                  <button className="primary-button">Get Started</button>
-                  <button className="secondary-button">Contact Us</button>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </Layout>
-    </>
+      </div>
+    </Layout>
   );
 };
 
-export default GetInvolvedPage; 
+export default GetInvolvedPage;

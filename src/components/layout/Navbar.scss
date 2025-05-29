@@ -1,51 +1,81 @@
 .navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
-  z-index: 999;
-  background-color: #fff;
-  height: 80px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  
+  z-index: 1000;
+
   .navbar-container {
+    max-width: 1400px;
+    height: 83px;
+    margin: 0 auto;
+    padding: 12px 24px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 20px;
-    
-    .navbar-logo {
-      display: flex;
-      align-items: center;
-      
-      img {
-        height: 50px;
-      }
-    }
-    
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      
-      .nav-item {
-        margin-left: 25px;
-        
-        .nav-link {
-          color: #333;
-          text-decoration: none;
-          font-weight: 500;
-          transition: color 0.3s ease;
-          
-          &:hover {
-            color: #7b68ee; // Primary color based on the Figma design
+    justify-content: space-between;
+  }
+
+  .navbar-logo img {
+    height: 50px;
+    object-fit: contain;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+
+    .nav-item {
+      .nav-link {
+        font-size: 15px;
+        font-weight: 500;
+        color: #1a1a1a;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.3s;
+
+        &::after {
+          content: '';
+          display: block;
+          height: 2px;
+          width: 0%;
+          background: black;
+          transition: width 0.3s ease;
+          position: absolute;
+          bottom: -6px;
+          left: 0;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        &.active {
+          font-weight: 600;
+          &::after {
+            width: 100%;
           }
         }
       }
     }
   }
-} 
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 18px;
+    height: 16px;
+    cursor: pointer;
+
+    span {
+      display: block;
+      height: 2px;
+      background-color: black;
+      border-radius: 1px;
+    }
+  }
+}
