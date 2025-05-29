@@ -308,6 +308,17 @@ const useInView = (): [React.RefObject<HTMLDivElement | null>, boolean] => {
                                     <img src={image_3} alt="Community work" />
                                 </div>
                             </div>
+                            <div className="gallery-large">
+                                <img src={image_1} alt="Community group" />
+                            </div>
+                            <div className="gallery-small-grid">
+                                <div className="gallery-small">
+                                    <img src={image_2} alt="Happy children" />
+                                </div>
+                                <div className="gallery-small">
+                                    <img src={image_3} alt="Community work" />
+                                </div>
+                            </div>
                         </div>
                         
                         <div className="gallery-navigation">

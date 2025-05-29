@@ -11,6 +11,7 @@ import HomePageThree from './HomePageThree';
 
 const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [playingVideos, setPlayingVideos] = useState<Set<number>>(new Set());
   const sliderRef = useRef<HTMLDivElement>(null);
   
   // Display 3 videos at once in grid layout
@@ -36,7 +37,7 @@ const HomePage: React.FC = () => {
   
   const getYoutubeEmbedUrl = (url: string) => {
     const videoId = url.split('v=')[1]?.split('&')[0];
-    return `https://www.youtube.com/embed/${videoId}`;
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   };
   
   const getYoutubeThumbnail = (url: string) => {
@@ -44,12 +45,18 @@ const HomePage: React.FC = () => {
     return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   };
   
+  const handlePlayVideo = (videoId: number) => {
+    setPlayingVideos(prev => new Set(prev).add(videoId));
+  };
+  
   const handlePrevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? videoSets.length - 1 : prev - 1));
+    setPlayingVideos(new Set()); // Reset playing videos when changing slides
   };
   
   const handleNextSlide = () => {
     setCurrentSlide((prev) => (prev === videoSets.length - 1 ? 0 : prev + 1));
+    setPlayingVideos(new Set()); // Reset playing videos when changing slides
   };
 
   return (
@@ -123,17 +130,23 @@ const HomePage: React.FC = () => {
                 {videoSets[currentSlide].map((video, index) => (
                   <div key={video.id} className="slide">
                     <div className="video-wrapper">
-                      <div 
-                        className="video-thumbnail"
-                        style={{
-                          backgroundImage: `url(${getYoutubeThumbnail(video.url)})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center'
-                        }}
-                      >
-                        <div className="play-button">
-                          <span>▶</span>
+                      {!playingVideos.has(video.id) ? (
+                        <div 
+                          className="video-thumbnail"
+                          style={{
+                            backgroundImage: `url(${getYoutubeThumbnail(video.url)})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                          }}
+                        >
+                          <div 
+                            className="play-button"
+                            onClick={() => handlePlayVideo(video.id)}
+                          >
+                            <span>▶</span>
+                          </div>
                         </div>
+                      ) : (
                         <iframe 
                           src={getYoutubeEmbedUrl(video.url)} 
                           title={`Video ${video.id}`}
@@ -141,9 +154,8 @@ const HomePage: React.FC = () => {
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                           loading="lazy"
-                          style={{ display: 'none' }}
                         ></iframe>
-                      </div>
+                      )}
                     </div>
                   </div>
                 ))}
