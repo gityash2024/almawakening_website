@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import almalogo from '../src/assets/images/almalogo.svg';
 
 const Footer: React.FC = () => {
   return (

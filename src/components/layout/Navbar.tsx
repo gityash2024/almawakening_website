@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
-import almalogo from '../src/assets/images/almalogo.svg';
+import almawalking from '../src/assets/images/almawalking.png';
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src="{almalogo}" alt="Almawakening Logo" />
+          <img src="{almawalking}" alt="Almawakening Logo" />
         </Link>
         <ul className="nav-menu">
           <li className="nav-item"><Link to="/" className="nav-link">Home</Link></li>
