@@ -3,6 +3,7 @@
 
 .gallery-page {
   min-height: 100vh;
+ 
   
   .gallery-container {
     max-width: 1400px;
@@ -16,6 +17,8 @@
   
   // Header Section
   .gallery-header {
+    border-radius: 50px 50px 0 0;
+    margin-top: 50px;
     height: 60vh;
     background-size: cover;
     background-position: center;

@@ -144,8 +144,39 @@ const EventsPage: React.FC = () => {
           <section className="hero-section">
             <div className="hero-background" style={{ backgroundImage: `url(${BePartofTheChange})` }}>
               <div className="hero-content">
-                <div className="hero-image">
-                  <img src={galleryImages[currentImageIndex]} alt="Community impact" />
+                <div className="hero-text">
+                  {/* <h1>Be Part of The Change</h1> */}
+                  {/* <p>Join hands, share knowledge, and help communities grow through impactful events.</p> */}
+                </div>
+                <div className="hero-image-container">
+                  <div className="hero-image">
+                    <img src={galleryImages[currentImageIndex]} alt="Community impact" />
+                  </div>
+                  
+                  {/* Hero Image Navigation */}
+                  {/* <div className="hero-navigation">
+                    <button className="hero-nav-btn prev-btn" onClick={handlePrevImage}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                    <button className="hero-nav-btn next-btn" onClick={handleNextImage}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                  </div> */}
+
+                  {/* Hero Image Indicators */}
+                  {/* <div className="hero-indicators">
+                    {galleryImages.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`hero-indicator ${index === currentImageIndex ? 'active' : ''}`}
+                        onClick={() => setCurrentImageIndex(index)}
+                      />
+                    ))}
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -275,20 +306,20 @@ const EventsPage: React.FC = () => {
           </section>
 
           {/* CTA Section - Image 5 */}
-         <section className="cta-section">
-  <div className="container">
-    <div className="cta-card">
-      <div className="cta-content">
-        <h2>Want to Host or Join an Event?</h2>
-        <p>Whether you're an expert or a helping hand, your participation creates real change.</p>
-        <div className="cta-buttons">
-          <button className="host-btn">Host An Event!</button>
-          <button className="volunteer-btn">Join As Volunteer</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <section className="cta-section">
+            <div className="container">
+              <div className="cta-card">
+                <div className="cta-content">
+                  <h2>Want to Host or Join an Event?</h2>
+                  <p>Whether you're an expert or a helping hand, your participation creates real change.</p>
+                  <div className="cta-buttons">
+                    <button className="host-btn">Host An Event!</button>
+                    <button className="volunteer-btn">Join As Volunteer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
         </div>
       </Layout>

@@ -67,7 +67,7 @@ const HomePage: React.FC = () => {
       />
       <Layout>
         <div className="home-page">
-          {/* Reshaping Tomorrow Section */}
+         {/* Reshaping Tomorrow Section */}
           <section className="reshaping-section">
             <div className="reshaping-header">
               <h1>Reshaping Tomorrow</h1>
@@ -107,6 +107,9 @@ const HomePage: React.FC = () => {
               
               <div className="card dark-card">
                 <h3>Your Home For Charity.</h3>
+              </div>
+               <div className="card dark-cardtwo">
+                <h3>Let Them Be Heard.</h3>
               </div>
             </div>
           </section>

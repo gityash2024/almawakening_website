@@ -8,35 +8,86 @@
 
 /* First Section - We Are Change Makers */
 .change-makers-section {
-  padding: 80px 40px;
+  padding: 80px 10px; // Minimal side padding
   background: #fff;
 
   @media (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 60px 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 5px;
   }
 }
 
 .change-makers-background {
-  background-size: cover;
+  margin-top: -120px;
+  background-size: 100% 90%; // Stretch to fit container while showing full design
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 40px;
-  padding: 60px 40px 60px 40px;
+  padding: 80px 90px;
   position: relative;
-  overflow: hidden;
-  min-height: 700px;
+  min-height: 850px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
-    padding: 40px 30px;
-    min-height: 600px;
+    padding: 60px 40px;
+    min-height: 750px;
+    border-radius: 30px;
   }
 
   @media (max-width: 480px) {
-    padding: 30px 20px;
-    min-height: 500px;
+    padding: 50px 30px;
+    min-height: 650px;
+    border-radius: 25px;
+  }
+}
+
+// Add text content area at the top
+.change-makers-text-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-bottom: 50px; // Increased margin
+  padding: 0 20px; // Added horizontal padding for text
+  
+  .change-makers-title {
+    font-size: 4rem; // Increased from 3.5rem
+    font-weight: 700;
+    color: #2D3748;
+    margin: 0 0 30px 0; // Increased bottom margin
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 768px) {
+      font-size: 3rem; // Increased from 2.5rem
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2.5rem; // Increased from 2rem
+    }
+  }
+
+  .change-makers-description {
+    font-size: 1.375rem; // Increased from 1.25rem
+    color: #4A5568;
+    line-height: 1.6;
+    max-width: 900px; // Increased from 800px
+    margin: 0 auto;
+    font-weight: 500; // Added font weight
+
+    @media (max-width: 768px) {
+      font-size: 1.25rem; // Increased from 1.125rem
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.125rem; // Increased from 1rem
+    }
   }
 }
 
@@ -46,7 +97,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 100%;
+  margin-top: auto; // Push image to bottom
 }
 
 .change-makers-image-container {
@@ -57,18 +108,20 @@
 
 .change-makers-group-image {
   width: 100%;
-  max-width: 800px;
-  height: 350px;
+  max-width: 750px; // Increased from 700px to utilize the extra space
+  height: 300px; // Increased from 280px
   object-fit: cover;
   border-radius: 24px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 
   @media (max-width: 768px) {
-    height: 280px;
+    height: 260px; // Increased from 240px
+    max-width: 650px; // Increased from 600px
   }
 
   @media (max-width: 480px) {
-    height: 220px;
+    height: 220px; // Increased from 200px
+    max-width: 550px; // Increased from 500px
   }
 }
 

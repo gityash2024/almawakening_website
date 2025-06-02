@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
-import almalogo from '../src/assets/images/almalogo.svg';
+import { ReactComponent as AlmaLogo } from '../../assets/images/almalogo.svg';
 
 const Footer: React.FC = () => {
   return (
@@ -13,11 +13,7 @@ const Footer: React.FC = () => {
           <div className="footer-brand">
             <div className="footer-logo">
               <div className="logo-icon">
-                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 8C18.5 8 17.5 9 17.5 10.5C17.5 12 18.5 13 20 13C21.5 13 22.5 12 22.5 10.5C22.5 9 21.5 8 20 8Z" fill="#FFC107"/>
-                  <path d="M8 20C8 18 9 16 11 15L13 16C14 17 15 18 16 19L20 21L24 19C25 18 26 17 27 16L29 15C31 16 32 18 32 20C32 24 28 28 24 30L20 32L16 30C12 28 8 24 8 20Z" fill="#9C27B0"/>
-                  <path d="M20 32C16 32 12 28 12 24C12 22 13 20 14 19L20 21L26 19C27 20 28 22 28 24C28 28 24 32 20 32Z" fill="#7B1FA2"/>
-                </svg>
+                <AlmaLogo />
               </div>
               <span className="brand-name">Almawakening</span>
             </div>
