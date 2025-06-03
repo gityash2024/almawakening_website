@@ -20,6 +20,38 @@
   }
 }
 
+/* Enhanced responsive mixins */
+@mixin mobile-first($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media (min-width: 576px) { @content; }
+  }
+  @else if $breakpoint == "tablet" {
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $breakpoint == "laptop" {
+    @media (min-width: 992px) { @content; }
+  }
+  @else if $breakpoint == "desktop" {
+    @media (min-width: 1200px) { @content; }
+  }
+}
+
+/* Responsive container mixin */
+@mixin responsive-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include respond-to('tablet') {
+    padding: 0 16px;
+  }
+
+  @include respond-to('mobile') {
+    padding: 0 12px;
+  }
+}
+
 /* Flexbox mixins */
 @mixin flex-center {
   display: flex;
@@ -50,6 +82,26 @@
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
   gap: $gap;
+}
+
+@mixin responsive-grid($desktop: 4, $tablet: 2, $mobile: 1, $gap: 20px) {
+  display: grid;
+  grid-template-columns: repeat($desktop, 1fr);
+  gap: $gap;
+
+  @include respond-to('laptop') {
+    grid-template-columns: repeat(max(1, $desktop - 1), 1fr);
+  }
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat($tablet, 1fr);
+    gap: calc($gap * 0.8);
+  }
+
+  @include respond-to('mobile') {
+    grid-template-columns: repeat($mobile, 1fr);
+    gap: calc($gap * 0.6);
+  }
 }
 
 /* Typography mixins */
@@ -95,12 +147,20 @@
   font-size: 1rem;
   line-height: 1.6;
   font-weight: 400;
+
+  @include respond-to('mobile') {
+    font-size: 0.9rem;
+  }
 }
 
 @mixin small-text {
   font-size: 0.875rem;
   line-height: 1.5;
   font-weight: 400;
+
+  @include respond-to('mobile') {
+    font-size: 0.8rem;
+  }
 }
 
 /* UI element mixins */
@@ -112,6 +172,18 @@
   &:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
+  }
+}
+
+@mixin elevated-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
   }
 }
 
@@ -147,6 +219,59 @@
   font-size: inherit;
 }
 
+/* Button mixins */
+@mixin primary-button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(123, 104, 238, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include respond-to('mobile') {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@mixin secondary-button {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include respond-to('mobile') {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+}
+
 /* Animation mixins */
 @mixin fade-in {
   animation: fadeIn 0.5s ease forwards;
@@ -168,6 +293,125 @@
     to {
       transform: translateY(0);
       opacity: 1;
+    }
+  }
+}
+
+@mixin slide-in-left {
+  animation: slideInLeft 0.6s ease forwards;
+  
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin slide-in-right {
+  animation: slideInRight 0.6s ease forwards;
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin scale-in {
+  animation: scaleIn 0.5s ease forwards;
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+/* Loading animation */
+@mixin loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}
+
+/* Text selection */
+@mixin text-selection($bg-color: var(--color-primary), $text-color: white) {
+  ::selection {
+    background: $bg-color;
+    color: $text-color;
+  }
+
+  ::-moz-selection {
+    background: $bg-color;
+    color: $text-color;
+  }
+}
+
+/* Scrollbar styling */
+@mixin custom-scrollbar($width: 8px, $track-color: #f1f1f1, $thumb-color: var(--color-primary)) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 4px;
+
+    &:hover {
+      background: var(--color-primary-dark);
+    }
+  }
+}
+
+/* Glassmorphism effect */
+@mixin glassmorphism($opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive spacing */
+@mixin responsive-spacing($property, $desktop, $tablet: null, $mobile: null) {
+  #{$property}: $desktop;
+
+  @if $tablet {
+    @include respond-to('tablet') {
+      #{$property}: $tablet;
+    }
+  }
+
+  @if $mobile {
+    @include respond-to('mobile') {
+      #{$property}: $mobile;
     }
   }
 }

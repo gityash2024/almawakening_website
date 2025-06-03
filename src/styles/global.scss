@@ -20,6 +20,14 @@ html, body {
   font-size: 16px;
   line-height: 1.6;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  @include text-selection();
+  @include custom-scrollbar();
+
+  @include respond-to('mobile') {
+    font-size: 14px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,43 +39,44 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3rem;
-  
-  @media (max-width: 768px) {
-    font-size: 2.25rem;
-  }
+  @include heading-1();
 }
 
 h2 {
-  font-size: 2.25rem;
-  
-  @media (max-width: 768px) {
-    font-size: 1.75rem;
-  }
+  @include heading-2();
 }
 
 h3 {
-  font-size: 1.75rem;
-  
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
+  @include heading-3();
 }
 
 h4 {
   font-size: 1.5rem;
+
+  @include respond-to('mobile') {
+    font-size: 1.2rem;
+  }
 }
 
 h5 {
   font-size: 1.25rem;
+
+  @include respond-to('mobile') {
+    font-size: 1.1rem;
+  }
 }
 
 h6 {
   font-size: 1rem;
+
+  @include respond-to('mobile') {
+    font-size: 0.95rem;
+  }
 }
 
 p {
   margin-bottom: 1rem;
+  @include body-text();
 }
 
 a {
@@ -88,29 +97,11 @@ button, .button {
 }
 
 .primary-button {
-  background-color: var(--color-primary);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-weight: 500;
-  
-  &:hover {
-    background-color: var(--color-primary-dark);
-  }
+  @include primary-button();
 }
 
 .secondary-button {
-  background-color: transparent;
-  color: var(--color-primary);
-  padding: 10px 22px;
-  border: 2px solid var(--color-primary);
-  border-radius: 4px;
-  font-weight: 500;
-  
-  &:hover {
-    background-color: var(--color-primary);
-    color: white;
-  }
+  @include secondary-button();
 }
 
 img {
@@ -119,18 +110,11 @@ img {
 }
 
 .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  @include responsive-container();
 }
 
 section {
-  padding: 60px 0;
-  
-  @media (max-width: 768px) {
-    padding: 40px 0;
-  }
+  @include responsive-spacing(padding, 60px 0, 40px 0, 30px 0);
 }
 
 .section-title {
@@ -145,6 +129,16 @@ section {
     background-color: var(--color-primary);
     margin: 15px auto 0;
   }
+
+  @include respond-to('mobile') {
+    margin-bottom: 30px;
+
+    &:after {
+      width: 40px;
+      height: 2px;
+      margin-top: 10px;
+    }
+  }
 }
 
 .section-description {
@@ -154,4 +148,170 @@ section {
   margin-left: auto;
   margin-right: auto;
   color: var(--color-text-light);
+
+  @include respond-to('mobile') {
+    margin-bottom: 30px;
+    max-width: 100%;
+  }
+}
+
+/* Utility classes for animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  @include slide-in-up();
+}
+
+.fade-in-left {
+  @include slide-in-left();
+}
+
+.fade-in-right {
+  @include slide-in-right();
+}
+
+.scale-in {
+  @include scale-in();
+}
+
+/* Responsive utilities */
+.hide-mobile {
+  @include respond-to('tablet') {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  display: none !important;
+
+  @include respond-to('tablet') {
+    display: block !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+
+  @include respond-to('tablet') {
+    display: block !important;
+  }
+}
+
+/* Text utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-small {
+  @include small-text();
+}
+
+/* Spacing utilities */
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+.p-5 { padding: 3rem; }
+
+/* Grid utilities */
+.grid-2 {
+  @include responsive-grid(2, 2, 1);
+}
+
+.grid-3 {
+  @include responsive-grid(3, 2, 1);
+}
+
+.grid-4 {
+  @include responsive-grid(4, 2, 1);
+}
+
+/* Card styles */
+.card {
+  @include elevated-card();
+  padding: 2rem;
+
+  @include respond-to('mobile') {
+    padding: 1.5rem;
+  }
+}
+
+.card-hover {
+  @include hover-lift();
+}
+
+/* Loading states */
+.loading {
+  @include loading-shimmer();
+}
+
+/* Focus states for accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  @include focus-outline();
+}
+
+/* Smooth transitions for theme changes */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .navbar,
+  .footer,
+  .menu-icon,
+  .mobile-menu {
+    display: none !important;
+  }
 }

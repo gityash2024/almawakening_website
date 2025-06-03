@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import Layout from '../components/layout/Layout';
 import SEO from '../components/common/SEO';
+import ScrollAnimation from '../components/common/ScrollAnimation';
+import StaggeredAnimation from '../components/common/StaggeredAnimation';
 import { getOrganizationSchema } from '../utils/seo';
 import '../styles/pages/HomePage.scss';
 import Donate_1 from '../assets/images/Donate_1.png';
@@ -69,15 +71,17 @@ const HomePage: React.FC = () => {
         <div className="home-page">
          {/* Reshaping Tomorrow Section */}
           <section className="reshaping-section">
-            <div className="reshaping-header">
-              <h1>Reshaping Tomorrow</h1>
-              <p>Great futures are built with a small change.</p>
-              <div className="donate-button-container">
-                <button className="donate-button">Donate Now</button>
+            <ScrollAnimation animation="fadeIn" duration={0.8}>
+              <div className="reshaping-header">
+                <h1>Reshaping Tomorrow</h1>
+                <p>Great futures are built with a small change.</p>
+                <div className="donate-button-container">
+                  <button className="donate-button">Donate Now</button>
+                </div>
               </div>
-            </div>
+            </ScrollAnimation>
             
-            <div className="cards-container">
+            <StaggeredAnimation className="cards-container" staggerDelay={0.15}>
               <div className="card purple-card">
                 <h2>65%</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
@@ -111,68 +115,72 @@ const HomePage: React.FC = () => {
                <div className="card dark-cardtwo">
                 <h3>Let Them Be Heard.</h3>
               </div>
-            </div>
+            </StaggeredAnimation>
           </section>
 
           {/* Our Mission Section */}
           <section className="mission-section">
-            <div className="mission-header">
-              <div className="mission-icon">
-                <span className="icon-target">🎯</span>
+            <ScrollAnimation animation="slideUp" delay={0.2}>
+              <div className="mission-header">
+                <div className="mission-icon">
+                  <span className="icon-target">🎯</span>
+                </div>
+                <h2>Our Mission</h2>
+                <p className="mission-description">
+                  At Almawakening Foundation, we believe in transforming lives through education, 
+                  healthcare, and community empowerment. Our goal is to create sustainable 
+                  change by providing support where it's needed the most.
+                </p>
               </div>
-              <h2>Our Mission</h2>
-              <p className="mission-description">
-                At Almawakening Foundation, we believe in transforming lives through education, 
-                healthcare, and community empowerment. Our goal is to create sustainable 
-                change by providing support where it's needed the most.
-              </p>
-            </div>
+            </ScrollAnimation>
 
-            <div className="video-slider" ref={sliderRef}>
-              <div className="slider-container">
-                {videoSets[currentSlide].map((video, index) => (
-                  <div key={video.id} className="slide">
-                    <div className="video-wrapper">
-                      {!playingVideos.has(video.id) ? (
-                        <div 
-                          className="video-thumbnail"
-                          style={{
-                            backgroundImage: `url(${getYoutubeThumbnail(video.url)})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center'
-                          }}
-                        >
+            <ScrollAnimation animation="slideUp" delay={0.4}>
+              <div className="video-slider" ref={sliderRef}>
+                <div className="slider-container">
+                  {videoSets[currentSlide].map((video, index) => (
+                    <div key={video.id} className="slide">
+                      <div className="video-wrapper">
+                        {!playingVideos.has(video.id) ? (
                           <div 
-                            className="play-button"
-                            onClick={() => handlePlayVideo(video.id)}
+                            className="video-thumbnail"
+                            style={{
+                              backgroundImage: `url(${getYoutubeThumbnail(video.url)})`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center'
+                            }}
                           >
-                            <span>▶</span>
+                            <div 
+                              className="play-button"
+                              onClick={() => handlePlayVideo(video.id)}
+                            >
+                              <span>▶</span>
+                            </div>
                           </div>
-                        </div>
-                      ) : (
-                        <iframe 
-                          src={getYoutubeEmbedUrl(video.url)} 
-                          title={`Video ${video.id}`}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          loading="lazy"
-                        ></iframe>
-                      )}
+                        ) : (
+                          <iframe 
+                            src={getYoutubeEmbedUrl(video.url)} 
+                            title={`Video ${video.id}`}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            loading="lazy"
+                          ></iframe>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                
+                <div className="slider-controls">
+                  <button className="prev-button" onClick={handlePrevSlide}>
+                    <span>←</span>
+                  </button>
+                  <button className="next-button" onClick={handleNextSlide}>
+                    <span>→</span>
+                  </button>
+                </div>
               </div>
-              
-              <div className="slider-controls">
-                <button className="prev-button" onClick={handlePrevSlide}>
-                  <span>←</span>
-                </button>
-                <button className="next-button" onClick={handleNextSlide}>
-                  <span>→</span>
-                </button>
-              </div>
-            </div>
+            </ScrollAnimation>
              <HomePageTwo />
         <HomePageThree />
           </section>
