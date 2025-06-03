@@ -15,8 +15,9 @@
   // Hero Section - Image 1
   .hero-section {
     margin-top: -60px;
-    height: 100vh;
+    min-height: 80vh;
     position: relative;
+    overflow: hidden;
     
     .hero-background {
       width: 100%;

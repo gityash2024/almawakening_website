@@ -2,6 +2,8 @@
 @import '../mixins.scss';
 
 .gallery-page {
+  width: 100%;
+  overflow-x: hidden;
   min-height: 100vh;
  
   

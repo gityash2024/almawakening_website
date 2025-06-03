@@ -4,13 +4,16 @@
 .donate-page {
   // Hero Section
   .hero-section {
+    padding: 100px 0;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
     border-radius: 0 0 80px, 80px;
     margin-top: -60px;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     
     .hero-background {
       border-radius: 50px 50px 0px 0px;
