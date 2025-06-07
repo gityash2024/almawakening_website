@@ -75,11 +75,17 @@ const AboutPage: React.FC = () => {
         <div className="about-page-container">
           {/* First Section - We Are Change Makers */}
           <section className="change-makers-section">
-            <div 
-              className="change-makers-background"
-              style={{ backgroundImage: `url(${aboutusbackgroundlogo})` }}
-            >
+            <div className="change-makers-background">
               <div className="change-makers-content">
+                <div className="change-makers-text-content">
+                  <h1 className="change-makers-title">We Are Change Makers</h1>
+                  <p className="change-makers-description">
+                    To transform lives through positivity, empowering individuals to unlock 
+                    their full potential and create lasting change through initiatives like life 
+                    coaching, motivational speaking, and community engagement
+                  </p>
+                </div>
+                
                 <div className="change-makers-image-container">
                   <img 
                     src={logo}

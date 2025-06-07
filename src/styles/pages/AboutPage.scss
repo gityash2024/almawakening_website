@@ -8,85 +8,101 @@
 
 /* First Section - We Are Change Makers */
 .change-makers-section {
-  padding: 80px 10px; // Minimal side padding
+  padding: 0; // Remove padding to make full width
   background: #fff;
+  position: relative;
+  overflow: hidden;
 
   @media (max-width: 768px) {
-    padding: 60px 10px;
+    padding: 0;
   }
 
   @media (max-width: 480px) {
-    padding: 40px 5px;
+    padding: 0;
   }
 }
 
 .change-makers-background {
-  margin-top: -120px;
-  background-size: 100% 90%; // Stretch to fit container while showing full design
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 40px;
-  padding: 80px 90px;
+  margin-top: -60px;
+  background: linear-gradient(180.25deg, #FFD941 21.12%, #FFFFFF 80.33%);
+  border-radius: 0 0 80px 80px;
+  padding: 120px 60px 80px;
   position: relative;
-  min-height: 850px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
+
+  // Wave design elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: 100px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(180deg, #F8E38B 0%, #FFFFFF 100%);
+    border-radius: 50% 40% 60% 50%;
+    opacity: 0.6;
+    z-index: 1;
+    transform: rotate(-15deg);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 150px;
+    right: -300px;
+    width: 800px;
+    height: 800px;
+    background: linear-gradient(180deg, #F8E38B 0%, #FFFFFF 100%);
+    border-radius: 60% 30% 50% 40%;
+    opacity: 0.4;
+    z-index: 1;
+    transform: rotate(25deg);
+  }
 
   @media (max-width: 768px) {
-    padding: 60px 40px;
-    min-height: 750px;
-    border-radius: 30px;
+    padding: 100px 40px 60px;
+    min-height: 90vh;
+    border-radius: 0 0 60px 60px;
+
+    &::before {
+      width: 400px;
+      height: 400px;
+      left: -150px;
+      top: 50px;
+    }
+
+    &::after {
+      width: 500px;
+      height: 500px;
+      right: -200px;
+      bottom: 100px;
+    }
   }
 
   @media (max-width: 480px) {
-    padding: 50px 30px;
-    min-height: 650px;
-    border-radius: 25px;
-  }
-}
+    padding: 80px 30px 50px;
+    min-height: 85vh;
+    border-radius: 0 0 40px 40px;
 
-// Add text content area at the top
-.change-makers-text-content {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  margin-bottom: 50px; // Increased margin
-  padding: 0 20px; // Added horizontal padding for text
-  
-  .change-makers-title {
-    font-size: 4rem; // Increased from 3.5rem
-    font-weight: 700;
-    color: #2D3748;
-    margin: 0 0 30px 0; // Increased bottom margin
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-
-    @media (max-width: 768px) {
-      font-size: 3rem; // Increased from 2.5rem
+    &::before {
+      width: 300px;
+      height: 300px;
+      left: -100px;
+      top: 30px;
     }
 
-    @media (max-width: 480px) {
-      font-size: 2.5rem; // Increased from 2rem
-    }
-  }
-
-  .change-makers-description {
-    font-size: 1.375rem; // Increased from 1.25rem
-    color: #4A5568;
-    line-height: 1.6;
-    max-width: 900px; // Increased from 800px
-    margin: 0 auto;
-    font-weight: 500; // Added font weight
-
-    @media (max-width: 768px) {
-      font-size: 1.25rem; // Increased from 1.125rem
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.125rem; // Increased from 1rem
+    &::after {
+      width: 350px;
+      height: 350px;
+      right: -150px;
+      bottom: 80px;
     }
   }
 }
@@ -95,33 +111,86 @@
   position: relative;
   z-index: 2;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: flex-end;
-  margin-top: auto; // Push image to bottom
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.change-makers-text-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 0 20px;
+  
+  .change-makers-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #2D3748;
+    margin: 0 0 40px 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 768px) {
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+    }
+  }
+
+  .change-makers-description {
+    font-size: 1.25rem;
+    color: #4A5568;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+      font-size: 1.125rem;
+      max-width: 600px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+      max-width: 100%;
+    }
+  }
 }
 
 .change-makers-image-container {
   display: flex;
   justify-content: center;
   width: 100%;
+  position: relative;
+  z-index: 3;
 }
 
 .change-makers-group-image {
   width: 100%;
-  max-width: 750px; // Increased from 700px to utilize the extra space
-  height: 300px; // Increased from 280px
+  max-width: 800px;
+  height: 400px;
   object-fit: cover;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  border-radius: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 
   @media (max-width: 768px) {
-    height: 260px; // Increased from 240px
-    max-width: 650px; // Increased from 600px
+    height: 320px;
+    max-width: 700px;
+    border-radius: 24px;
   }
 
   @media (max-width: 480px) {
-    height: 220px; // Increased from 200px
-    max-width: 550px; // Increased from 500px
+    height: 280px;
+    max-width: 100%;
+    border-radius: 20px;
   }
 }
 
@@ -1007,7 +1076,6 @@
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  .change-makers-background,
   .founder-card,
   .contact-card-new,
   .history-section {
