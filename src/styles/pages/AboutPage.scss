@@ -194,10 +194,12 @@
   }
 }
 
+
 /* Second Section - About Our Founder */
 .founder-section {
   padding: 80px 40px;
   background: #fff;
+  font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   @media (max-width: 768px) {
     padding: 60px 20px;
@@ -210,7 +212,7 @@
 }
 
 .founder-card {
-  background: linear-gradient(135deg, #E8D5FF 0%, #F0E6FF 25%, #F8F0FF 50%, #FFF8F0 75%, #FFF4B8 100%);
+  background: linear-gradient(90deg, rgba(142, 68, 173, 0.24) 0%, rgba(232, 188, 13, 0.24) 100%);
   border-radius: 32px;
   padding: 60px;
   overflow: hidden;
@@ -251,6 +253,7 @@
   margin: 0 0 16px 0;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  font-family: 'Mona Sans', sans-serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -267,6 +270,7 @@
   color: #4A5568;
   margin: 0 0 20px 0;
   line-height: 1.3;
+  font-family: 'Mona Sans', sans-serif;
 }
 
 .founder-description {
@@ -274,6 +278,7 @@
   color: #4A5568;
   margin: 0 0 30px 0;
   line-height: 1.6;
+  font-family: 'Mona Sans', sans-serif;
 }
 
 .founder-explore-btn {
@@ -281,11 +286,12 @@
   background: #2D3748;
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 21px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-family: 'Mona Sans', sans-serif;
 
   &:hover {
     background: #1A202C;
@@ -296,6 +302,9 @@
 
 .founder-image-container {
   flex: 0 0 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: 768px) {
     flex: none;
@@ -304,12 +313,18 @@
 
 .founder-image {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
+  max-width: 400px;
+  height: auto; // Remove fixed height to preserve natural proportions
+  object-fit: contain; // Change from cover to contain to show full image
   border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    height: 300px;
+    max-width: 350px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 300px;
   }
 }
 
@@ -467,10 +482,11 @@
 
 .movement-description {
   font-size: 1.5rem;
-  color: #2D3748;
+  color: #3F3F46;
   margin: 0 0 30px 0;
   line-height: 1.5;
   font-weight: 500;
+  font-family: 'Mona Sans';
 
   @media (max-width: 768px) {
     font-size: 1.25rem;
@@ -479,14 +495,15 @@
 
 .movement-volunteer-btn {
   padding: 16px 32px;
-  background: #2D3748;
+  background: #303030;
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 32px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-family: 'Mona Sans';
 
   &:hover {
     background: #1A202C;
@@ -500,19 +517,55 @@
   }
 }
 
+
 /* Fourth Section - We Believe In & Our History */
 .beliefs-history-section {
   padding: 80px 40px;
   background: #fff;
+  position: relative;
+  font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  // Left side shadow
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(90deg, var(--Yellow-200, #FBECB2) 0%, transparent 100%);
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  // Right side shadow
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(270deg, var(--Purple-200, #D3B2E1) 0%, transparent 100%);
+    opacity: 0.3;
+    z-index: 1;
+  }
 
   @media (max-width: 768px) {
     padding: 60px 20px;
+    
+    &::before,
+    &::after {
+      width: 100px;
+    }
   }
 }
 
 .beliefs-history-container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* We Believe In */
@@ -531,6 +584,7 @@
   margin: 0 0 60px 0;
   text-align: center;
   letter-spacing: -0.02em;
+  font-family: 'Mona Sans', sans-serif;
 
   @media (max-width: 768px) {
     font-size: 2.25rem;
@@ -563,10 +617,13 @@
   border-radius: 20px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   }
 
   @media (max-width: 768px) {
@@ -575,24 +632,25 @@
 }
 
 .compassion-card {
-  background: #E8D5FF;
+  background: #D3B2E1;
 }
 
 .equality-card {
-  background: #FFD6CC;
+  background: #FFC2B4;
 }
 
 .collaboration-card {
-  background: #FFB3BA;
+  background: #FFBBBB;
 }
 
 .sustainability-card {
-  background: #FFF4B8;
+  background: #F8E38B;
 }
 
 .belief-icon {
   font-size: 2.5rem;
   margin-bottom: 20px;
+  display: block;
 }
 
 .belief-name {
@@ -600,6 +658,7 @@
   font-weight: 700;
   color: #2D3748;
   margin: 0 0 16px 0;
+  font-family: 'Mona Sans', sans-serif;
 }
 
 .belief-description {
@@ -607,14 +666,17 @@
   color: #4A5568;
   line-height: 1.6;
   margin: 0;
+  font-family: 'Mona Sans', sans-serif;
 }
 
 /* Our History */
+/* Our History */
 .history-section {
-  background: linear-gradient(135deg, #E8D5FF 0%, #F0E6FF 25%, #F8F0FF 50%, #FFF8F0 75%, #FFF4B8 100%);
+  background: linear-gradient(90deg, rgba(142, 68, 173, 0.24) 0%, rgba(232, 188, 13, 0.24) 100%);
   border-radius: 32px;
   padding: 60px;
   overflow: hidden;
+  font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   @media (max-width: 768px) {
     padding: 40px 30px;
@@ -632,6 +694,7 @@
   margin: 0 0 50px 0;
   text-align: center;
   letter-spacing: -0.02em;
+  font-family: 'Mona Sans', sans-serif;
 
   @media (max-width: 768px) {
     font-size: 2.25rem;
@@ -669,10 +732,11 @@
   color: #2D3748;
   margin-bottom: 12px;
   position: relative;
+  font-family: 'Mona Sans', sans-serif;
 
   &::after {
     content: '';
-    width: 50px;
+    width: 201px;
     height: 3px;
     background: #2D3748;
     display: block;
@@ -685,15 +749,61 @@
   color: #4A5568;
   line-height: 1.6;
   margin: 0;
+  font-family: 'Mona Sans', sans-serif;
 }
 
 /* New Sections Below History - Testimonials */
 .testimonials-section-new {
   padding: 80px 40px;
-  background: linear-gradient(135deg, #E8D5FF 0%, #F0E6FF 25%, #F8F0FF 50%, #FFF8F0 75%, #FFF4B8 100%);
+  background: #ffffff;
+  font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     padding: 60px 20px;
+  }
+
+  // Small purple shadow on bottom left
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 200px;
+    background: var(--Purple-200, #D3B2E1);
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.4;
+    filter: blur(40px);
+    transform: translate(-50%, 50%);
+
+    @media (max-width: 768px) {
+      width: 200px;
+      height: 150px;
+    }
+  }
+
+  // Small yellow shadow on bottom right
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 200px;
+    background: var(--Yellow-200, #FBECB2);
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.4;
+    filter: blur(40px);
+    transform: translate(50%, 50%);
+
+    @media (max-width: 768px) {
+      width: 200px;
+      height: 150px;
+    }
   }
 }
 
@@ -701,6 +811,15 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  z-index: 2;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 60px;
+  // box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
 }
 
 .testimonials-content-new {
@@ -708,6 +827,7 @@
   align-items: center;
   gap: 80px;
   margin-bottom: 60px;
+  position: relative;
 
   @media (max-width: 1024px) {
     gap: 60px;
@@ -722,12 +842,14 @@
 
 .testimonial-text-new {
   flex: 1;
+  position: relative;
 
   .quote-icon-new {
     font-size: 4rem;
     color: #9d7fb5;
     margin-bottom: 30px;
     line-height: 1;
+    font-family: Georgia, serif;
   }
 
   .testimonial-quote-main {
@@ -736,6 +858,7 @@
     margin: 0 0 20px 0;
     line-height: 1.3;
     font-weight: 600;
+    font-family: 'Mona Sans', sans-serif;
 
     @media (max-width: 768px) {
       font-size: 1.5rem;
@@ -748,6 +871,7 @@
     margin: 0 0 40px 0;
     line-height: 1.6;
     font-style: italic;
+    font-family: 'Mona Sans', sans-serif;
   }
 
   .testimonial-author-new {
@@ -756,12 +880,14 @@
       font-weight: 700;
       color: #2D3748;
       margin: 0 0 5px 0;
+      font-family: 'Mona Sans', sans-serif;
     }
 
     p {
       font-size: 1rem;
       color: #4A5568;
       margin: 0;
+      font-family: 'Mona Sans', sans-serif;
     }
   }
 }
@@ -779,7 +905,7 @@
     height: 400px;
     object-fit: cover;
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 
     @media (max-width: 768px) {
       height: 300px;
@@ -791,6 +917,7 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+  position: relative;
 
   .nav-btn-new {
     width: 50px;
@@ -803,10 +930,13 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-family: 'Mona Sans', sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
     &:hover {
       background: #f7fafc;
       transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
     &.prev-btn-new {
@@ -834,11 +964,55 @@
 /* New Section - Contact Us */
 .contact-section-new {
   padding: 80px 40px;
-  background: #fff;
+  background: #ffffff;
   position: relative;
+  overflow: hidden;
+  font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   @media (max-width: 768px) {
     padding: 60px 20px;
+  }
+
+  // Top left purple shadow
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 300px;
+    background: var(--Purple-200, #D3B2E1);
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.3;
+    filter: blur(60px);
+    transform: translate(-50%, -50%);
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 200px;
+    }
+  }
+
+  // Top right yellow shadow
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 300px;
+    background: var(--Yellow-200, #FBECB2);
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.3;
+    filter: blur(60px);
+    transform: translate(50%, -50%);
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 200px;
+    }
   }
 }
 
@@ -846,106 +1020,153 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  z-index: 2;
 }
 
 .contact-card-new {
-  background: linear-gradient(135deg, #FFF4B8 0%, #FDE047 100%);
-  border-radius: 32px;
-  padding: 60px;
-  text-align: left;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  padding: 0;
   position: relative;
-  z-index: 2;
+  overflow: hidden;
+  display: block;
+  min-height: 280px;
+  width: 100%;
 
   @media (max-width: 768px) {
-    padding: 40px 30px;
+    min-height: 240px;
+  }
+
+  // Remove all pseudo-elements since we're using the background image
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.contact-icon-new {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 3;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    left: 20px;
+  }
+
+  img {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) saturate(100%) invert(20%) sepia(15%) saturate(1015%) hue-rotate(183deg) brightness(95%) contrast(89%);
+
+    @media (max-width: 768px) {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.contact-content-new {
+  position: relative;
+  z-index: 2;
+  padding: 40px 40px 40px 130px;
+
+  @media (max-width: 768px) {
+    padding: 30px 25px 30px 100px;
   }
 
   @media (max-width: 480px) {
-    padding: 30px 20px;
-  }
-
-  .contact-icon-new {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-
-    img {
-      width: 40px;
-      height: 40px;
-    }
+    padding: 25px 20px 25px 90px;
   }
 
   .contact-title-new {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #2D3748;
-    margin: 0 0 20px 0;
+    margin: 0 0 12px 0;
     line-height: 1.2;
+    font-family: 'Mona Sans', sans-serif;
 
     @media (max-width: 768px) {
-      font-size: 2rem;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.25rem;
     }
   }
 
   .contact-description-new {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #4A5568;
-    margin: 0 0 40px 0;
-    line-height: 1.6;
+    margin: 0 0 28px 0;
+    line-height: 1.5;
+    font-family: 'Mona Sans', sans-serif;
+    max-width: 550px;
+
+    @media (max-width: 768px) {
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
   }
 
   .contact-details-new {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
     .contact-item-new {
       display: flex;
       align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      font-size: 1rem;
+      gap: 10px;
+      font-size: 0.95rem;
       color: #2D3748;
       font-weight: 500;
+      font-family: 'Mona Sans', sans-serif;
 
-      &:last-child {
-        margin-bottom: 0;
+      @media (max-width: 768px) {
+        font-size: 0.85rem;
       }
 
       svg {
+        width: 18px;
+        height: 18px;
         flex-shrink: 0;
+        color: #2D3748;
+
+        @media (max-width: 768px) {
+          width: 16px;
+          height: 16px;
+        }
       }
-    }
-  }
-}
 
-.contact-wave-background {
-  position: absolute;
-  bottom: -50px;
-  right: -50px;
-  z-index: 1;
-  opacity: 0.1;
-
-  @media (max-width: 768px) {
-    right: -20px;
-    bottom: -20px;
-  }
-
-  .contact-wave-image {
-    width: 300px;
-    height: auto;
-
-    @media (max-width: 768px) {
-      width: 200px;
+      span {
+        font-family: 'Mona Sans', sans-serif;
+      }
     }
   }
 }
 
 /* New Section - FAQ */
+/* FAQ Section SCSS */
 .faq-section-new {
   padding: 80px 40px;
-  background: linear-gradient(135deg, rgba(196, 181, 253, 0.4) 0%, rgba(254, 240, 138, 0.4) 100%);
+  background: #ffffff;
+  font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   @media (max-width: 768px) {
     padding: 60px 20px;
@@ -953,40 +1174,103 @@
 }
 
 .faq-container-new {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 0 20px;
+}
+
+.faq-content-box {
+  background: linear-gradient(90deg, rgba(142, 68, 173, 0.24) 0%, rgba(232, 188, 13, 0.24) 100%);
+  width: 900px;
+  max-width: 100%;
+  height: auto;
+  min-height: 651px;
+  border-radius: 36px;
+  gap: 40px;
+  padding-top: 44px;
+  padding-bottom: 44px;
+  padding-left: 60px;
+  padding-right: 60px;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 960px) {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+  }
+
+  @media (max-width: 768px) {
+    width: calc(100% - 20px);
+    min-height: 500px;
+    padding: 30px 25px;
+    border-radius: 24px;
+    margin: 0 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 25px 20px;
+    border-radius: 20px;
+    min-height: 400px;
+    margin: 0 5px;
+  }
 }
 
 .faq-header-new {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  flex-shrink: 0;
 
   .faq-icon-new {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background: #ffffff;
+    border: 3px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 24px auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: -100px auto 24px auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: 768px) {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
 
     img {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
+
+      @media (max-width: 768px) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
   h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 52px;
+    letter-spacing: 0%;
+    text-align: center;
     color: #2D3748;
     margin: 0 0 12px 0;
-    letter-spacing: -0.02em;
 
     @media (max-width: 768px) {
-      font-size: 2rem;
+      font-size: 28px;
+      line-height: 40px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 24px;
+      line-height: 36px;
     }
   }
 
@@ -994,18 +1278,30 @@
     font-size: 1.125rem;
     color: #4A5568;
     margin: 0;
+    font-family: 'Mona Sans', sans-serif;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 }
 
 .faq-list-new {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .faq-item-new {
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: transparent;
 
   &:last-child {
     border-bottom: none;
@@ -1013,7 +1309,7 @@
 
   .faq-question-new {
     width: 100%;
-    padding: 24px 32px;
+    padding: 32px 0;
     background: none;
     border: none;
     text-align: left;
@@ -1022,99 +1318,108 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.125rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #2D3748;
     transition: all 0.3s ease;
+    font-family: 'Mona Sans', sans-serif;
 
     &:hover {
-      background: #f8fafc;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    &:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     @media (max-width: 768px) {
-      padding: 20px;
+      padding: 24px 0;
       font-size: 1rem;
     }
 
+    @media (max-width: 480px) {
+      padding: 20px 0;
+      font-size: 0.95rem;
+    }
+
+    span {
+      flex: 1;
+      text-align: left;
+      line-height: 1.4;
+    }
+
     .faq-toggle-new {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: #f1f5f9;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       flex-shrink: 0;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
-      color: #4a5568;
+      color: #2D3748;
+      margin-left: 20px;
+
+      @media (max-width: 768px) {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+        margin-left: 15px;
+      }
     }
   }
 
   .faq-answer-new {
-    padding: 0 32px 24px 32px;
-    color: #718096;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    color: #4A5568;
     line-height: 1.6;
+    font-family: 'Mona Sans', sans-serif;
 
-    @media (max-width: 768px) {
-      padding: 0 20px 20px 20px;
+    &.show {
+      max-height: 200px;
+      padding-bottom: 24px;
+
+      @media (max-width: 768px) {
+        padding-bottom: 20px;
+      }
+
+      @media (max-width: 480px) {
+        padding-bottom: 18px;
+      }
     }
 
     p {
       margin: 0;
       font-size: 1rem;
+      font-weight: 400;
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+      }
     }
   }
 
   &.active {
     .faq-question-new .faq-toggle-new {
       background: #2D3748;
+      border-color: #2D3748;
       color: #ffffff;
     }
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .founder-card,
-  .contact-card-new,
-  .history-section {
-    padding: 50px 40px;
-  }
-}
 
-/* Accessibility improvements */
-.founder-explore-btn:focus,
-.movement-volunteer-btn:focus,
-.nav-btn-new:focus {
-  outline: 2px solid #4299e1;
-  outline-offset: 2px;
-}
 
-/* Print styles */
-@media print {
-  .change-makers-section,
-  .founder-section,
-  .movement-section,
-  .beliefs-history-section,
-  .testimonials-section-new,
-  .contact-section-new,
-  .faq-section-new {
-    padding: 20px;
-    page-break-inside: avoid;
-  }
 
-  .change-makers-background,
-  .founder-card,
-  .contact-card-new,
-  .history-section {
-    background: #f7fafc !important;
-    border: 1px solid #e2e8f0;
-  }
-
-  .founder-explore-btn,
-  .movement-volunteer-btn,
-  .nav-btn-new {
-    display: none;
-  }
-}
