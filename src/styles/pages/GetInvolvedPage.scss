@@ -2,76 +2,94 @@
 @import '../mixins.scss';
 
 .get-involved-page {
+  font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  // Hero Section
+  // Container for consistent spacing
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    @media (max-width: 768px) {
+      padding: 0 16px;
+    }
+  }
+  
+  // Hero Section - Now using background image
   .hero-section {
     position: relative;
-    margin-bottom: 80px;
-    margin-top: -60px;
+    margin-top: 0; // Remove negative margin to prevent navbar overlap
+    margin-bottom: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
     
     .hero-background {
-      background: linear-gradient(135deg, #B794F6 0%, #E6BCFA 50%, #FBD38D 100%);
-      min-height: 500px;
-      border-radius: 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+    
+    .container {
       position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 20px 60px;
+      z-index: 10;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 100px 20px; // Move padding to container
       
-      // Organic background shapes
-      &::before {
-        content: '';
-        position: absolute;
-        top: -50px;
-        left: -100px;
-        width: 300px;
-        height: 300px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50% 30% 70% 40%;
-        transform: rotate(-15deg);
-      }
-      
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -80px;
-        right: -120px;
-        width: 400px;
-        height: 400px;
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 60% 40% 30% 70%;
-        transform: rotate(25deg);
+      @media (max-width: 768px) {
+        padding: 80px 16px;
       }
     }
     
     .hero-content {
-      text-align: center;
+      margin-bottom: 80px;
       position: relative;
       z-index: 2;
-      max-width: 800px;
-      padding: 40px 20px;
       
       .hero-title {
-        font-size: 2.8rem;
-        font-weight: 700;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 3.5rem;
+        font-weight: 500;
         color: #2D3748;
-        margin-bottom: 20px;
-        line-height: 1.2;
+        margin-bottom: 24px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        
+        @media (max-width: 1024px) {
+          font-size: 3rem;
+        }
         
         @media (max-width: 768px) {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
+        }
+        
+        @media (max-width: 480px) {
+          font-size: 2rem;
         }
       }
       
       .hero-subtitle {
-        font-size: 1.1rem;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 1.125rem;
         color: #4A5568;
-        line-height: 1.6;
-        margin: 0;
+        line-height: 1.5;
+        max-width: 600px;
+        margin: 0 auto;
         
         @media (max-width: 768px) {
+          font-size: 1rem;
           br {
             display: none;
           }
@@ -79,47 +97,58 @@
       }
     }
     
-    // Feature Cards
+    // Feature Cards - positioned over the background image
     .feature-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-      margin: 0 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      
+      @media (max-width: 1024px) {
+        max-width: 800px;
+        gap: 24px;
+      }
       
       @media (max-width: 768px) {
         grid-template-columns: 1fr;
+        max-width: 400px;
         gap: 20px;
       }
     }
     
     .feature-card {
-      background: #FBB6CE;
-      border-radius: 20px;
-      padding: 40px 30px;
+      background: #FFC2B4; // Default pink
+      border-radius: 16px;
+      padding: 32px 24px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
       
       &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-6px);
       }
       
       &.card-pink {
-        background: #FBB6CE;
+        background: #FFC2B4;
       }
       
       &.card-coral {
-        background: #FEB2B2;
+        background: #FFBBBB;
       }
       
       &.card-yellow {
-        background: #F6E05E;
+        background: #F8E38B;
       }
       
       .card-icon {
-        width: 60px;
-        height: 60px;
-        background: rgba(0, 0, 0, 0.1);
+        width: 50px;
+        height: 50px;
+        background: rgba(45, 55, 72, 0.12);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -128,45 +157,95 @@
         color: #2D3748;
         
         svg {
-          width: 24px;
-          height: 24px;
+          width: 20px;
+          height: 20px;
         }
       }
       
       .card-title {
-        font-size: 1.4rem;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 1.125rem;
         font-weight: 600;
         color: #2D3748;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
         line-height: 1.3;
       }
       
       .card-description {
-        font-size: 0.95rem;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 0.875rem;
         color: #4A5568;
-        line-height: 1.5;
+        line-height: 1.4;
         margin: 0;
+        flex-grow: 1;
+      }
+      
+      @media (max-width: 768px) {
+        padding: 28px 20px;
+        min-height: 240px;
       }
     }
   }
   
   // Volunteer Form Section
   .volunteer-form-section {
-    background: #F7FAFC;
-    padding: 60px 20px;
-    margin: 60px 0;
-    border-radius: 30px;
+    position: relative;
+    margin: 60px 20px; // Added horizontal margins
+    font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    @media (max-width: 768px) {
+      margin: 60px 16px; // Responsive margins for mobile
+    }
+    
+    .form-background {
+      position: relative;
+      // background: #dd9dd9; // Fallback background color
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      padding: 60px 40px; // Added horizontal padding
+      min-height: 600px; // Ensure minimum height to see the background
+      border-radius: 24px; // Added border radius for better visual appeal
+      
+      @media (max-width: 768px) {
+        padding: 60px 20px; // Responsive padding for mobile
+        border-radius: 16px;
+      }
+      
+      // Remove the overlay so background image is visible
+      &::before {
+        display: none;
+      }
+    }
+    
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 900px; // Reduced max-width for better containment
+      margin: 0 auto;
+      padding: 0; // Remove horizontal padding since we added it to form-background
+      
+      @media (max-width: 768px) {
+        padding: 0;
+      }
+    }
     
     .form-container {
       max-width: 900px;
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     
     .form-header {
       text-align: left;
       margin-bottom: 40px;
+      font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       
       .form-title {
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 2.2rem;
         font-weight: 700;
         color: #2D3748;
@@ -187,6 +266,7 @@
       }
       
       .form-subtitle {
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 1rem;
         color: #718096;
         margin: 0;
@@ -194,6 +274,8 @@
     }
     
     .volunteer-form {
+      font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
       .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -208,9 +290,11 @@
       
       .form-group {
         margin-bottom: 25px;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         label {
           display: block;
+          font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           font-size: 0.95rem;
           font-weight: 500;
           color: #2D3748;
@@ -233,6 +317,7 @@
           background: white;
           transition: border-color 0.3s ease;
           box-sizing: border-box;
+          font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           
           &:focus {
             outline: none;
@@ -242,6 +327,7 @@
           &::placeholder {
             color: #A0AEC0;
             font-style: italic;
+            font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           }
         }
       }
@@ -251,6 +337,7 @@
         flex-wrap: wrap;
         gap: 20px;
         align-items: center;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         @media (max-width: 768px) {
           flex-direction: column;
@@ -272,6 +359,7 @@
         color: #4A5568;
         min-width: 180px;
         position: relative;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         input[type="checkbox"] {
           position: absolute;
@@ -337,6 +425,7 @@
         gap: 15px;
         justify-content: center;
         margin-top: 35px;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         @media (max-width: 480px) {
           flex-direction: column;
@@ -354,6 +443,7 @@
         font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         &:hover {
           background: #1A202C;
@@ -371,6 +461,7 @@
         font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         &:hover {
           border-color: #CBD5E0;
@@ -383,7 +474,7 @@
   // Scrolling Banner Section
   .scrolling-banner-section {
     background: #BC8AD1;
-    padding: 20px 0;
+    padding: 11px 0;
     overflow: hidden;
     white-space: nowrap;
     
@@ -392,11 +483,12 @@
       animation: scroll 30s linear infinite;
       
       span {
-        font-size: 1.2rem;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 36px;
         font-weight: 600;
         color: black;
         letter-spacing: 0.05em;
-        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 100%;
       }
     }
     
@@ -411,14 +503,103 @@
   }
   
   // Partnership Section
-  .partnership-section {
-    padding: 80px 20px;
+  // .partnership-section {
+  //   padding: 80px 20px;
+  //   font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     
-    .partnership-container {
+  //   .partnership-container {
+  //     display: grid;
+  //     grid-template-columns: 1fr 1fr;
+  //     gap: 60px;
+  //     align-items: center;
+  //     max-width: 1200px;
+  //     margin: 0 auto;
+      
+  //     @media (max-width: 968px) {
+  //       grid-template-columns: 1fr;
+  //       gap: 40px;
+  //     }
+  //   }
+    
+  //   .partnership-content {
+  //     .partnership-description {
+  //       font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  //       font-size: 1.1rem;
+  //       color: #4A5568;
+  //       line-height: 1.6;
+  //       margin-bottom: 30px;
+  //     }
+      
+  //     .partner-btn {
+  //       font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  //       background: #2D3748;
+  //       color: white;
+  //       border: none;
+  //       padding: 15px 30px;
+  //       border-radius: 25px;
+  //       font-size: 1rem;
+  //       font-weight: 500;
+  //       cursor: pointer;
+  //       transition: all 0.3s ease;
+        
+  //       &:hover {
+  //         background: #1A202C;
+  //         transform: translateY(-2px);
+  //       }
+  //     }
+  //   }
+    
+  //   .partnership-card {
+  //     background: linear-gradient(135deg, #E6BCFA 0%, #FED7D7 50%, #FEEBC8 100%);
+  //     border-radius: 25px;
+  //     padding: 40px;
+      
+  //     .partnership-item {
+  //       display: flex;
+  //       align-items: flex-start;
+  //       margin-bottom: 25px;
+        
+  //       &:last-child {
+  //         margin-bottom: 0;
+  //       }
+        
+  //       .check-icon {
+  //         width: 40px;
+  //         height: 40px;
+  //         background: white;
+  //         border-radius: 50%;
+  //         display: flex;
+  //         align-items: center;
+  //         justify-content: center;
+  //         margin-right: 15px;
+  //         flex-shrink: 0;
+  //         color: #805AD5;
+  //       }
+        
+  //       .partnership-text {
+  //         h4 {
+  //           font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  //           font-size: 1.1rem;
+  //           font-weight: 600;
+  //           color: #2D3748;
+  //           margin: 0;
+  //           line-height: 1.4;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  
+  // Events Section
+  .events-section {
+    padding: 80px 20px; // Added top padding for spacing from hero section
+    font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    .events-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 2fr;
       gap: 60px;
-      align-items: center;
+      align-items: start;
       max-width: 1200px;
       margin: 0 auto;
       
@@ -428,90 +609,11 @@
       }
     }
     
-    .partnership-content {
-      .partnership-description {
-        font-size: 1.1rem;
-        color: #4A5568;
-        line-height: 1.6;
-        margin-bottom: 30px;
-      }
-      
-      .partner-btn {
-        background: #2D3748;
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        border-radius: 25px;
-        font-size: 1rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        
-        &:hover {
-          background: #1A202C;
-          transform: translateY(-2px);
-        }
-      }
-    }
-    
-    .partnership-card {
-      background: linear-gradient(135deg, #E6BCFA 0%, #FED7D7 50%, #FEEBC8 100%);
-      border-radius: 25px;
-      padding: 40px;
-      
-      .partnership-item {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 25px;
-        
-        &:last-child {
-          margin-bottom: 0;
-        }
-        
-        .check-icon {
-          width: 40px;
-          height: 40px;
-          background: white;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 15px;
-          flex-shrink: 0;
-          color: #805AD5;
-        }
-        
-        .partnership-text {
-          h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2D3748;
-            margin: 0;
-            line-height: 1.4;
-          }
-        }
-      }
-    }
-  }
-  
-  // Events Section
-  .events-section {
-    padding: 0 20px 80px;
-    
-    .events-container {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 60px;
-      align-items: start;
-      
-      @media (max-width: 968px) {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-    }
-    
     .events-sidebar {
+      font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
       .events-title {
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 2.5rem;
         font-weight: 700;
         color: #2D3748;
@@ -528,6 +630,7 @@
       }
       
       .events-description {
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 1rem;
         color: #718096;
         line-height: 1.6;
@@ -535,9 +638,10 @@
       }
       
       .view-all-btn {
-        background: transparent;
-        border: 2px solid #E2E8F0;
-        color: #4A5568;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #72378B; // Purple background
+        border: 2px solid #72378B; // Purple border
+        color: #FFFFFF; // White text
         padding: 12px 30px;
         border-radius: 25px;
         font-size: 0.95rem;
@@ -546,8 +650,9 @@
         transition: all 0.3s ease;
         
         &:hover {
-          border-color: #805AD5;
-          color: #805AD5;
+          background: #5A2C6B; // Darker purple on hover
+          border-color: #5A2C6B;
+          transform: translateY(-2px);
         }
       }
     }
@@ -570,13 +675,28 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       
+      // Restore gradient background for cards with image
+      &.event-card-with-image {
+        background: linear-gradient(90deg, rgba(142, 68, 173, 0.24) 0%, rgba(232, 188, 13, 0.24) 100%);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        
+        // Remove the white overlay since we're using gradient
+        &::before {
+          display: none;
+        }
+      }
+      
+      // Remove old gradient backgrounds
       &.event-card-purple {
-        background: linear-gradient(135deg, #D6BCFA 0%, #FED7D7 100%);
+        background: transparent;
       }
       
       &.event-card-gradient {
-        background: linear-gradient(135deg, #C6F6D5 0%, #FED7D7 50%, #FEEBC8 100%);
+        background: transparent;
       }
       
       .event-content {
@@ -585,9 +705,11 @@
         display: flex;
         flex-direction: column;
         height: 100%;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
       
       .event-title {
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 1.6rem;
         font-weight: 600;
         color: #2D3748;
@@ -596,6 +718,7 @@
       }
       
       .event-description {
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 1rem;
         color: #4A5568;
         margin-bottom: 20px;
@@ -604,9 +727,11 @@
       
       .event-details {
         margin-bottom: 30px;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         .event-date,
         .event-location {
+          font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           font-size: 0.9rem;
           color: #2D3748;
           font-weight: 500;
@@ -626,6 +751,7 @@
       }
       
       .volunteer-btn {
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: #F7FAFC;
         border: none;
         color: #2D3748;
@@ -643,6 +769,7 @@
       }
       
       .participate-btn {
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: #2D3748;
         border: none;
         color: white;
@@ -667,6 +794,127 @@
           height: 16px;
         }
       }
+    }
+  }
+  // Partnership Section - Updated with specified background
+.partnership-section {
+  padding: 80px 20px;
+  font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  .partnership-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    @media (max-width: 968px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+  
+  .partnership-content {
+    .partnership-description {
+      font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: #0F172A;
+      line-height: 39px;
+      margin-bottom: 30px;
+    }
+    
+    .partner-btn {
+      font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #2D3748;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: #1A202C;
+        transform: translateY(-2px);
+      }
+    }
+  }
+  
+  .partnership-card {
+    // Updated background with the specified gradient
+    background: linear-gradient(90deg, rgba(142, 68, 173, 0.24) 0%, rgba(232, 188, 13, 0.24) 100%);
+    border-radius: 25px;
+    padding: 40px;
+    
+    .partnership-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .check-icon {
+        width: 40px;
+        height: 40px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+        color: #805AD5;
+      }
+      
+      .partnership-text {
+        h4 {
+          font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #2D3748;
+          margin: 0;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+}
+
+  // Animation for entrance effects
+  .hero-content {
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .feature-card {
+    animation: fadeInUp 1s ease-out;
+    
+    &:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    
+    &:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    
+    &:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
