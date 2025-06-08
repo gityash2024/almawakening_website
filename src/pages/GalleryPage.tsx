@@ -70,8 +70,26 @@ const GalleryPage: React.FC = () => {
       <Layout>
         <div className="gallery-page">
           <div className="gallery-container">
-            {/* Header Section */}
-            <section className="gallery-header" style={{ backgroundImage: `url(${OurMonthbyMonth})` }}>
+            {/* New Header Section with Design */}
+            <section className="gallery-header-new">
+              <div className="header-background">
+                {/* Left Decorative Curves */}
+                <div className="left-curves">
+                  <div className="curve curve-1"></div>
+                  <div className="curve curve-2"></div>
+                </div>
+                
+                {/* Right Decorative Curve */}
+                <div className="right-curve">
+                  <div className="curve curve-3"></div>
+                </div>
+                
+                {/* Header Content */}
+                <div className="header-content">
+                  <h1>Our Month-by-Month<br />Journey In Change</h1>
+                  <p>Join hands, share knowledge, and help<br />communities grow through impactful events.</p>
+                </div>
+              </div>
             </section>
 
             {/* Gallery Albums Section */}
