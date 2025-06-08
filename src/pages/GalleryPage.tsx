@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import SEO from '../components/common/SEO';
 import '../styles/pages/GalleryPage.scss';
-import OurMonthbyMonth from '../assets/images/OurMonthbyMonth.png';
 import OurMonthbyMonth_1 from '../assets/images/OurMonthbyMonth_1.png';
 import OurMonthbyMonth_2 from '../assets/images/OurMonthbyMonth_2.png';
 import OurMonthbyMonth_3 from '../assets/images/OurMonthbyMonth_3.png';
@@ -11,6 +10,7 @@ import OurMonthbyMonth_5 from '../assets/images/OurMonthbyMonth_5.png';
 import OurMonthbyMonth_6 from '../assets/images/OurMonthbyMonth_6.png';
 import Contactus from '../assets/images/Contactus.svg';
 import contactlogo from '../assets/images/contactlogo.png';
+import OurMonthbyMonth from '../assets/images/OurMonthbyMonth.png'
 
 const GalleryPage: React.FC = () => {
   const [expandedAlbums, setExpandedAlbums] = useState<number[]>([]);
@@ -70,25 +70,10 @@ const GalleryPage: React.FC = () => {
       <Layout>
         <div className="gallery-page">
           <div className="gallery-container">
-            {/* New Header Section with Design */}
+            {/* Header Section with Background Image Only */}
             <section className="gallery-header-new">
-              <div className="header-background">
-                {/* Left Decorative Curves */}
-                <div className="left-curves">
-                  <div className="curve curve-1"></div>
-                  <div className="curve curve-2"></div>
-                </div>
-                
-                {/* Right Decorative Curve */}
-                <div className="right-curve">
-                  <div className="curve curve-3"></div>
-                </div>
-                
-                {/* Header Content */}
-                <div className="header-content">
-                  <h1>Our Month-by-Month<br />Journey In Change</h1>
-                  <p>Join hands, share knowledge, and help<br />communities grow through impactful events.</p>
-                </div>
+              <div className="header-background" style={{ backgroundImage: `url(${OurMonthbyMonth})` }}>
+                {/* Just the background image, no content */}
               </div>
             </section>
 
