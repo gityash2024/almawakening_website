@@ -12,11 +12,13 @@ import Contactus from '../assets/images/Contactus.svg';
 import contactlogo from '../assets/images/contactlogo.png';
 import questionMark from '../assets/images/questionMark.svg';
 import BeAnAlly from '../assets/images/BeAnAlly.png';
-
+import ContactMainIconSVG from '../assets/images/Contactus.svg';
 const DonatePage: React.FC = () => {
   const [donationAmount, setDonationAmount] = useState(100);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [otherAmount, setOtherAmount] = useState<string>('');
+      const [openFaq, setOpenFaq] = useState(0);
+  
 
   const donationOptions = [
     [30, 40, 50, 100],
@@ -37,6 +39,29 @@ const DonatePage: React.FC = () => {
     setOtherAmount(event.target.value);
     setSelectedAmount(null);
   };
+
+   const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? -1 : index);
+};
+
+     const faqs = [
+        {
+            question: "Is my donation secure?",
+            answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
+        },
+        {
+            question: "Will I receive a receipt?",
+            answer: "Yes, you will receive an email receipt immediately after your donation is processed."
+        },
+        {
+            question: "How is the money spent?",
+            answer: "We provide detailed reports on how donations are allocated across our various programs and initiatives."
+        },
+        {
+            question: "Can I volunteer instead of donating?",
+            answer: "Absolutely! We welcome volunteers and have various opportunities available throughout the year."
+        }
+    ];
 
   const handleContribute = () => {
     const finalAmount = selectedAmount || parseInt(otherAmount) || 0;
@@ -233,6 +258,50 @@ const DonatePage: React.FC = () => {
               </div>
             </div>
           </section>
+
+         
+           
+            {/* FAQ Section */}
+                <section className="faq-section">
+                    <div className="container">
+                        <div className="faq-header">
+                            <div className="faq-icon">
+                                <img src={questionMark} alt="FAQ" />
+                            </div>
+                            <h2>Frequently Asked Questions</h2>
+                            <p>See what people often asks us?</p>
+                        </div>
+                        <div className="faq-list">
+                            {faqs.map((faq, index) => (
+                                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
+                                    <button 
+                                        className="faq-question"
+                                        onClick={() => toggleFaq(index)}
+                                    >
+                                        <span>{faq.question}</span>
+                                        <div className="faq-toggle">
+                                            {openFaq === index ? (
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                                                    <path d="M8 12h8" stroke="currentColor" strokeWidth="2"/>
+                                                </svg>
+                                            ) : (
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                                                    <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="2"/>
+                                                </svg>
+                                            )}
+                                        </div>
+                                    </button>
+                                    <div className={`faq-answer ${openFaq === index ? 'show' : ''}`}>
+                                        <p>{faq.answer}</p>
+                                    </div>
+                                    {index < faqs.length - 1 && <div className="faq-divider"></div>}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
         </div>
       </Layout>
     </>

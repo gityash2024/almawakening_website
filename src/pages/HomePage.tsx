@@ -9,7 +9,7 @@ import HomePageTwo from './HomePageTwo';
 import HomePageThree from './HomePageThree';
 import purplecard from '../assets/images/purplecard.svg';
 import yellow from '../assets/images/yellow.svg';
-import mission from '../assets/images/mission.svg'; // Imported mission SVG
+import mission from '../assets/images/mission.svg';
 
 
 const HomePage: React.FC = () => {
@@ -19,22 +19,22 @@ const HomePage: React.FC = () => {
   
   // Display 3 videos at once in grid layout
   const videos = [
-    { id: 1, url: 'https://www.youtube.com/watch?v=EUVY8hnK07g' },
-    { id: 2, url: 'https://www.youtube.com/watch?v=3_YtB44p_ts' },
-    { id: 3, url: 'https://www.youtube.com/watch?v=rwxRoYzwkyM' }
+    { id: 1, url: 'https://www.youtube.com/watch?v=hSFA-mNXrCc' },
+    { id: 2, url: 'https://www.youtube.com/watch?v=yILKff68-BU' },
+    { id: 3, url: 'https://www.youtube.com/watch?v=zNngzWy6xcQ' }
   ];
   
   // Additional sets of videos for pagination
   const videoSets = [
     [
-      { id: 1, url: 'https://www.youtube.com/watch?v=EUVY8hnK07g' },
-      { id: 2, url: 'https://www.youtube.com/watch?v=3_YtB44p_ts' },
-      { id: 3, url: 'https://www.youtube.com/watch?v=rwxRoYzwkyM' }
+       { id: 1, url: 'https://www.youtube.com/watch?v=hSFA-mNXrCc' },
+    { id: 2, url: 'https://www.youtube.com/watch?v=yILKff68-BU' },
+    { id: 3, url: 'https://www.youtube.com/watch?v=zNngzWy6xcQ' }
     ],
     [
-      { id: 4, url: 'https://www.youtube.com/watch?v=rwxRoYzwkyM' },
-      { id: 5, url: 'https://www.youtube.com/watch?v=EUVY8hnK07g' },
-      { id: 6, url: 'https://www.youtube.com/watch?v=3_YtB44p_ts' }
+     { id: 1, url: 'https://www.youtube.com/watch?v=hSFA-mNXrCc' },
+    { id: 2, url: 'https://www.youtube.com/watch?v=yILKff68-BU' },
+    { id: 3, url: 'https://www.youtube.com/watch?v=zNngzWy6xcQ' }
     ]
   ];
   
@@ -85,7 +85,7 @@ const HomePage: React.FC = () => {
                 className="card purple-card"
                 style={{
                   backgroundImage: `url(${purplecard})`,
-                  backgroundSize: '100% 100%', // Cover the entire card area
+                  backgroundSize: '100% 100%',
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
                 }}
@@ -98,6 +98,7 @@ const HomePage: React.FC = () => {
               <div className="card image-card">
                 <img src={Donate_1} alt="Person with prosthetic leg" />
                 <div className="card-overlay">
+                  <h3>Let Them Be Heard.</h3>
                 </div>
               </div>
               
@@ -114,7 +115,7 @@ const HomePage: React.FC = () => {
                 className="card yellow-card"
                 style={{
                   backgroundImage: `url(${yellow})`,
-                  backgroundSize: '100% 100%', // Cover the entire card area
+                  backgroundSize: '100% 100%',
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
                 }}
@@ -132,18 +133,11 @@ const HomePage: React.FC = () => {
             </div>
           </section>
 
-           {/* Our Mission Section */}
-          <section
-            className="mission-section"
-            // Ensure there is NO inline style prop here like style={{ backgroundImage: `url(${mission})` }}
-          >
-            {/* THIS IS THE BANNER ELEMENT THAT WILL BE POSITIONED */}
+          {/* Our Mission Section */}
+          <section className="mission-section">
             <div className="mission-banner"></div>
 
-            <div
-              className="mission-header"
-              // Ensure no inline style here
-            >
+            <div className="mission-header">
               <div className="mission-icon">
                 <span className="icon-target">🎯</span>
               </div>
@@ -173,7 +167,7 @@ const HomePage: React.FC = () => {
                             className="play-button"
                             onClick={() => handlePlayVideo(video.id)}
                           >
-                            <span>▶️</span>
+                            <span>▶</span>
                           </div>
                         </div>
                       ) : (

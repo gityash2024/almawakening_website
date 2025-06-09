@@ -11,42 +11,147 @@ import OurMonthbyMonth_6 from '../assets/images/OurMonthbyMonth_6.png';
 import Contactus from '../assets/images/Contactus.svg';
 import contactlogo from '../assets/images/contactlogo.png';
 import OurMonthbyMonth from '../assets/images/OurMonthbyMonth.png'
+import img_1 from '../assets/images/img_1.jpg';
+import img_2 from '../assets/images/img_2.jpg';
+import img_3 from '../assets/images/img_3.jpg';
+import img_4 from '../assets/images/img_4.jpg';
+import img_5 from '../assets/images/img_5.jpg';
+import img_6 from '../assets/images/img_6.jpg';
+import img_7 from '../assets/images/img_7.jpg';
+import img_8 from '../assets/images/img_8.jpg';
+import img_9 from '../assets/images/img_9.jpg';
+import img_10 from '../assets/images/img_10.jpg';
+import img_11 from '../assets/images/img_11.jpg';
+import img_12 from '../assets/images/img_12.jpg';
+import img_13 from '../assets/images/img_13.jpg';
+import img_14 from '../assets/images/img_14.jpg';
+import img_15 from '../assets/images/img_15.jpg';
+import img_16 from '../assets/images/img_16.jpg';
+import img_17 from '../assets/images/img_17.jpg';
+import img_18 from '../assets/images/img_18.jpg';
+import img_19 from '../assets/images/img_19.jpg';
+import img_20 from '../assets/images/img_20.jpg';
+import img_21 from '../assets/images/img_21.jpg';
+import img_22 from '../assets/images/img_22.jpg';
+import img_23 from '../assets/images/img_23.jpg';
+import img_24 from '../assets/images/img_24.jpg';
+import img_25 from '../assets/images/img_25.jpg';
+import img_26 from '../assets/images/img_26.jpg';
+import img_27 from '../assets/images/img_27.jpg';
+import img_28 from '../assets/images/img_28.jpg';
+import img_29 from '../assets/images/img_29.jpg';
+import img_30 from '../assets/images/img_30.jpg';
+import img_31 from '../assets/images/img_31.jpg';
+import img_32 from '../assets/images/img_32.jpg';
+import img_33 from '../assets/images/img_33.jpg';
+import img_34 from '../assets/images/img_34.jpg';
+import img_35 from '../assets/images/img_35.jpg';
+import img_36 from '../assets/images/img_36.jpg';
+import img_37 from '../assets/images/img_37.jpg';
+import img_38 from '../assets/images/img_38.jpg';
+import img_39 from '../assets/images/img_39.jpg';
+import img_40 from '../assets/images/img_40.jpg';
+import img_41 from '../assets/images/img_41.jpg';
+import img_42 from '../assets/images/img_42.jpg';
+import img_43 from '../assets/images/img_43.jpg';
+import img_44 from '../assets/images/img_44.jpg';
+import img_45 from '../assets/images/img_45.jpg';
+import img_46 from '../assets/images/img_46.jpg';
+import img_47 from '../assets/images/img_47.jpg';
+import img_48 from '../assets/images/img_48.jpg';
+import img_49 from '../assets/images/img_49.jpg';
+import img_50 from '../assets/images/img_50.jpg';
+import img_51 from '../assets/images/img_51.jpg';
+import img_52 from '../assets/images/img_52.jpg';
+import img_53 from '../assets/images/img_53.jpg';
+import img_54 from '../assets/images/img_54.jpg';
+import img_55 from '../assets/images/img_55.jpg';
+import img_56 from '../assets/images/img_56.jpg';
+import img_57 from '../assets/images/img_57.jpg';
+import img_58 from '../assets/images/img_58.jpg';
+import img_59 from '../assets/images/img_59.jpg';
+import img_60 from '../assets/images/img_60.jpg';
+import img_61 from '../assets/images/img_61.jpg';
+import img_62 from '../assets/images/img_62.jpg';
+import img_63 from '../assets/images/img_63.jpg';
+import img_64 from '../assets/images/img_64.jpg';
+import img_65 from '../assets/images/img_65.jpg';
+import img_66 from '../assets/images/img_66.jpg';
+import img_67 from '../assets/images/img_67.jpg';
+import img_68 from '../assets/images/img_68.jpg';
+import img_69 from '../assets/images/img_69.jpg';
+import img_70 from '../assets/images/img_70.jpg';
+import img_71 from '../assets/images/img_71.jpg';
+import img_72 from '../assets/images/img_72.jpg';
+import img_73 from '../assets/images/img_73.jpg';
+import img_74 from '../assets/images/img_74.jpg';
+import img_75 from '../assets/images/img_75.jpg';
+import img_76 from '../assets/images/img_76.jpg';
+import img_77 from '../assets/images/img_77.jpg';
+import img_78 from '../assets/images/img_78.jpg';
+import img_79 from '../assets/images/img_79.jpg';
+import img_80 from '../assets/images/img_80.jpg';
+import img_81 from '../assets/images/img_81.jpg';
+import img_82 from '../assets/images/img_82.jpg';
+import img_83 from '../assets/images/img_83.jpg';
+import img_84 from '../assets/images/img_84.jpg';
 
 const GalleryPage: React.FC = () => {
   const [expandedAlbums, setExpandedAlbums] = useState<number[]>([]);
 
-  // All photos array for dynamic expansion
-  const allPhotos = [
-    OurMonthbyMonth_1, OurMonthbyMonth_2, OurMonthbyMonth_3, 
-    OurMonthbyMonth_4, OurMonthbyMonth_5, OurMonthbyMonth_6,
-    OurMonthbyMonth_1, OurMonthbyMonth_2, OurMonthbyMonth_3, // Additional photos
-    OurMonthbyMonth_4, OurMonthbyMonth_5, OurMonthbyMonth_6,
+  // Organize all 84 images into different albums
+  const allPhotosAlbum1 = [
+    img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, img_10,
+    img_11, img_12, img_13, img_14, img_15, img_16, img_17, img_18, img_19, img_20,
+    img_21, OurMonthbyMonth_1, OurMonthbyMonth_2, OurMonthbyMonth_3
+  ];
+
+  const allPhotosAlbum2 = [
+    img_22, img_23, img_24, img_25, img_26, img_27, img_28, img_29, img_30, img_31,
+    img_32, img_33, img_34, img_35, img_36, img_37, img_38, img_39, img_40, img_41,
+    img_42, OurMonthbyMonth_4, OurMonthbyMonth_5, OurMonthbyMonth_6
+  ];
+
+  const allPhotosAlbum3 = [
+    img_43, img_44, img_45, img_46, img_47, img_48, img_49, img_50, img_51, img_52,
+    img_53, img_54, img_55, img_56, img_57, img_58, img_59, img_60, img_61, img_62,
+    img_63, OurMonthbyMonth_1, OurMonthbyMonth_3, OurMonthbyMonth_5
+  ];
+
+  const allPhotosAlbum4 = [
+    img_64, img_65, img_66, img_67, img_68, img_69, img_70, img_71, img_72, img_73,
+    img_74, img_75, img_76, img_77, img_78, img_79, img_80, img_81, img_82, img_83,
+    img_84, OurMonthbyMonth_2, OurMonthbyMonth_4, OurMonthbyMonth_6
   ];
 
   const albumData = [
     {
       id: 1,
       month: "April 2025",
-      photoCount: "34 photos",
-      previewImages: [OurMonthbyMonth_1, OurMonthbyMonth_2, OurMonthbyMonth_3]
+      photoCount: `${allPhotosAlbum1.length} photos`,
+      previewImages: [img_1, img_2, img_3],
+      allPhotos: allPhotosAlbum1
     },
     {
       id: 2,
-      month: "April 2025", 
-      photoCount: "34 photos",
-      previewImages: [OurMonthbyMonth_4, OurMonthbyMonth_5, OurMonthbyMonth_6]
+      month: "March 2025", 
+      photoCount: `${allPhotosAlbum2.length} photos`,
+      previewImages: [img_22, img_23, img_24],
+      allPhotos: allPhotosAlbum2
     },
     {
       id: 3,
-      month: "April 2025",
-      photoCount: "34 photos", 
-      previewImages: [OurMonthbyMonth_1, OurMonthbyMonth_3, OurMonthbyMonth_5]
+      month: "February 2025",
+      photoCount: `${allPhotosAlbum3.length} photos`, 
+      previewImages: [img_43, img_44, img_45],
+      allPhotos: allPhotosAlbum3
     },
     {
       id: 4,
-      month: "April 2025",
-      photoCount: "34 photos",
-      previewImages: [OurMonthbyMonth_2, OurMonthbyMonth_4, OurMonthbyMonth_6]
+      month: "January 2025",
+      photoCount: `${allPhotosAlbum4.length} photos`,
+      previewImages: [img_64, img_65, img_66],
+      allPhotos: allPhotosAlbum4
     }
   ];
 
@@ -110,9 +215,9 @@ const GalleryPage: React.FC = () => {
                     {expandedAlbums.includes(album.id) && (
                       <div className="expanded-photos">
                         <div className="photos-grid">
-                          {allPhotos.map((photo, index) => (
+                          {album.allPhotos.map((photo, index) => (
                             <div key={index} className="photo-item">
-                              <img src={photo} alt={`Photo ${index + 1}`} />
+                              <img src={photo} alt={`${album.month} Photo ${index + 1}`} />
                             </div>
                           ))}
                         </div>

@@ -2,39 +2,54 @@
 @import '../mixins.scss';
 
 .home-page {
-  // Unified gradient background for the entire page
-  background: linear-gradient(135deg,
-    #fef7ff 0%,     // Light pink
-    #fff9e6 15%,    // Light yellow
-    #f0e6ff5d 30%,    // Light purple
-    #ffffff 45%,    // White
-    #fef7ff 60%,    // Light pink again
-    #f6e5f0 75%,    // Pink
-    #f9dd6343 90%,    // Yellow
-    #f0e6ff 100%    // Purple
-  );
+  // White background for the entire page initially
+  background: #ffffff;
   min-height: 100vh;
   max-width: 100wh;
   margin-top: -20px;
 
-  // Reshaping Tomorrow Section - Matching the design from images
+  // Reshaping Tomorrow Section - White background with yellow shadow behind text
   .reshaping-section {
-    padding: 0px 0px;
-    background: transparent;
+    padding: 80px 20px;
+    background: #ffffff; // Clean white background
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 
     .reshaping-header {
       text-align: center;
       margin-bottom: 60px;
+      position: relative;
+
+      // Yellow shadow behind the main heading
+      &::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 120px;
+        background: var(--Yellow-200, #FBECB2);
+        border-radius: 60px;
+        z-index: -1;
+        opacity: 0.8;
+        
+        @media (max-width: 768px) {
+          width: 90%;
+          height: 80px;
+        }
+      }
 
       h1 {
         font-size: 4rem;
         color: #333;
         margin-bottom: 20px;
         font-weight: 700;
+        position: relative;
+        z-index: 2;
 
         @media (max-width: 768px) {
           font-size: 2.5rem;
@@ -46,6 +61,8 @@
         color: #666;
         margin-bottom: 40px;
         font-weight: 400;
+        position: relative;
+        z-index: 2;
 
         @media (max-width: 768px) {
           font-size: 1.2rem;
@@ -56,6 +73,8 @@
         display: flex;
         justify-content: center;
         margin-top: 30px;
+        position: relative;
+        z-index: 2;
 
         .donate-button {
           background-color: #333;
@@ -104,57 +123,46 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        box-shadow: 0 8px 25px rgba(246, 242, 242, 0.08);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         min-height: 280px;
         flex: 1;
-        background: transparent;
-        border: none;
         backdrop-filter: blur(10px);
 
         &:hover {
           transform: translateY(-5px);
-
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
         }
 
         &.purple-card {
-          background-image: url('/assets/images/purplecard.svg');
-          background-size: 100% 100%;
-          background-repeat: no-repeat;
-          background-position: center;
           color: white;
-          border-radius: 40px 45px 45px 40px;
-          max-width: 290px;
-          min-width: 250px;
-          max-height: 340px;
-          min-height: 300px;
-          margin-top: -40px;
-          padding: 60px 40px 40px 40px;
+          border-radius: 20px 50px 40px 40px;
+          max-width: 280px;
+          min-width: 240px;
+          max-height: 300px;
 
           @media (max-width: 768px) {
             max-width: 100%;
-            min-height: 280px;
           }
 
           h2 {
-            font-size: 2.5rem;
-            margin-top: -20px;
+            font-size: 3rem;
+            margin-top: -30px;
             font-weight: 500;
-            color: #f0e6ff;
           }
 
           p {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-size: 1rem;
+            margin-bottom: 15px;
             line-height: 1.4;
             opacity: 0.95;
           }
         }
 
         &.image-card {
-          background-color: transparent;
           padding: 0;
           position: relative;
+          border-radius: 40px 40px 40px 80px;
           max-width: 300px;
           min-width: 260px;
           margin-top: 70px;
@@ -167,7 +175,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 40px 40px 40px 40px;
+            border-radius: 30px 80px 30px 30px;
           }
 
           .card-overlay {
@@ -179,7 +187,6 @@
             padding: 25px;
             border-radius: 0 0 30px 30px;
 
-
             h3 {
               color: white;
               font-size: 1.4rem;
@@ -190,10 +197,9 @@
         }
 
         &.image-card-second {
-          background-color: transparent;
           padding: 0;
           position: relative;
-
+          border-radius: 40px 40px 80px 40px;
           max-width: 280px;
           min-width: 240px;
           margin-top: 70px;
@@ -206,12 +212,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 40px 40px 40px 40px;
+            border-radius: 40px 40px 80px 40px;
           }
         }
 
         &.pink-card {
-          background: linear-gradient(135deg, #8E44AD3D,#E8BC0D3D);
+          background: linear-gradient(135deg, rgba(248, 229, 240, 0.9), rgba(240, 214, 230, 0.9));
           border-radius: 40px 40px 40px 40px;
           max-width: 280px;
           min-width: 240px;
@@ -234,17 +240,10 @@
         }
 
         &.yellow-card {
-          background-image: url('/assets/images/yellow.svg');
-          background-size: 100% 100%;
-          background-repeat: no-repeat;
-          background-position: center;
-          border-radius: 40px 45px 45px 40px;
-          max-width: 290px;
-          min-width: 250px;
-          max-height: 340px;
-          min-height: 300px;
-          margin-top: -40px;
-          padding: 60px 40px 40px 40px;
+          border-radius: 50px 20px 50px 50px;
+          max-width: 320px;
+          min-width: 280px;
+          max-height: 300px;
 
           @media (max-width: 768px) {
             max-width: 100%;
@@ -253,9 +252,8 @@
           p {
             font-size: 1.1rem;
             color: #333;
-            margin-top: 0;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            margin-bottom: 25px;
+            line-height: 1.6;
             font-weight: 500;
           }
         }
@@ -284,7 +282,7 @@
           }
         }
 
-         &.dark-cardtwo {
+        &.dark-cardtwo {
           margin-right: 1100px;
           margin-top: -140px;
           background: linear-gradient(135deg, rgba(51, 51, 51, 0.95), rgba(42, 42, 42, 0.95));
@@ -339,42 +337,36 @@
     }
   }
 
-   // Our Mission Section - Adjusted for banner overlay
+  // Our Mission Section - White background with reduced spacing
   .mission-section {
-    padding-top: 0; 
-    padding-bottom: 100px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 40px 20px 100px; // Reduced top padding
+    background: #ffffff; // White background for entire section
     position: relative;
-    overflow: hidden; 
-   
-     background: linear-gradient(135deg,#fdf8f0, #ffffff 100%);
-    min-height: 550px; /* Adjust this value to ensure enough space for the banner and content below it */
+    overflow: hidden;
 
     .mission-banner {
       position: absolute;
-      top: 0; /* Align to the very top of the mission-section */
+      top: 0;
       left: 0;
       width: 100%;
-      height: 520px; /* Increase height to show the full curve and allow content to overlap */
+      height: 520px;
       background-image: url('/assets/images/mission.svg');
-      background-size: cover; /* Ensures the SVG covers the banner area */
+      background-size: cover;
       background-repeat: no-repeat;
-      background-position: center top; /* Position the banner at the top center */
-      z-index: 0; /* This places it behind other content */
+      background-position: center top;
+      z-index: 0;
 
       @media (max-width: 768px) {
-        height: 250px; /* Adjust height for smaller screens if needed */
+        height: 250px;
       }
     }
 
     .mission-header {
       text-align: center;
       max-width: 800px;
-      margin: 0 auto; /* Center content horizontally */
-      margin-top: 100px; /* PULLS THE HEADER UP to sit on top of the banner */
-      position: relative; /* Creates a new stacking context */
-      z-index: 1; /* Ensures header content is above the banner */
+      margin: 100px auto 80px; // Added more spacing: top and bottom
+      position: relative;
+      z-index: 1;
 
       .mission-icon {
         width: 100px;
@@ -386,7 +378,6 @@
         align-items: center;
         justify-content: center;
         box-shadow: 0 10px 30px rgba(156, 107, 189, 0.3);
-        
 
         .icon-target {
           font-size: 2.5rem;
@@ -394,10 +385,14 @@
       }
 
       h2 {
-        font-size: 3rem;
+        font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 52px;
+        line-height: 56px;
+        letter-spacing: 0%;
+        text-align: center;
         color: #333;
         margin-bottom: 25px;
-        font-weight: 700;
 
         @media (max-width: 768px) {
           font-size: 2.2rem;
@@ -405,56 +400,71 @@
       }
 
       .mission-description {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         color: #555;
         line-height: 1.8;
         font-weight: 400;
 
         @media (max-width: 768px) {
-          font-size: 1rem;
+          font-size: 1.1rem;
         }
       }
     }
 
     .video-slider {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 120px auto 0; // Increased top margin to prevent overlap
       position: relative;
-      z-index: 1; /* Ensure video slider is also above the banner if it extends that far */
-      margin-top: 200px; /* Add some space between description and video slider */
+      z-index: 1;
 
       .slider-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         gap: 30px;
         margin-bottom: 50px;
+        flex-wrap: wrap;
 
         @media (max-width: 1024px) {
-          grid-template-columns: repeat(2, 1fr);
           gap: 25px;
         }
 
         @media (max-width: 768px) {
-          grid-template-columns: 1fr;
+          flex-direction: column;
           gap: 20px;
         }
 
         .slide {
           display: block;
+          flex: 0 0 auto; // Don't grow or shrink, maintain natural size
 
           .video-wrapper {
             position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; // 16:9 aspect ratio
-            border-radius: 25px;
+            width: 380px; // Slightly smaller for better spacing
+            height: 320px; // Reduced height significantly
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(10px);
+            background: transparent;
+            margin: 0 auto; // Center each video card
+            
+            // Clean appearance without shadows
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+            @media (max-width: 1024px) {
+              width: 340px;
+              height: 280px; // Proportionally reduced
+            }
+
+            @media (max-width: 768px) {
+              width: 100%;
+              max-width: 380px;
+              height: 240px; // Smaller for mobile
+            }
 
             &:hover {
               transform: translateY(-8px);
-              box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+              box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             }
 
             .video-thumbnail {
@@ -465,7 +475,7 @@
               height: 100%;
               background-size: cover;
               background-position: center;
-              border-radius: 25px;
+              border-radius: 20px;
 
               &::before {
                 content: '';
@@ -480,7 +490,7 @@
                   rgba(122, 77, 151, 0.15) 100%
                 );
                 z-index: 1;
-                border-radius: 25px;
+                border-radius: 20px;
               }
             }
 
@@ -490,7 +500,7 @@
               left: 0;
               width: 100%;
               height: 100%;
-              border-radius: 25px;
+              border-radius: 20px;
               border: none;
               z-index: 3;
             }
@@ -511,7 +521,6 @@
               transition: all 0.3s ease;
               box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
               z-index: 2;
-             
 
               &:hover {
                 background: rgba(255, 255, 255, 1);
@@ -536,8 +545,6 @@
         gap: 20px;
 
         button {
-          background: rgba(255, 255, 255, 0.8);
-          border: 3px solid #9c6bbd;
           width: 60px;
           height: 60px;
           border-radius: 50%;
@@ -546,22 +553,29 @@
           justify-content: center;
           cursor: pointer;
           transition: all 0.3s ease;
-          backdrop-filter: blur(10px);
-          margin-bottom: 70px;
+          font-size: 1.4rem;
+          font-weight: bold;
 
-          span {
+          &.prev-button {
+            background: transparent;
+            border: 2px solid #9c6bbd;
             color: #9c6bbd;
-            font-size: 1.4rem;
-            font-weight: bold;
+
+            &:hover {
+              background: rgba(156, 107, 189, 0.1);
+              transform: scale(1.05);
+            }
           }
 
-          &:hover {
-            background-color: #9c6bbd;
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(156, 107, 189, 0.3);
+          &.next-button {
+            background: #2d3748;
+            border: 2px solid #2d3748;
+            color: white;
 
-            span {
-              color: white;
+            &:hover {
+              background: #1a202c;
+              border-color: #1a202c;
+              transform: scale(1.05);
             }
           }
 
@@ -577,8 +591,6 @@
   .impact-section {
     background: transparent;
     padding: 100px 20px;
-    
-   
 
     .section-title {
       text-align: center;
@@ -743,9 +755,11 @@
     }
 
     .mission-section {
-      padding: 80px 15px; /* Adjust padding for smaller screens */
+      padding: 30px 15px 80px;
 
       .mission-header {
+        margin-top: 40px;
+
         .mission-icon {
           width: 80px;
           height: 80px;
@@ -765,13 +779,20 @@
       }
 
       .video-slider {
-        .slider-container {
-          .slide .video-wrapper .play-button {
-            width: 70px;
-            height: 70px;
+        margin-top: 100px;
 
-            span {
-              font-size: 1.6rem;
+        .slider-container {
+          .slide .video-wrapper {
+            width: 100%;
+            height: 250px;
+
+            .play-button {
+              width: 70px;
+              height: 70px;
+
+              span {
+                font-size: 1.6rem;
+              }
             }
           }
         }

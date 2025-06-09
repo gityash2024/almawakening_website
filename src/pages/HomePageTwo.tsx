@@ -144,6 +144,9 @@ const useInView = (): [React.RefObject<HTMLDivElement | null>, boolean] => {
                 <section className="nothing-changes-section">
                     <div className="container">
                         <div className="content-wrapper">
+                            <div className="image-container">
+                                <img src={nothing_changes} alt="Community gathering" />
+                            </div>
                             <div className="text-content">
                                 <h1>Nothing Changes If Nothing Changes</h1>
                                 <p className="author">-Donna Barnes</p>
@@ -157,9 +160,6 @@ const useInView = (): [React.RefObject<HTMLDivElement | null>, boolean] => {
                                     compassion, and unwavering commitment, we aim to bring hope, inspire 
                                     change, and build a future where no one is left behind.
                                 </p>
-                            </div>
-                            <div className="image-container">
-                                <img src={nothing_changes} alt="Community gathering" />
                             </div>
                         </div>
                     </div>
