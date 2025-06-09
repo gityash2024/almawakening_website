@@ -12,6 +12,7 @@ import FreeMedicalCamp from '../assets/images/FreeMedicalCamp.png';
 import CleanUpDriveWorld from '../assets/images/CleanUpDriveWorld.png';
 import questionMark from '../assets/images/questionMark.svg';
 
+
 const EventsPage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentGallerySlide, setCurrentGallerySlide] = useState(0);
@@ -62,8 +63,9 @@ const EventsPage: React.FC = () => {
       description: "Forem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate.",
       date: "Date: 15 March 2025",
       location: "Location: Jaipur",
-      image: WomenEmpowermentTraining,
-      color: "purple"
+      // Use the specific background image for the card shape
+      backgroundImage: WomenEmpowermentTraining, // Changed from `image` to `backgroundImage` for clarity
+      colorClass: "purple-card" // Using a class to target specific styling
     },
     {
       id: 2,
@@ -71,8 +73,9 @@ const EventsPage: React.FC = () => {
       description: "Providing consultations and medicines to 800+ villagers",
       date: "Date: 5 February 2025",
       location: "Location: Nashik",
-      image: FreeMedicalCamp,
-      color: "pink"
+      // Use the specific background image for the card shape
+      backgroundImage: FreeMedicalCamp, // Changed from `image` to `backgroundImage` for clarity
+      colorClass: "pink-card" // Using a class to target specific styling
     },
     {
       id: 3,
@@ -80,8 +83,9 @@ const EventsPage: React.FC = () => {
       description: "300+ volunteers collecting more than 1,200kg of waste",
       date: "Date: 16 September 2024",
       location: "Location: Mumbai Beaches",
-      image: CleanUpDriveWorld,
-      color: "yellow"
+      // Use the specific background image for the card shape
+      backgroundImage: CleanUpDriveWorld, // Changed from `image` to `backgroundImage` for clarity
+      colorClass: "yellow-card" // Using a class to target specific styling
     }
   ];
 
@@ -187,8 +191,12 @@ const EventsPage: React.FC = () => {
             <div className="container">
               <div className="events-grid">
                 {events.map((event) => (
-                  <div key={event.id} className={`event-card ${event.color}`}>
-                    <div className="event-background" style={{ backgroundImage: `url(${event.image})` }}></div>
+                  <div key={event.id}
+                       className={`event-card ${event.colorClass}`} // Use colorClass here
+                       style={{ backgroundImage: `url(${event.backgroundImage})` }} // Apply the background image directly
+                  >
+                    {/* The event-background div is no longer needed for the shape as we're applying it to .event-card */}
+                    {/* <div className="event-background" style={{ backgroundImage: `url(${event.image})` }}></div> */}
                     <div className="event-content">
                       <h3>{event.title}</h3>
                       <p className="event-description">{event.description}</p>
@@ -210,7 +218,7 @@ const EventsPage: React.FC = () => {
               </div>
             </div>
           </section>
-
+          
           {/* Dynamic Gallery Section - Image 3 */}
           <section className="gallery-section">
             <div className="container">

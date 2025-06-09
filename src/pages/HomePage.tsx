@@ -7,6 +7,9 @@ import Donate_1 from '../assets/images/Donate_1.png';
 import Donate_2 from '../assets/images/Donate_2.png';
 import HomePageTwo from './HomePageTwo';
 import HomePageThree from './HomePageThree';
+import purplecard from '../assets/images/purplecard.svg';
+import yellow from '../assets/images/yellow.svg';
+import mission from '../assets/images/mission.svg'; // Imported mission SVG
 
 
 const HomePage: React.FC = () => {
@@ -78,7 +81,15 @@ const HomePage: React.FC = () => {
             </div>
             
             <div className="cards-container">
-              <div className="card purple-card">
+              <div 
+                className="card purple-card"
+                style={{
+                  backgroundImage: `url(${purplecard})`,
+                  backgroundSize: '100% 100%', // Cover the entire card area
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                }}
+              >
                 <h2>65%</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
                 <button className="card-button">Donate Now <span>→</span></button>
@@ -87,7 +98,6 @@ const HomePage: React.FC = () => {
               <div className="card image-card">
                 <img src={Donate_1} alt="Person with prosthetic leg" />
                 <div className="card-overlay">
-                  <h3>Let Them Be Heard.</h3>
                 </div>
               </div>
               
@@ -100,7 +110,15 @@ const HomePage: React.FC = () => {
                 <img src={Donate_2} alt="Person blowing dandelion" />
               </div>
               
-              <div className="card yellow-card">
+              <div 
+                className="card yellow-card"
+                style={{
+                  backgroundImage: `url(${yellow})`,
+                  backgroundSize: '100% 100%', // Cover the entire card area
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                }}
+              >
                 <p>At Almawakening Foundation, we help people build better lives through education, healthcare, and strong communities.</p>
                 <button className="card-button">Explore more <span>→</span></button>
               </div>
@@ -114,18 +132,27 @@ const HomePage: React.FC = () => {
             </div>
           </section>
 
-          {/* Our Mission Section */}
-          <section className="mission-section">
-            <div className="mission-header">
+           {/* Our Mission Section */}
+          <section
+            className="mission-section"
+            // Ensure there is NO inline style prop here like style={{ backgroundImage: `url(${mission})` }}
+          >
+            {/* THIS IS THE BANNER ELEMENT THAT WILL BE POSITIONED */}
+            <div className="mission-banner"></div>
+
+            <div
+              className="mission-header"
+              // Ensure no inline style here
+            >
               <div className="mission-icon">
                 <span className="icon-target">🎯</span>
               </div>
               <h2>Our Mission</h2>
               <p className="mission-description">
-                At Almawakening Foundation, we believe in transforming lives through education, 
-                healthcare, and community empowerment. Our goal is to create sustainable 
+                At Almawakening Foundation, we believe in transforming lives through education,
+                healthcare, and community empowerment. Our goal is to create sustainable
                 change by providing support where it's needed the most.
-              </p>
+              </p>      
             </div>
 
             <div className="video-slider" ref={sliderRef}>
@@ -146,7 +173,7 @@ const HomePage: React.FC = () => {
                             className="play-button"
                             onClick={() => handlePlayVideo(video.id)}
                           >
-                            <span>▶</span>
+                            <span>▶️</span>
                           </div>
                         </div>
                       ) : (

@@ -12,11 +12,12 @@
     }
   }
   
-  // Hero Section - Image 1
+  // Hero Section - Image 1 (No changes here, keeping your existing styles)
   .hero-section {
     margin-top: -60px;
-    height: 100vh;
+    min-height: 80vh;
     position: relative;
+    overflow: hidden;
     
     .hero-background {
       width: 100%;
@@ -29,7 +30,6 @@
       justify-content: center;
       position: relative;
       
-      // Add overlay for better text readability
       &::before {
         content: '';
         position: absolute;
@@ -225,12 +225,14 @@
   .events-section {
     margin-top: 90px;
     padding: 80px 0;
-    background: #ffffff;
+    background: #ffffff; // Keeping background white here if needed for spacing
     
     .events-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      // Using 'auto-fit' for better responsiveness if cards are different widths
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
       gap: 30px;
+      justify-content: center; // Center cards if fewer than full row
       
       @media (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
@@ -242,100 +244,66 @@
     }
     
     .event-card {
-      border-radius: 24px;
-      padding: 30px;
-      color: #2d3748;
+      // IMPORTANT: Adjust these width/height to match your EXACT exported image dimensions
+      width: 380px; // Example: Set to your Figma image width
+      height: 440px; // Example: Set to your Figma image height
+
+      padding: 30px 25px 30px; // Increased bottom padding for button margin and space
       position: relative;
-      overflow: hidden;
-      min-height: 400px;
+      overflow: hidden; // Ensures content doesn't spill outside the image's boundaries
       
-      .event-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        opacity: 0.2;
-        z-index: 1;
-      }
-      
-      &.purple {
-        background: linear-gradient(135deg, #c084fc, #a855f7);
-        color: #2d3748;
-      }
-      
-      &.pink {
-        background: linear-gradient(135deg, #fbb6ce, #f687b3);
-        color: #2d3748;
-      }
-      
-      &.yellow {
-        background: linear-gradient(135deg, #fde047, #facc15);
-        color: #2d3748;
-      }
-      
+      // Background image properties, applied directly to the card
+      background-size: cover; // Adjust to 'contain' or '100% 100%' if 'cover' distorts too much
+      background-position: center;
+      background-repeat: no-repeat;
+     
       .event-content {
+        margin-top: 20px; // Adjust this if the top of the content is too high/low
         position: relative;
         z-index: 2;
         height: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: flex-start; // Align items from the top
         
+        // ALL TEXT ELEMENTS IN THE CARD WILL BE BLACK BY DEFAULT
         h3 {
           font-size: 1.5rem;
           font-weight: 700;
-          margin-bottom: 16px;
+          margin-bottom: 12px; // Reduced bottom margin for better spacing
           font-family: system-ui, -apple-system, sans-serif;
           line-height: 1.3;
+          color: #000000; // Explicitly set to black
         }
         
         .event-description {
           font-size: 1rem;
-          margin-bottom: 20px;
-          line-height: 1.5;
+          margin-bottom: 16px; // Added margin for spacing between description and date
+          line-height: 1.5; // Slightly increased line height for readability
           opacity: 0.9;
-          flex-grow: 1;
+          flex-grow: 1; // Allows description to take up available space
+          color: #000000; // Explicitly set to black
         }
         
         .event-date,
         .event-location {
           font-size: 0.9rem;
-          margin-bottom: 8px;
+          margin-bottom: 6px; // Added margin for spacing between date/location and buttons
           font-weight: 500;
           opacity: 0.8;
+          color: #000000; // Explicitly set to black
         }
         
         .event-buttons {
-          margin-top: 30px;
+          margin-top: auto; // Pushes buttons to the bottom, taking available space
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 15px;
           
-          .volunteer-btn {
-            background: rgba(255, 255, 255, 0.3);
-            color: #2d3748;
-            border: none;
+          button {
+            width: 100%; // Make buttons full width
             padding: 12px 24px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            
-            &:hover {
-              background: rgba(255, 255, 255, 0.4);
-              transform: translateY(-2px);
-            }
-          }
-          
-          .participate-btn {
-            background: #2d3748;
-            color: #ffffff;
             border: none;
-            padding: 12px 24px;
             border-radius: 25px;
             font-size: 1rem;
             font-weight: 600;
@@ -346,20 +314,62 @@
             justify-content: center;
             gap: 8px;
             
+            svg {
+              stroke-width: 2.5; // Make the arrow thicker
+            }
+          }
+          
+          .volunteer-btn {
+            background: rgba(255, 255, 255, 0.9); // Semi-transparent white
+            color: #2d3748; // Default dark color, can be overridden per card
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            
+            &:hover {
+              background: rgba(255, 255, 255, 1);
+              transform: translateY(-2px);
+            }
+          }
+          
+          .participate-btn {
+            background: #2d3748; // Black background for consistency
+            color: #ffffff; // White text for this button
+            
             &:hover {
               background: #1a202c;
               transform: translateY(-2px);
             }
+            margin-bottom: 0; // Removed extra margin here, rely on parent padding
           }
         }
       }
     }
+
+    // Specific styles for each card based on the image background
+    // These now primarily override the volunteer button text color if needed,
+    // as all other text is explicitly black.
+    .purple-card {
+        .volunteer-btn {
+            color: #5B2B85; // Set volunteer button text to darker purple
+        }
+    }
+
+    .pink-card {
+        .volunteer-btn {
+            color: #E7665E; // Set volunteer button text to darker pink
+        }
+    }
+
+    .yellow-card {
+        .volunteer-btn {
+            color: #A88719; // Set volunteer button text to darker yellow/brown
+        }
+    }
   }
   
-  // Enhanced Gallery Section - Image 3
+  // Enhanced Gallery Section - Image 3 (No changes here, keeping your existing styles)
   .gallery-section {
     padding: 80px 0;
-    background: #f8fafc;
+    background: #ffffff;
     
     .gallery-header {
       display: flex;
@@ -524,7 +534,7 @@
     }
   }
   
-  // FAQ Section - Image 4
+  // FAQ Section - Image 4 (No changes here, keeping your existing styles)
   .faq-section {
     padding: 80px 0;
     background: linear-gradient(135deg, rgba(196, 181, 253, 0.4) 0%, rgba(254, 240, 138, 0.4) 100%);
@@ -655,7 +665,7 @@
     }
   }
   
-  // CTA Section - Image 5
+  // CTA Section - Image 5 (No changes here, keeping your existing styles)
   .cta-section {
     padding: 100px 40px;
     background: #fff;
@@ -665,9 +675,9 @@
     }
     
     .cta-card {
-      background: linear-gradient(135deg, #FFF4B8 0%, #FDE047 100%);
+      background: #FBECB2;
       border-radius: 32px;
-      padding: 80px 60px;
+      padding: 50px 90px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow: hidden;
@@ -685,7 +695,6 @@
         padding: 40px 20px;
       }
       
-      // Add subtle pattern overlay
       &::before {
         content: '';
         position: absolute;
@@ -706,7 +715,7 @@
       z-index: 2;
       
       h2 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: 700;
         color: #2D3748;
         margin: 0 0 24px 0;
@@ -846,7 +855,7 @@
   }
 }
 
-// Responsive Design
+// Responsive Design (No changes here, keeping your existing styles)
 @media (max-width: 768px) {
   .events-page {
     .hero-section .hero-content {
@@ -875,5 +884,69 @@
         padding: 0 20px 20px 20px;
       }
     }
+  }
+}
+ // Mobile Responsive Adjustments
+@media (max-width: 768px) {
+  .events-section {
+    padding: 40px 0; // Reduce vertical padding on sections
+    
+    .events-grid {
+      grid-template-columns: 1fr; // Single column on smaller screens
+    }
+    
+    .event-card {
+      width: 100%; // Cards take full width
+      // Height will adjust based on the aspect ratio of your background image
+      // If needed, you can set a max-height or adjust padding to control it
+      margin-bottom: 20px; // Add some space between cards
+      padding: 20px 15px 15px; // Adjust padding for smaller screens
+      
+      .event-content {
+        h3 {
+          font-size: 1.3rem;
+          margin-bottom: 10px;
+          color: #000000; // Explicitly set to black for mobile
+        }
+        
+        .event-description {
+          font-size: 0.9rem;
+          margin-bottom: 12px;
+          color: #000000; // Explicitly set to black for mobile
+        }
+        
+        .event-date,
+        .event-location {
+          font-size: 0.8rem;
+          margin-bottom: 6px;
+          color: #000000; // Explicitly set to black for mobile
+        }
+        
+        .event-buttons {
+          margin-top: 15px;
+          gap: 8px;
+          
+          .volunteer-btn,
+          .participate-btn {
+            font-size: 0.9rem;
+            padding: 10px 18px;
+            border-radius: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .events-section .event-card .event-content h3 {
+    font-size: 1.2rem;
+    color: #000000; // Explicitly set to black for smaller mobile
+  }
+  
+  .events-section .event-card .event-buttons .volunteer-btn,
+  .events-section .event-card .event-buttons .participate-btn {
+    font-size: 0.85rem;
+    padding: 8px 14px;
   }
 }

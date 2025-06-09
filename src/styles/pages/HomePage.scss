@@ -3,60 +3,60 @@
 
 .home-page {
   // Unified gradient background for the entire page
-  background: linear-gradient(135deg, 
+  background: linear-gradient(135deg,
     #fef7ff 0%,     // Light pink
     #fff9e6 15%,    // Light yellow
-    #f0e6ff 30%,    // Light purple
+    #f0e6ff5d 30%,    // Light purple
     #ffffff 45%,    // White
     #fef7ff 60%,    // Light pink again
     #f6e5f0 75%,    // Pink
-    #f9dd63 90%,    // Yellow
+    #f9dd6343 90%,    // Yellow
     #f0e6ff 100%    // Purple
   );
   min-height: 100vh;
   max-width: 100wh;
   margin-top: -20px;
-  
+
   // Reshaping Tomorrow Section - Matching the design from images
   .reshaping-section {
-    padding: 80px 20px;
-    background: transparent; // Remove individual background
+    padding: 0px 0px;
+    background: transparent;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
     .reshaping-header {
       text-align: center;
       margin-bottom: 60px;
-      
+
       h1 {
         font-size: 4rem;
         color: #333;
         margin-bottom: 20px;
         font-weight: 700;
-        
+
         @media (max-width: 768px) {
           font-size: 2.5rem;
         }
       }
-      
+
       p {
         font-size: 1.5rem;
         color: #666;
         margin-bottom: 40px;
         font-weight: 400;
-        
+
         @media (max-width: 768px) {
           font-size: 1.2rem;
         }
       }
-      
+
       .donate-button-container {
         display: flex;
         justify-content: center;
         margin-top: 30px;
-        
+
         .donate-button {
           background-color: #333;
           color: white;
@@ -68,7 +68,7 @@
           cursor: pointer;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          
+
           &:hover {
             background-color: #444;
             transform: translateY(-3px);
@@ -77,7 +77,7 @@
         }
       }
     }
-    
+
     .cards-container {
       display: flex;
       flex-wrap: wrap;
@@ -87,80 +87,89 @@
       padding: 0 20px;
       align-items: stretch;
       justify-content: center;
-      
+
       @media (max-width: 1200px) {
         flex-wrap: wrap;
         justify-content: center;
       }
-      
+
       @media (max-width: 768px) {
         flex-direction: column;
         gap: 20px;
       }
-      
+
       .card {
         overflow: hidden;
         padding: 35px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 8px 25px rgba(246, 242, 242, 0.08);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         min-height: 280px;
         flex: 1;
-        backdrop-filter: blur(10px); // Add glass effect
-        
+        background: transparent;
+        border: none;
+        backdrop-filter: blur(10px);
+
         &:hover {
           transform: translateY(-5px);
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+
         }
-        
+
         &.purple-card {
-          background: linear-gradient(135deg, #9c6bbd, #8a5aa5);
+          background-image: url('/assets/images/purplecard.svg');
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-position: center;
           color: white;
-          border-radius: 20px 50px 40px 40px;
-          max-width: 280px;
-          min-width: 240px;
-           max-height: 300px;
-          
-          
+          border-radius: 40px 45px 45px 40px;
+          max-width: 290px;
+          min-width: 250px;
+          max-height: 340px;
+          min-height: 300px;
+          margin-top: -40px;
+          padding: 60px 40px 40px 40px;
+
           @media (max-width: 768px) {
             max-width: 100%;
+            min-height: 280px;
           }
-          
+
           h2 {
-            font-size: 3rem;
-            margin-top: -30px;
+            font-size: 2.5rem;
+            margin-top: -20px;
             font-weight: 500;
+            color: #f0e6ff;
           }
-          
+
           p {
-            font-size: 1rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             line-height: 1.4;
             opacity: 0.95;
           }
         }
-        
+
         &.image-card {
+          background-color: transparent;
           padding: 0;
           position: relative;
-          border-radius: 40px 40px 40px 80px;
           max-width: 300px;
           min-width: 260px;
           margin-top: 70px;
-          
+
           @media (max-width: 768px) {
             max-width: 100%;
           }
-          
+
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 30px 80px 30px 30px;
+            border-radius: 40px 40px 40px 40px;
           }
-          
+
           .card-overlay {
             position: absolute;
             bottom: 0;
@@ -169,8 +178,8 @@
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             padding: 25px;
             border-radius: 0 0 30px 30px;
-            
-            
+
+
             h3 {
               color: white;
               font-size: 1.4rem;
@@ -179,29 +188,30 @@
             }
           }
         }
-        
+
         &.image-card-second {
+          background-color: transparent;
           padding: 0;
           position: relative;
-          border-radius: 40px 40px 80px 40px;
+
           max-width: 280px;
           min-width: 240px;
           margin-top: 70px;
-          
+
           @media (max-width: 768px) {
             max-width: 100%;
           }
-          
+
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 40px 40px 80px 40px;
+            border-radius: 40px 40px 40px 40px;
           }
         }
-        
+
         &.pink-card {
-          background: linear-gradient(135deg, rgba(248, 229, 240, 0.9), rgba(240, 214, 230, 0.9));
+          background: linear-gradient(135deg, #8E44AD3D,#E8BC0D3D);
           border-radius: 40px 40px 40px 40px;
           max-width: 280px;
           min-width: 240px;
@@ -209,11 +219,11 @@
           min-height: 190px;
           border: 1px solid rgba(255, 255, 255, 0.2);
           margin-top: 220px;
-          
+
           @media (max-width: 768px) {
             max-width: 100%;
           }
-          
+
           h3 {
             font-size: 1.3rem;
             color: #333;
@@ -222,28 +232,34 @@
             line-height: 1.4;
           }
         }
-        
+
         &.yellow-card {
-          background: linear-gradient(135deg, rgba(249, 221, 99, 0.9), rgba(245, 212, 74, 0.9));
-          border-radius: 50px 20px 50px 50px;
-          max-width: 320px;
-          min-width: 280px;
-          max-height: 300px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          
+          background-image: url('/assets/images/yellow.svg');
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+          border-radius: 40px 45px 45px 40px;
+          max-width: 290px;
+          min-width: 250px;
+          max-height: 340px;
+          min-height: 300px;
+          margin-top: -40px;
+          padding: 60px 40px 40px 40px;
+
           @media (max-width: 768px) {
             max-width: 100%;
           }
-          
+
           p {
             font-size: 1.1rem;
             color: #333;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            margin-top: 0;
+            margin-bottom: 10px;
+            line-height: 1.4;
             font-weight: 500;
           }
         }
-        
+
         &.dark-card {
           margin-left: 1100px;
           margin-top: -110px;
@@ -255,11 +271,11 @@
           min-height: auto;
           max-height: 120px;
           border: 1px solid rgba(255, 255, 255, 0.1);
-          
+
           @media (max-width: 768px) {
             max-width: 100%;
           }
-          
+
           h3 {
             font-size: 20px;
             font-weight: 500;
@@ -267,7 +283,7 @@
             color: #f0e6ff;
           }
         }
-        
+
          &.dark-cardtwo {
           margin-right: 1100px;
           margin-top: -140px;
@@ -279,11 +295,11 @@
           min-height: auto;
           max-height: 120px;
           border: 1px solid rgba(255, 255, 255, 0.1);
-          
+
           @media (max-width: 768px) {
             max-width: 100%;
           }
-          
+
           h3 {
             font-size: 20px;
             font-weight: 500;
@@ -291,12 +307,12 @@
             color: #f0e6ff;
           }
         }
-        
+
         .card-button {
           align-self: flex-start;
           background: rgba(202, 198, 198, 0.256);
           border-radius: 40px;
-          border-radius: 1px solid black;
+          border: 1px solid rgba(0, 0, 0, 0);
           color: inherit;
           font-size: 1rem;
           font-weight: 600;
@@ -304,16 +320,16 @@
           cursor: pointer;
           display: flex;
           transition: all 0.3s ease;
-          
+
           span {
             margin-left: 8px;
             transition: transform 0.3s ease;
             font-size: 1.2rem;
           }
-          
+
           &:hover {
             opacity: 0.8;
-            
+
             span {
               transform: translateX(5px);
             }
@@ -322,17 +338,44 @@
       }
     }
   }
-  
-  // Our Mission Section - Matching the design from images
+
+   // Our Mission Section - Adjusted for banner overlay
   .mission-section {
-    padding: 100px 20px;
-    background: transparent; // Remove individual background
-    
+    padding-top: 0; 
+    padding-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    overflow: hidden; 
+   
+     background: linear-gradient(135deg,#fdf8f0, #ffffff 100%);
+    min-height: 550px; /* Adjust this value to ensure enough space for the banner and content below it */
+
+    .mission-banner {
+      position: absolute;
+      top: 0; /* Align to the very top of the mission-section */
+      left: 0;
+      width: 100%;
+      height: 520px; /* Increase height to show the full curve and allow content to overlap */
+      background-image: url('/assets/images/mission.svg');
+      background-size: cover; /* Ensures the SVG covers the banner area */
+      background-repeat: no-repeat;
+      background-position: center top; /* Position the banner at the top center */
+      z-index: 0; /* This places it behind other content */
+
+      @media (max-width: 768px) {
+        height: 250px; /* Adjust height for smaller screens if needed */
+      }
+    }
+
     .mission-header {
       text-align: center;
       max-width: 800px;
-      margin: 0 auto 80px;
-      
+      margin: 0 auto; /* Center content horizontally */
+      margin-top: 100px; /* PULLS THE HEADER UP to sit on top of the banner */
+      position: relative; /* Creates a new stacking context */
+      z-index: 1; /* Ensures header content is above the banner */
+
       .mission-icon {
         width: 100px;
         height: 100px;
@@ -344,58 +387,61 @@
         justify-content: center;
         box-shadow: 0 10px 30px rgba(156, 107, 189, 0.3);
         
+
         .icon-target {
           font-size: 2.5rem;
         }
       }
-      
+
       h2 {
         font-size: 3rem;
         color: #333;
         margin-bottom: 25px;
         font-weight: 700;
-        
+
         @media (max-width: 768px) {
           font-size: 2.2rem;
         }
       }
-      
+
       .mission-description {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: #555;
         line-height: 1.8;
         font-weight: 400;
-        
+
         @media (max-width: 768px) {
-          font-size: 1.1rem;
+          font-size: 1rem;
         }
       }
     }
-    
+
     .video-slider {
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
-      
+      z-index: 1; /* Ensure video slider is also above the banner if it extends that far */
+      margin-top: 200px; /* Add some space between description and video slider */
+
       .slider-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
         margin-bottom: 50px;
-        
+
         @media (max-width: 1024px) {
           grid-template-columns: repeat(2, 1fr);
           gap: 25px;
         }
-        
+
         @media (max-width: 768px) {
           grid-template-columns: 1fr;
           gap: 20px;
         }
-        
+
         .slide {
           display: block;
-          
+
           .video-wrapper {
             position: relative;
             width: 100%;
@@ -405,12 +451,12 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             backdrop-filter: blur(10px);
-            
+
             &:hover {
               transform: translateY(-8px);
               box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
             }
-            
+
             .video-thumbnail {
               position: absolute;
               top: 0;
@@ -420,7 +466,7 @@
               background-size: cover;
               background-position: center;
               border-radius: 25px;
-              
+
               &::before {
                 content: '';
                 position: absolute;
@@ -429,15 +475,15 @@
                 right: 0;
                 bottom: 0;
                 background: linear-gradient(
-                  135deg, 
-                  rgba(156, 107, 189, 0.15) 0%, 
+                  135deg,
+                  rgba(156, 107, 189, 0.15) 0%,
                   rgba(122, 77, 151, 0.15) 100%
                 );
                 z-index: 1;
                 border-radius: 25px;
               }
             }
-            
+
             iframe {
               position: absolute;
               top: 0;
@@ -448,7 +494,7 @@
               border: none;
               z-index: 3;
             }
-            
+
             .play-button {
               position: absolute;
               top: 50%;
@@ -465,29 +511,30 @@
               transition: all 0.3s ease;
               box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
               z-index: 2;
-              
+             
+
               &:hover {
                 background: rgba(255, 255, 255, 1);
                 transform: translate(-50%, -50%) scale(1.15);
                 box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
               }
-              
+
               span {
                 color: #9c6bbd;
                 font-size: 2rem;
-                margin-left: 4px; // Slight adjustment for visual centering
+                margin-left: 4px;
                 font-weight: bold;
               }
             }
           }
         }
       }
-      
+
       .slider-controls {
         display: flex;
         justify-content: center;
         gap: 20px;
-        
+
         button {
           background: rgba(255, 255, 255, 0.8);
           border: 3px solid #9c6bbd;
@@ -500,23 +547,24 @@
           cursor: pointer;
           transition: all 0.3s ease;
           backdrop-filter: blur(10px);
-          
+          margin-bottom: 70px;
+
           span {
             color: #9c6bbd;
             font-size: 1.4rem;
             font-weight: bold;
           }
-          
+
           &:hover {
             background-color: #9c6bbd;
             transform: scale(1.1);
             box-shadow: 0 5px 15px rgba(156, 107, 189, 0.3);
-            
+
             span {
               color: white;
             }
           }
-          
+
           &:active {
             transform: scale(0.95);
           }
@@ -524,24 +572,26 @@
       }
     }
   }
-  
+
   // Impact Section
   .impact-section {
-    background: transparent; // Remove individual background
+    background: transparent;
     padding: 100px 20px;
     
+   
+
     .section-title {
       text-align: center;
       margin-bottom: 60px;
       font-size: 3rem;
       color: #333;
       font-weight: 700;
-      
+
       @media (max-width: 768px) {
         font-size: 2.2rem;
       }
     }
-    
+
     .impact-grid {
       max-width: 1200px;
       margin: 0 auto;
@@ -549,36 +599,36 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 40px;
-      
+
       @media (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
       }
-      
+
       @media (max-width: 768px) {
         grid-template-columns: 1fr;
         gap: 25px;
       }
     }
   }
-  
+
   // Stories Section
   .stories-section {
     padding: 100px 20px;
-    background: transparent; // Remove individual background
-    
+    background: transparent;
+
     .stories-container {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 40px;
-      
+
       @media (max-width: 768px) {
         grid-template-columns: 1fr;
         gap: 30px;
       }
-      
+
       .story-card {
         border-radius: 20px;
         overflow: hidden;
@@ -587,27 +637,27 @@
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        
+
         &:hover {
           transform: translateY(-5px);
         }
-        
+
         img {
           width: 100%;
           height: 250px;
           object-fit: cover;
         }
-        
+
         .story-content {
           padding: 30px;
-          
+
           h3 {
             font-size: 1.5rem;
             color: #333;
             margin-bottom: 15px;
             font-weight: 600;
           }
-          
+
           p {
             color: #666;
             line-height: 1.6;
@@ -616,20 +666,20 @@
       }
     }
   }
-  
+
   // Partners Section
   .partners-section {
     padding: 80px 20px;
-    background: transparent; // Remove individual background
+    background: transparent;
     text-align: center;
-    
+
     h2 {
       font-size: 2.5rem;
       color: #333;
       margin-bottom: 50px;
       font-weight: 700;
     }
-    
+
     .partners-grid {
       max-width: 1200px;
       margin: 0 auto;
@@ -637,29 +687,29 @@
       grid-template-columns: repeat(6, 1fr);
       gap: 30px;
       align-items: center;
-      
+
       @media (max-width: 1024px) {
         grid-template-columns: repeat(4, 1fr);
         gap: 25px;
       }
-      
+
       @media (max-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
       }
-      
+
       @media (max-width: 480px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
       }
-      
+
       img {
         width: 100%;
         height: 60px;
         object-fit: contain;
         opacity: 0.7;
         transition: opacity 0.3s ease;
-        
+
         &:hover {
           opacity: 1;
         }
@@ -673,17 +723,17 @@
   .home-page {
     .reshaping-section {
       padding: 60px 15px;
-      
+
       .reshaping-header {
         h1 {
           font-size: 2rem;
         }
-        
+
         p {
           font-size: 1rem;
         }
       }
-      
+
       .cards-container {
         .card {
           padding: 25px;
@@ -691,45 +741,45 @@
         }
       }
     }
-    
+
     .mission-section {
-      padding: 80px 15px;
-      
+      padding: 80px 15px; /* Adjust padding for smaller screens */
+
       .mission-header {
         .mission-icon {
           width: 80px;
           height: 80px;
-          
+
           .icon-target {
             font-size: 2rem;
           }
         }
-        
+
         h2 {
           font-size: 1.8rem;
         }
-        
+
         .mission-description {
           font-size: 1rem;
         }
       }
-      
+
       .video-slider {
         .slider-container {
           .slide .video-wrapper .play-button {
             width: 70px;
             height: 70px;
-            
+
             span {
               font-size: 1.6rem;
             }
           }
         }
-        
+
         .slider-controls button {
           width: 50px;
           height: 50px;
-          
+
           span {
             font-size: 1.2rem;
           }

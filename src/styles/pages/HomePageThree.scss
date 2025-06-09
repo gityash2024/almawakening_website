@@ -2,7 +2,7 @@
 @import '../mixins.scss';
 
 .homepage-three {
-    background: linear-gradient(135deg, #fef7ff 0%, #fff9e6 25%, #f0e6ff 50%, #ffffff 75%, #fef7ff 100%);
+    background: #FFFFFF;
     min-height: 100vh;
     
     .container {
@@ -363,12 +363,13 @@
 
 // Contact Section - Exact match to Image 3
 .contact-section {
-    padding: 120px 0;
+    padding: 120px 0px;
     
     .contact-card {
+        width: 1920px;
         background: linear-gradient(135deg, #f6e05e 0%, #f6d55c 50%, #ecc94b 100%);
         border-radius: 32px;
-        padding: 50px 60px;
+        padding: 90px 120px;
         display: flex;
         align-items: flex-start;
         gap: 50px;
@@ -463,9 +464,12 @@
 
 // FAQ Section - Exact match to Image 4
 .faq-section {
+    width: 1280px;
+    height: 750px;
+     margin: 0 auto;
     padding: 40px 0;
     background: linear-gradient(135deg, rgba(196, 181, 253, 0.4) 0%, rgba(254, 240, 138, 0.4) 100%);
-    border-radius: 60px 60px 0 0;
+    border-radius: 40px 40px 40px 40px;
     
     .faq-header {
         text-align: center;
@@ -474,17 +478,17 @@
         .faq-icon {
             width: 100px;
             height: 100px;
-            background: white;
+            background:transparent;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: -78px auto 17px auto;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+           
             
             img {
-                width: 50px;
-                height: 50px;
+                width: 100px;
+                height: 100px;
             }
         }
         
@@ -506,17 +510,19 @@
     }
     
     .faq-list {
-        background: white;
+        padding: 0px 100px 80px 100px ;
+       width: 100%;
+        background: transparent;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        
     }
     
     .faq-item {
         border-bottom: none;
         
         &:not(:last-child) {
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #101011;
         }
         
         .faq-question {
@@ -531,19 +537,19 @@
             align-items: center;
             font-size: 18px;
             font-weight: 600;
-            color: #1a202c;
+            color: #0d0d0e;
             transition: all 0.3s ease;
             font-family: system-ui, -apple-system, sans-serif;
             
             &:hover {
-                background: #f8fafc;
+               
             }
             
             .faq-toggle {
                 width: 36px;
                 height: 36px;
                 border-radius: 50%;
-                background: #f1f5f9;
+                background: transparent;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -570,7 +576,7 @@
             
             p {
                 padding: 0 32px 28px 32px;
-                color: #718096;
+                color: #0c0c0c;
                 line-height: 1.6;
                 margin: 0;
                 font-size: 15px;
