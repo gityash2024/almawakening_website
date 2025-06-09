@@ -1420,11 +1420,11 @@
 //   }
 
 
-  .faq-section {
+.faq-section {
     width: 1280px;
     height: 750px;
-     margin: 0 auto;
-    padding: 40px 0;
+    margin: 0 auto;
+    padding: 80px 0 40px 0; // Increased top padding to accommodate the icon
     background: linear-gradient(135deg, rgba(196, 181, 253, 0.4) 0%, rgba(254, 240, 138, 0.4) 100%);
     border-radius: 40px 40px 40px 40px;
     
@@ -1435,13 +1435,12 @@
         .faq-icon {
             width: 100px;
             height: 100px;
-            background:transparent;
+            background: transparent;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: -78px auto 17px auto;
-           
+            margin: 0 auto 24px auto; // Changed from negative margin to positive
             
             img {
                 width: 100px;
@@ -1467,12 +1466,11 @@
     }
     
     .faq-list {
-        padding: 0px 100px 80px 100px ;
-       width: 100%;
+        padding: 0px 100px 80px 100px;
+        width: 100%;
         background: transparent;
         border-radius: 20px;
         overflow: hidden;
-        
     }
     
     .faq-item {
@@ -1497,10 +1495,6 @@
             color: #0d0d0e;
             transition: all 0.3s ease;
             font-family: system-ui, -apple-system, sans-serif;
-            
-            &:hover {
-               
-            }
             
             .faq-toggle {
                 width: 36px;
@@ -1557,7 +1551,6 @@
         }
     }
 }
-
 // Animations
 @keyframes slideInUp {
     from {
