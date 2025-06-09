@@ -6,6 +6,7 @@ import Storiesandinterviews from '../assets/images/Storiesandinterviews.png';
 import stories_1 from '../assets/images/stories_1.png';
 import ShareYourStoryWithUs from '../assets/images/ShareYourStoryWithUs.png';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import storybackground from '../assets/images/storybackground.png';
 
 interface ImpactStory {
   author: string;
@@ -186,10 +187,13 @@ const ResourcesPage: React.FC = () => {
       
       <Layout>
         <div className="resources-page-container">
-          {/* Stories and Interviews Section */}
+          {/* Stories and Interviews Section - Now with Background Image */}
           <section className="stories-interviews-section">
-            <div className="stories-gradient-bg">
-              <div className="stories-content">
+            <div 
+              className="stories-background-image"
+              style={{ backgroundImage: `url(${storybackground})` }}
+            >
+              <div className="stories-content-overlay">
                 <div className="stories-text-area">
                   <h1 className="stories-main-title">Stories and interviews</h1>
                   <p className="stories-subtitle">
