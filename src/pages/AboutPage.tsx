@@ -375,7 +375,7 @@ const faqs = [
 
           {/* New Section - FAQ */}
          
-<section className="faq-section-new">
+{/* <section className="faq-section-new">
   <div className="faq-container-new">
     <div className="faq-content-box">
       <div className="faq-header-new">
@@ -407,8 +407,49 @@ const faqs = [
       </div>
     </div>
   </div>
-</section>
+</section> */}
+   
 
+    <section className="faq-section">
+                    <div className="container">
+                        <div className="faq-header">
+                            <div className="faq-icon">
+                                <img src={questionMark} alt="FAQ" />
+                            </div>
+                            <h2>Frequently Asked Questions</h2>
+                            <p>See what people often asks us?</p>
+                        </div>
+                        <div className="faq-list">
+                            {faqs.map((faq, index) => (
+                                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
+                                    <button 
+                                        className="faq-question"
+                                        onClick={() => toggleFaq(index)}
+                                    >
+                                        <span>{faq.question}</span>
+                                        <div className="faq-toggle">
+                                            {openFaq === index ? (
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                                                    <path d="M8 12h8" stroke="currentColor" strokeWidth="2"/>
+                                                </svg>
+                                            ) : (
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                                                    <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="2"/>
+                                                </svg>
+                                            )}
+                                        </div>
+                                    </button>
+                                    <div className={`faq-answer ${openFaq === index ? 'show' : ''}`}>
+                                        <p>{faq.answer}</p>
+                                    </div>
+                                    {index < faqs.length - 1 && <div className="faq-divider"></div>}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
 
         </div>

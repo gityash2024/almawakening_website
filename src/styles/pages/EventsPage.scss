@@ -221,87 +221,138 @@
     }
   }
   
-  // Events Cards Section - Image 2
+  // Events Cards Section - Image 2 - PROPERLY FIXED VERSION
   .events-section {
     margin-top: 90px;
     padding: 80px 0;
-    background: #ffffff; // Keeping background white here if needed for spacing
+    margin-bottom: 0; // Removed margin bottom to reduce space
+    background: #ffffff;
     
-    .events-grid {
-      display: grid;
-      // Using 'auto-fit' for better responsiveness if cards are different widths
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 30px;
-      justify-content: center; // Center cards if fewer than full row
+    .container {
+      max-width: 1600px; // Further increased to prevent any cutting
+      margin: 0 auto;
+      padding: 0 60px; // More generous padding
       
-      @media (max-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr);
+      @media (max-width: 1400px) {
+        padding: 0 40px;
       }
       
       @media (max-width: 768px) {
-        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+    }
+    
+    .events-grid {
+      display: flex; // Changed from grid to flex for better control
+      justify-content: center;
+      align-items: stretch;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 0 auto; // Center the grid itself
+      
+      @media (max-width: 1200px) {
+        gap: 25px;
+      }
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; // Increased gap on mobile
       }
     }
     
     .event-card {
-      // IMPORTANT: Adjust these width/height to match your EXACT exported image dimensions
-      width: 380px; // Example: Set to your Figma image width
-      height: 440px; // Example: Set to your Figma image height
-
-      padding: 30px 25px 30px; // Increased bottom padding for button margin and space
+      width: 380px; // Fixed width as per design
+      height: 480px; // Increased height to accommodate all content
+      padding: 70px 25px 25px 25px; // Further increased top padding to prevent overlap
       position: relative;
-      overflow: hidden; // Ensures content doesn't spill outside the image's boundaries
+      overflow: visible; // Changed from hidden to visible
+      flex-shrink: 0; // Prevent shrinking
+      box-sizing: border-box; // Include padding in height calculation
+      margin: 0 auto 40px auto; // Added margin bottom and centered
       
-      // Background image properties, applied directly to the card
-      background-size: cover; // Adjust to 'contain' or '100% 100%' if 'cover' distorts too much
+      // Background image properties
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-     
+      
+      @media (max-width: 768px) {
+        width: 100%;
+        max-width: 380px;
+        height: 480px; // Maintain height on mobile
+        padding: 60px 25px 25px 25px; // Increased top padding on mobile
+        margin: 0 auto 30px auto; // Centered with bottom margin on mobile
+      }
+      
+      @media (max-width: 400px) {
+        width: 95%;
+        max-width: 360px;
+        height: 460px; // Slightly reduce for very small screens
+        padding: 55px 20px 20px 20px; // Increased top padding on small screens
+        margin: 0 auto 25px auto; // Centered with bottom margin on small screens
+      }
+      
       .event-content {
-        margin-top: 20px; // Adjust this if the top of the content is too high/low
         position: relative;
         z-index: 2;
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; // Align items from the top
+        justify-content: flex-start; // Changed back to flex-start
         
-        // ALL TEXT ELEMENTS IN THE CARD WILL BE BLACK BY DEFAULT
         h3 {
           font-size: 1.5rem;
           font-weight: 700;
-          margin-bottom: 12px; // Reduced bottom margin for better spacing
+          margin-bottom: 12px; // Increased from 8px back to 12px for better spacing
           font-family: system-ui, -apple-system, sans-serif;
           line-height: 1.3;
-          color: #000000; // Explicitly set to black
+          color: #000000;
+          text-align: left; // Ensure left alignment
+          
+          @media (max-width: 400px) {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+          }
         }
         
         .event-description {
           font-size: 1rem;
-          margin-bottom: 16px; // Added margin for spacing between description and date
-          line-height: 1.5; // Slightly increased line height for readability
+          margin-bottom: 16px; // Increased from 12px back to 16px for better spacing
+          line-height: 1.5;
           opacity: 0.9;
-          flex-grow: 1; // Allows description to take up available space
-          color: #000000; // Explicitly set to black
+          color: #000000;
+          text-align: left; // Ensure left alignment
+          
+          @media (max-width: 400px) {
+            font-size: 0.9rem;
+            margin-bottom: 14px;
+          }
         }
         
         .event-date,
         .event-location {
           font-size: 0.9rem;
-          margin-bottom: 6px; // Added margin for spacing between date/location and buttons
+          margin-bottom: 8px; // Increased from 6px back to 8px for better spacing
           font-weight: 500;
           opacity: 0.8;
-          color: #000000; // Explicitly set to black
+          color: #000000;
+          text-align: left; // Ensure left alignment
+          
+          @media (max-width: 400px) {
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+          }
         }
         
         .event-buttons {
-          margin-top: auto; // Pushes buttons to the bottom, taking available space
+          margin-top: auto; // Changed back to auto to push buttons to bottom
           display: flex;
           flex-direction: column;
-          gap: 15px;
+          gap: 12px;
+          flex-shrink: 0; // Prevent buttons from shrinking
           
           button {
-            width: 100%; // Make buttons full width
+            width: 100%;
             padding: 12px 24px;
             border: none;
             border-radius: 25px;
@@ -314,14 +365,19 @@
             justify-content: center;
             gap: 8px;
             
+            @media (max-width: 400px) {
+              padding: 10px 20px;
+              font-size: 0.9rem;
+            }
+            
             svg {
-              stroke-width: 2.5; // Make the arrow thicker
+              stroke-width: 2.5;
             }
           }
           
           .volunteer-btn {
-            background: rgba(255, 255, 255, 0.9); // Semi-transparent white
-            color: #2d3748; // Default dark color, can be overridden per card
+            background: rgba(255, 255, 255, 0.9);
+            color: #2d3748;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             
             &:hover {
@@ -331,45 +387,43 @@
           }
           
           .participate-btn {
-            background: #2d3748; // Black background for consistency
-            color: #ffffff; // White text for this button
+            background: #2d3748;
+            color: #ffffff;
             
             &:hover {
               background: #1a202c;
               transform: translateY(-2px);
             }
-            margin-bottom: 0; // Removed extra margin here, rely on parent padding
           }
         }
       }
     }
 
-    // Specific styles for each card based on the image background
-    // These now primarily override the volunteer button text color if needed,
-    // as all other text is explicitly black.
+    // Specific styles for each card
     .purple-card {
         .volunteer-btn {
-            color: #5B2B85; // Set volunteer button text to darker purple
+            color: #5B2B85;
         }
     }
 
     .pink-card {
         .volunteer-btn {
-            color: #E7665E; // Set volunteer button text to darker pink
+            color: #E7665E;
         }
     }
 
     .yellow-card {
         .volunteer-btn {
-            color: #A88719; // Set volunteer button text to darker yellow/brown
+            color: #A88719;
         }
     }
   }
   
-  // Enhanced Gallery Section - Image 3 (No changes here, keeping your existing styles)
+  // Enhanced Gallery Section - Image 3 - REDUCED TOP SPACING
   .gallery-section {
-    padding: 80px 0;
+    padding: 40px 0; // Reduced from 80px to 40px
     background: #ffffff;
+    margin-bottom: 60px; // Added space between gallery and FAQ section
     
     .gallery-header {
       display: flex;
@@ -534,144 +588,223 @@
     }
   }
   
-  // FAQ Section - Image 4 (No changes here, keeping your existing styles)
+  // FAQ Section - Image 4 - FIXED WIDTH AND SPACING
   .faq-section {
-    padding: 80px 0;
+    width: 100%;
+    max-width: 1280px; // Match the events section width
+    height: auto; // Let height adjust automatically
+    min-height: 750px; // Minimum height to maintain design
+    margin: 0 auto;
+    padding: 40px 0;
     background: linear-gradient(135deg, rgba(196, 181, 253, 0.4) 0%, rgba(254, 240, 138, 0.4) 100%);
-    border-radius: 60px 60px 0 0;
+    border-radius: 40px 40px 40px 40px;
     
     .faq-header {
-      text-align: center;
-      margin-bottom: 60px;
-      
-      .faq-icon {
-        width: 80px;
-        height: 80px;
-        background: #ffffff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 24px auto;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 60px;
         
-        img {
-          width: 40px;
-          height: 40px;
-        }
-      }
-      
-      h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #2d3748;
-        margin-bottom: 12px;
-        font-family: system-ui, -apple-system, sans-serif;
-        letter-spacing: -0.025em;
-        
-        @media (max-width: 768px) {
-          font-size: 2rem;
-        }
-      }
-      
-      p {
-        font-size: 1.125rem;
-        color: #4a5568;
-        margin: 0;
-      }
-    }
-    
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
-    
-    .faq-item {
-      border-bottom: 1px solid #f1f5f9;
-      
-      &:last-child {
-        border-bottom: none;
-      }
-      
-      .faq-question {
-        width: 100%;
-        padding: 24px 32px;
-        background: none;
-        border: none;
-        text-align: left;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: #2d3748;
-        transition: all 0.3s ease;
-        
-        &:hover {
-          background: #f8fafc;
+        .faq-icon {
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -78px auto 17px auto;
+            
+            img {
+                width: 100px;
+                height: 100px;
+            }
         }
         
-        .faq-toggle {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background: #f1f5f9;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-          flex-shrink: 0;
-          
-          svg {
-            width: 16px;
-            height: 16px;
-            color: #4a5568;
-          }
-        }
-      }
-      
-      .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.4s ease;
-        
-        &.show {
-          max-height: 200px;
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0 0 12px 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.025em;
         }
         
         p {
-          padding: 0 32px 24px 32px;
-          color: #718096;
-          line-height: 1.6;
-          margin: 0;
-          font-size: 1rem;
+            font-size: 16px;
+            color: #718096;
+            margin: 0;
+            font-weight: 400;
         }
-      }
-      
-      &.active {
-        .faq-question .faq-toggle {
-          background: #2d3748;
-          
-          svg {
-            color: #ffffff;
-          }
-        }
-      }
     }
-  }
+    
+    .faq-list {
+        padding: 0px 100px 80px 100px;
+        width: 100%;
+        background: transparent;
+        border-radius: 20px;
+        overflow: hidden;
+        
+        @media (max-width: 1024px) {
+            padding: 0px 60px 60px 60px;
+        }
+        
+        @media (max-width: 768px) {
+            padding: 0px 40px 40px 40px;
+        }
+        
+        @media (max-width: 480px) {
+            padding: 0px 20px 20px 20px;
+        }
+    }
+    
+    .faq-item {
+        border-bottom: none;
+        
+        &:not(:last-child) {
+            border-bottom: 1px solid #101011;
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 28px 32px;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0d0d0e;
+            transition: all 0.3s ease;
+            font-family: system-ui, -apple-system, sans-serif;
+            
+            .faq-toggle {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: transparent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                flex-shrink: 0;
+                border: 1px solid #e2e8f0;
+                
+                svg {
+                    width: 18px;
+                    height: 18px;
+                    color: #4a5568;
+                }
+            }
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            
+            &.show {
+                max-height: 180px;
+            }
+            
+            p {
+                padding: 0 32px 28px 32px;
+                color: #0c0c0c;
+                line-height: 1.6;
+                margin: 0;
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+        
+        &.active {
+            .faq-question .faq-toggle {
+                background: #2d3748;
+                border-color: #2d3748;
+                
+                svg {
+                    color: white;
+                }
+            }
+        }
+        
+        .faq-divider {
+            display: none;
+        }
+    }
+    
+    // Responsive adjustments for FAQ section
+    @media (max-width: 768px) {
+        width: 95%;
+        margin: 0 auto;
+        padding: 30px 0;
+        
+        .faq-header {
+            margin-bottom: 40px;
+            
+            .faq-icon {
+                margin: -60px auto 15px auto;
+                width: 80px;
+                height: 80px;
+                
+                img {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+            
+            p {
+                font-size: 14px;
+            }
+        }
+        
+        .faq-item .faq-question {
+            padding: 20px 16px;
+            font-size: 16px;
+        }
+        
+        .faq-item .faq-answer p {
+            padding: 0 16px 20px 16px;
+            font-size: 14px;
+        }
+    }
+}
+
+// Animations
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
   
-  // CTA Section - Image 5 (No changes here, keeping your existing styles)
+  // CTA Section - Image 5 - EXACT FAQ WIDTH MATCH WITH MONA SANS
   .cta-section {
-    padding: 100px 40px;
+    padding: 100px 0; // Changed from 100px 40px to match FAQ section structure
     background: #fff;
     
     @media (max-width: 768px) {
-      padding: 80px 20px;
+      padding: 80px 0;
+    }
+    
+    .container {
+      max-width: 1280px; // Match FAQ section container width exactly
+      margin: 0 auto;
+      padding: 0 40px;
+      
+      @media (max-width: 768px) {
+        padding: 0 20px;
+      }
     }
     
     .cta-card {
@@ -681,6 +814,8 @@
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow: hidden;
+      width: 100%; // Full width within container
+      margin: 0; // Remove auto margins
       
       @media (max-width: 1024px) {
         padding: 60px 40px;
@@ -709,7 +844,7 @@
     
     .cta-content {
       text-align: center;
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
       position: relative;
       z-index: 2;
@@ -721,7 +856,7 @@
         margin: 0 0 24px 0;
         line-height: 1.2;
         letter-spacing: -0.02em;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'Mona Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         @media (max-width: 1024px) {
           font-size: 2.5rem;
@@ -744,6 +879,7 @@
         margin: 0 0 50px 0;
         line-height: 1.6;
         font-weight: 400;
+        font-family: 'Mona Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         
         @media (max-width: 768px) {
           font-size: 1.125rem;
@@ -781,7 +917,7 @@
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(45, 55, 72, 0.2);
           min-width: 180px;
-          font-family: inherit;
+          font-family: 'Mona Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           
           &:hover {
             background: #1A202C;
@@ -816,7 +952,7 @@
           transition: all 0.3s ease;
           backdrop-filter: blur(10px);
           min-width: 180px;
-          font-family: inherit;
+          font-family: 'Mona Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           
           &:hover {
             background: rgba(255, 255, 255, 0.6);
@@ -855,98 +991,81 @@
   }
 }
 
-// Responsive Design (No changes here, keeping your existing styles)
+// Mobile Responsive Adjustments - IMPROVED
 @media (max-width: 768px) {
   .events-page {
     .hero-section .hero-content {
       padding: 0 16px;
     }
     
-    .events-section,
-    .gallery-section,
-    .faq-section {
+    .events-section {
       padding: 60px 0;
-    }
-    
-    .gallery-section .gallery-header {
-      .gallery-indicators {
-        justify-content: center;
-      }
-    }
-    
-    .faq-section {
-      .faq-item .faq-question {
-        padding: 20px;
-        font-size: 1rem;
+      
+      .container {
+        padding: 0 20px;
       }
       
-      .faq-item .faq-answer p {
-        padding: 0 20px 20px 20px;
+      .events-grid {
+        gap: 20px;
+        
+        .event-card {
+          width: 100%;
+          max-width: 380px;
+          margin: 0 auto;
+        }
       }
     }
-  }
-}
- // Mobile Responsive Adjustments
-@media (max-width: 768px) {
-  .events-section {
-    padding: 40px 0; // Reduce vertical padding on sections
     
-    .events-grid {
-      grid-template-columns: 1fr; // Single column on smaller screens
-    }
-    
-    .event-card {
-      width: 100%; // Cards take full width
-      // Height will adjust based on the aspect ratio of your background image
-      // If needed, you can set a max-height or adjust padding to control it
-      margin-bottom: 20px; // Add some space between cards
-      padding: 20px 15px 15px; // Adjust padding for smaller screens
+    .gallery-section {
+      padding: 60px 0;
       
-      .event-content {
-        h3 {
-          font-size: 1.3rem;
-          margin-bottom: 10px;
-          color: #000000; // Explicitly set to black for mobile
-        }
-        
-        .event-description {
-          font-size: 0.9rem;
-          margin-bottom: 12px;
-          color: #000000; // Explicitly set to black for mobile
-        }
-        
-        .event-date,
-        .event-location {
-          font-size: 0.8rem;
-          margin-bottom: 6px;
-          color: #000000; // Explicitly set to black for mobile
-        }
-        
-        .event-buttons {
-          margin-top: 15px;
-          gap: 8px;
-          
-          .volunteer-btn,
-          .participate-btn {
-            font-size: 0.9rem;
-            padding: 10px 18px;
-            border-radius: 20px;
-          }
+      .gallery-header {
+        .gallery-indicators {
+          justify-content: center;
         }
       }
     }
   }
 }
 
+// Additional media query for very small screens
 @media (max-width: 480px) {
-  .events-section .event-card .event-content h3 {
-    font-size: 1.2rem;
-    color: #000000; // Explicitly set to black for smaller mobile
-  }
-  
-  .events-section .event-card .event-buttons .volunteer-btn,
-  .events-section .event-card .event-buttons .participate-btn {
-    font-size: 0.85rem;
-    padding: 8px 14px;
+  .events-page {
+    .events-section {
+      .container {
+        padding: 0 15px;
+      }
+      
+      .events-grid {
+        .event-card {
+          max-width: 350px;
+          padding: 25px 20px 25px;
+          
+          .event-content {
+            h3 {
+              font-size: 1.3rem;
+            }
+            
+            .event-description {
+              font-size: 0.9rem;
+            }
+            
+            .event-date,
+            .event-location {
+              font-size: 0.85rem;
+            }
+            
+            .event-buttons {
+              gap: 12px;
+              
+              button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

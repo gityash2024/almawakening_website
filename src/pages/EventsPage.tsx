@@ -157,30 +157,7 @@ const EventsPage: React.FC = () => {
                     <img src={galleryImages[currentImageIndex]} alt="Community impact" />
                   </div>
                   
-                  {/* Hero Image Navigation */}
-                  {/* <div className="hero-navigation">
-                    <button className="hero-nav-btn prev-btn" onClick={handlePrevImage}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
-                    <button className="hero-nav-btn next-btn" onClick={handleNextImage}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
-                  </div> */}
-
-                  {/* Hero Image Indicators */}
-                  {/* <div className="hero-indicators">
-                    {galleryImages.map((_, index) => (
-                      <button
-                        key={index}
-                        className={`hero-indicator ${index === currentImageIndex ? 'active' : ''}`}
-                        onClick={() => setCurrentImageIndex(index)}
-                      />
-                    ))}
-                  </div> */}
+                
                 </div>
               </div>
             </div>
@@ -195,8 +172,6 @@ const EventsPage: React.FC = () => {
                        className={`event-card ${event.colorClass}`} // Use colorClass here
                        style={{ backgroundImage: `url(${event.backgroundImage})` }} // Apply the background image directly
                   >
-                    {/* The event-background div is no longer needed for the shape as we're applying it to .event-card */}
-                    {/* <div className="event-background" style={{ backgroundImage: `url(${event.image})` }}></div> */}
                     <div className="event-content">
                       <h3>{event.title}</h3>
                       <p className="event-description">{event.description}</p>
@@ -271,47 +246,48 @@ const EventsPage: React.FC = () => {
             </div>
           </section>
 
-          {/* FAQ Section - Image 4 */}
-          <section className="faq-section">
-            <div className="container">
-              <div className="faq-header">
-                <div className="faq-icon">
-                  <img src={questionMark} alt="FAQ" />
-                </div>
-                <h2>Frequently Asked Questions</h2>
-                <p>See what people often asks us?</p>
-              </div>
-              
-              <div className="faq-list">
-                {faqs.map((faq, index) => (
-                  <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
-                    <button 
-                      className="faq-question"
-                      onClick={() => toggleFaq(index)}
-                    >
-                      <span>{faq.question}</span>
-                      <div className="faq-toggle">
-                        {openFaq === index ? (
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                            <path d="M8 12h8" stroke="currentColor" strokeWidth="2"/>
-                          </svg>
-                        ) : (
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                            <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="2"/>
-                          </svg>
-                        )}
-                      </div>
-                    </button>
-                    <div className={`faq-answer ${openFaq === index ? 'show' : ''}`}>
-                      <p>{faq.answer}</p>
+         
+          {/* FAQ Section */}
+                <section className="faq-section">
+                    <div className="container">
+                        <div className="faq-header">
+                            <div className="faq-icon">
+                                <img src={questionMark} alt="FAQ" />
+                            </div>
+                            <h2>Frequently Asked Questions</h2>
+                            <p>See what people often asks us?</p>
+                        </div>
+                        <div className="faq-list">
+                            {faqs.map((faq, index) => (
+                                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
+                                    <button 
+                                        className="faq-question"
+                                        onClick={() => toggleFaq(index)}
+                                    >
+                                        <span>{faq.question}</span>
+                                        <div className="faq-toggle">
+                                            {openFaq === index ? (
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                                                    <path d="M8 12h8" stroke="currentColor" strokeWidth="2"/>
+                                                </svg>
+                                            ) : (
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                                                    <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="2"/>
+                                                </svg>
+                                            )}
+                                        </div>
+                                    </button>
+                                    <div className={`faq-answer ${openFaq === index ? 'show' : ''}`}>
+                                        <p>{faq.answer}</p>
+                                    </div>
+                                    {index < faqs.length - 1 && <div className="faq-divider"></div>}
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+                </section>
 
           {/* CTA Section - Image 5 */}
           <section className="cta-section">
