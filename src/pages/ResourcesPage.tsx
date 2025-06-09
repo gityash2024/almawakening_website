@@ -44,8 +44,8 @@ const ResourcesPage: React.FC = () => {
       author: "Arec Whitney",
       date: "17 Jan 2022",
       description: "Like to know the secrets of transforming a 2-14 team into a 3x Super Bowl winning Dynasty?",
-      thumbnail: "https://img.youtube.com/vi/lBvbNxiVmZA/maxresdefault.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=lBvbNxiVmZA"
+      thumbnail: "https://img.youtube.com/vi/zNngzWy6xcQ/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=zNngzWy6xcQ"
     },
     {
       id: 2,
@@ -54,8 +54,8 @@ const ResourcesPage: React.FC = () => {
       author: "Demi Wilkinson",
       date: "10 Jan 2022",
       description: "Mental models are simple expressions of complex processes or relationships.",
-      thumbnail: "https://img.youtube.com/vi/lBvbNxiVmZA/maxresdefault.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=lBvbNxiVmZA"
+      thumbnail: "https://img.youtube.com/vi/JXDvXAEZxrs/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=JXDvXAEZxrs"
     },
     {
       id: 3,
@@ -64,8 +64,8 @@ const ResourcesPage: React.FC = () => {
       author: "Candice Wu",
       date: "05 Jan 2022",
       description: "Introduction to Wireframing and its Principles. Learn from the best in the industry.",
-      thumbnail: "https://img.youtube.com/vi/lBvbNxiVmZA/maxresdefault.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=lBvbNxiVmZA"
+      thumbnail: "https://img.youtube.com/vi/Ip9VrLheXNY/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=Ip9VrLheXNY"
     },
     {
       id: 4,
@@ -74,8 +74,8 @@ const ResourcesPage: React.FC = () => {
       author: "Natali Craig",
       date: "14 Sep 2022",
       description: "Collaboration can make our teams stronger, and our individual designs better.",
-      thumbnail: "https://img.youtube.com/vi/lBvbNxiVmZA/maxresdefault.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=lBvbNxiVmZA"
+      thumbnail: "https://img.youtube.com/vi/-i-ehW3dEuo/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=-i-ehW3dEuo"
     },
     {
       id: 5,
@@ -84,8 +84,8 @@ const ResourcesPage: React.FC = () => {
       author: "Drew Cano",
       date: "15 Sep 2022",
       description: "JavaScript frameworks make development easy with extensive features and functionalities.",
-      thumbnail: "https://img.youtube.com/vi/lBvbNxiVmZA/maxresdefault.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=lBvbNxiVmZA"
+      thumbnail: "https://img.youtube.com/vi/alqRIfic2GU/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=alqRIfic2GU"
     },
     {
       id: 6,
@@ -94,8 +94,8 @@ const ResourcesPage: React.FC = () => {
       author: "Orlando Diggs",
       date: "12 Jan 2022",
       description: "Starting a community doesn't need to be complicated, but how do you get started?",
-      thumbnail: "https://img.youtube.com/vi/lBvbNxiVmZA/maxresdefault.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=lBvbNxiVmZA"
+      thumbnail: "https://img.youtube.com/vi/1sHI9h0bCXE/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=1sHI9h0bCXE"
     }
   ];
 
@@ -187,49 +187,53 @@ const ResourcesPage: React.FC = () => {
       
       <Layout>
         <div className="resources-page-container">
-          {/* Stories and Interviews Section - Now with Background Image */}
-          <section className="stories-interviews-section">
-            <div 
-              className="stories-background-image"
-              style={{ backgroundImage: `url(${storybackground})` }}
-            >
-              <div className="stories-content-overlay">
-                <div className="stories-text-area">
-                  <h1 className="stories-main-title">Stories and interviews</h1>
-                  <p className="stories-subtitle">
-                    Subscribe to learn about new product features, the latest in technology, solutions,
-                    and updates.
-                  </p>
-                  
-                  <div className="stories-subscription">
-                    <div className="stories-input-wrapper">
-                      <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        onKeyPress={handleKeyPress}
-                        className="stories-email-input"
-                        aria-label="Email address for subscription"
+          {/* Stories and Interviews Section with Proper Background */}
+          <section className="stories-interviews-hero">
+            <div className="hero-container">
+              <div 
+                className="hero-background"
+                style={{ backgroundImage: `url(${storybackground})` }}
+              >
+                <div className="hero-overlay">
+                  <div className="hero-content">
+                    <div className="hero-text">
+                      <h1 className="hero-title">Stories and interviews</h1>
+                      <p className="hero-subtitle">
+                        Subscribe to learn about new product features, the latest in technology, solutions,
+                        and updates.
+                      </p>
+                      
+                      <div className="hero-subscription">
+                        <div className="subscription-wrapper">
+                          <input
+                            type="email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                            onKeyPress={handleKeyPress}
+                            className="email-input"
+                            aria-label="Email address for subscription"
+                          />
+                          <button 
+                            onClick={handleSubscribe} 
+                            className="subscribe-btn"
+                            disabled={!email.trim()}
+                            aria-label="Subscribe to newsletter"
+                          >
+                            Subscribe
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="hero-image">
+                      <img 
+                        src={Storiesandinterviews}
+                        alt="Person in wheelchair enjoying mountain scenery with yellow flowers"
+                        className="featured-image"
                       />
-                      <button 
-                        onClick={handleSubscribe} 
-                        className="stories-subscribe-btn"
-                        disabled={!email.trim()}
-                        aria-label="Subscribe to newsletter"
-                      >
-                        Subscribe
-                      </button>
                     </div>
                   </div>
-                </div>
-                
-                <div className="stories-hero-image">
-                  <img 
-                    src={Storiesandinterviews}
-                    alt="Person in wheelchair enjoying mountain scenery with yellow flowers"
-                    className="stories-mountain-image"
-                  />
                 </div>
               </div>
             </div>

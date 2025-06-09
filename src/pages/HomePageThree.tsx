@@ -156,7 +156,6 @@ const HomePageThree = () => {
                             // Correct placement of the style prop inside the div's opening tag
                             style={{
                                 backgroundImage: `url(${CardBackgroundSVG})`, // Using the renamed import for the background SVG
-                                backgroundSize: '100% 100%',
                                 backgroundRepeat: 'no-repeat',
                                 backgroundPosition: 'center',
                                 

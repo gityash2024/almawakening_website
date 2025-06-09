@@ -85,9 +85,9 @@ const HomePage: React.FC = () => {
                 className="card purple-card"
                 style={{
                   backgroundImage: `url(${purplecard})`,
-                  backgroundSize: '100% 100%',
+                  // backgroundSize: '100% 100%',
                   backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
+                  // backgroundPosition: 'center',
                 }}
               >
                 <h2>65%</h2>
@@ -115,7 +115,7 @@ const HomePage: React.FC = () => {
                 className="card yellow-card"
                 style={{
                   backgroundImage: `url(${yellow})`,
-                  backgroundSize: '100% 100%',
+                  // backgroundSize: '100% 100%',
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
                 }}

@@ -9,9 +9,19 @@ import stories_1 from '../assets/images/stories_1.png';
 import stories_2 from '../assets/images/stories_2.png';
 import TransformingArrow from '../assets/images/TransformingArrow.png';
 import discover_1 from '../assets/images/discover_1.png';
-import image_1 from '../assets/images/image_1.png';
-import image_2 from '../assets/images/image_2.png';
-import image_3 from '../assets/images/image_3.png';
+import img_1 from '../assets/images/img_1.jpg';
+import img_2 from '../assets/images/img_2.jpg';
+import img_3 from '../assets/images/img_3.jpg';
+import img_4 from '../assets/images/img_4.jpg';
+import img_5 from '../assets/images/img_5.jpg';
+import img_6 from '../assets/images/img_6.jpg';
+import img_7 from '../assets/images/img_7.jpg';
+import img_8 from '../assets/images/img_8.jpg';
+import img_9 from '../assets/images/img_9.jpg';
+import img_10 from '../assets/images/img_10.jpg';
+import img_11 from '../assets/images/img_11.jpg';
+import img_12 from '../assets/images/img_12.jpg';
+
 
 const HomePageTwo: React.FC = () => {
     // Gallery state for navigation
@@ -20,32 +30,32 @@ const HomePageTwo: React.FC = () => {
     // Image gallery data sets
     const galleryData = [
         {
-            large: image_1,
-            small: [image_2, image_3],
+            large: img_1,
+            small: [img_2, img_3],
             alts: {
                 large: "Community group",
                 small: ["Happy children", "Community work"]
             }
         },
         {
-            large: image_2,
-            small: [image_3, image_1],
+            large: img_4,
+            small: [img_5, img_6],
             alts: {
                 large: "Happy children celebrating",
                 small: ["Community work session", "Group activity"]
             }
         },
         {
-            large: image_3,
-            small: [image_1, image_2],
+            large: img_7,
+            small: [img_8, img_9],
             alts: {
                 large: "Community work in progress",
                 small: ["Community gathering", "Children learning"]
             }
         },
         {
-            large: stories_1,
-            small: [stories_2, nothing_changes],
+            large: img_10,
+            small: [img_11, img_12],
             alts: {
                 large: "Person writing their story",
                 small: ["People coming together", "Community transformation"]
@@ -139,7 +149,7 @@ const useInView = (): [React.RefObject<HTMLDivElement | null>, boolean] => {
 
     return (
         <>
-            <div className="homepage-two">
+            <div className="homepage-two" style={{marginTop: "20px" }}>
                 {/* First Section - Nothing Changes */}
                 <section className="nothing-changes-section">
                     <div className="container">
