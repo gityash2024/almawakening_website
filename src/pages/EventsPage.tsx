@@ -11,6 +11,18 @@ import WomenEmpowermentTraining from '../assets/images/WomenEmpowermentTraining.
 import FreeMedicalCamp from '../assets/images/FreeMedicalCamp.png';
 import CleanUpDriveWorld from '../assets/images/CleanUpDriveWorld.png';
 import questionMark from '../assets/images/questionMark.svg';
+import img_1 from '../assets/images/img_1.jpg';
+import img_2 from '../assets/images/img_2.jpg';
+import img_3 from '../assets/images/img_3.jpg';
+import img_4 from '../assets/images/img_4.jpg';
+import img_5 from '../assets/images/img_5.jpg';
+import img_6 from '../assets/images/img_6.jpg';
+import img_7 from '../assets/images/img_7.jpg';
+import img_8 from '../assets/images/img_8.jpg';
+import img_9 from '../assets/images/img_9.jpg';
+import img_10 from '../assets/images/img_10.jpg';
+import img_11 from '../assets/images/img_11.jpg';
+import img_12 from '../assets/images/img_12.jpg';
 
 
 const EventsPage: React.FC = () => {
@@ -23,32 +35,32 @@ const EventsPage: React.FC = () => {
   // Gallery data sets for dynamic navigation
   const galleryData = [
     {
-      main: image_1,
-      side: [image_2, image_3],
+      main: img_1,
+      side: [img_2, img_3],
       alts: {
         main: "Main community gathering",
         side: ["Community activity 1", "Community activity 2"]
       }
     },
     {
-      main: image_2,
-      side: [image_3, image_1],
+      main: img_4,
+      side: [img_5, img_6],
       alts: {
         main: "Community engagement",
         side: ["Community work", "Group celebration"]
       }
     },
     {
-      main: image_3,
-      side: [image_1, image_2],
+      main: img_7,
+      side: [img_8, img_9],
       alts: {
         main: "Community impact",
         side: ["Community gathering", "Happy moment"]
       }
     },
     {
-      main: image_3,
-      side: [image_1, image_2],
+      main: img_10,
+      side: [img_11, img_12],
       alts: {
         main: "Women empowerment session",
         side: ["Medical camp", "Cleanup drive"]

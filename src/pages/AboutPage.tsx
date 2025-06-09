@@ -375,41 +375,6 @@ const faqs = [
 
           {/* New Section - FAQ */}
          
-{/* <section className="faq-section-new">
-  <div className="faq-container-new">
-    <div className="faq-content-box">
-      <div className="faq-header-new">
-        <div className="faq-icon-new">
-          <img src={questionMark} alt="Question Mark" />
-        </div>
-        <h2>Frequently Asked Questions</h2>
-        <p>See what people often asks us?</p>
-      </div>
-      
-      <div className="faq-list-new">
-        {faqs.map((faq, index) => (
-          <div key={index} className={`faq-item-new ${openFaq === index ? 'active' : ''}`}>
-            <button 
-              className="faq-question-new" 
-              onClick={() => toggleFaq(index)}
-              type="button"
-            >
-              <span>{faq.question}</span>
-              <div className="faq-toggle-new">
-                {openFaq === index ? '−' : '+'}
-              </div>
-            </button>
-            <div className={`faq-answer-new ${openFaq === index ? 'show' : ''}`}>
-              <p>{faq.answer}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section> */}
-   
-
     <section className="faq-section">
                     <div className="container">
                         <div className="faq-header">
