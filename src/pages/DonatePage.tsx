@@ -11,12 +11,37 @@ import albert_flores from '../assets/images/albert_flores.svg';
 import Contactus from '../assets/images/Contactus.svg'; 
 import contactlogo from '../assets/images/contactlogo.png';
 import questionMark from '../assets/images/questionMark.svg';
+import BeAnAlly from '../assets/images/BeAnAlly.png';
 
 const DonatePage: React.FC = () => {
   const [donationAmount, setDonationAmount] = useState(100);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const [otherAmount, setOtherAmount] = useState<string>('');
+
+  const donationOptions = [
+    [30, 40, 50, 100],
+    [150, 300, 450, 500],
+    [1000, 1500, 3000, 4000]
+  ];
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDonationAmount(parseInt(event.target.value));
+  };
+
+  const handleAmountSelect = (amount: number) => {
+    setSelectedAmount(amount);
+    setOtherAmount('');
+  };
+
+  const handleOtherAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOtherAmount(event.target.value);
+    setSelectedAmount(null);
+  };
+
+  const handleContribute = () => {
+    const finalAmount = selectedAmount || parseInt(otherAmount) || 0;
+    console.log('Contributing amount:', finalAmount);
+    // Add your contribution logic here
   };
 
   return (
@@ -33,13 +58,11 @@ const DonatePage: React.FC = () => {
         <div className="donate-page">
           {/* Hero Section */}
           <section className="hero-section">
-            <div className="hero-background">
+            <div 
+              className="hero-background"
+              style={{ backgroundImage: `url(${BeAnAlly})` }}
+            >
               <div className="hero-content">
-                <h1 className="hero-title">Be An Ally</h1>
-                <p className="hero-subtitle">
-                  Join hands and help communities grow<br />
-                  through impactful donations.
-                </p>
                 <div className="hero-image-container">
                   <img src={donatelogo} alt="Community support" className="hero-image" />
                 </div>
@@ -159,6 +182,54 @@ const DonatePage: React.FC = () => {
               <div className="testimonial-navigation">
                 <button className="nav-button nav-prev">←</button>
                 <button className="nav-button nav-next">→</button>
+              </div>
+            </div>
+          </section>
+
+          {/* Amount Selection Section */}
+          <section className="amount-selection-section">
+            <div className="amount-selection-container">
+              <div className="amount-selection-content">
+                <div className="amount-title-section">
+                  <h2 className="amount-title">
+                    Be a Helping Hand for<br />
+                    Better Cause
+                  </h2>
+                </div>
+                
+                <div className="amount-options-section">
+                  <div className="amount-grid">
+                    {donationOptions.map((row, rowIndex) => (
+                      <div key={rowIndex} className="amount-row">
+                        {row.map((amount) => (
+                          <button
+                            key={amount}
+                            className={`amount-button ${selectedAmount === amount ? 'active' : ''}`}
+                            onClick={() => handleAmountSelect(amount)}
+                          >
+                            ₹{amount}
+                          </button>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="amount-actions">
+                    <input
+                      type="number"
+                      placeholder="Other Amount"
+                      value={otherAmount}
+                      onChange={handleOtherAmountChange}
+                      className="other-amount-input"
+                    />
+                    <button 
+                      className="contribute-button"
+                      onClick={handleContribute}
+                    >
+                      Contribute
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
